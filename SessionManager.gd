@@ -16,7 +16,7 @@ func _ready():
 func SessionRoutine():
 	var next = LevelSelection.SelectMinigame()
 	print(next)
-	var minigameScene = load("res://"+next+".tscn")
+	var minigameScene = load("res://Minigames//"+next+"//"+next+".tscn")
 	minigame = minigameScene.instance()
 	add_child(minigame)
 	minigame.StartMinigame()
