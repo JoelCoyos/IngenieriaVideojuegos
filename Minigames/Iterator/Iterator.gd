@@ -10,6 +10,8 @@ var graph_height
 var nodeScene
 var edgeScene
 var rng
+var objectiveNode
+var hasSelected
 
 func _init():
 	pass
@@ -24,23 +26,26 @@ func _ready():
 	edgeScene = load("res://Minigames//Iterator/Edge.tscn")
 	pass
 
+# warning-ignore:unused_argument
 func _process(delta):
 	pass
 
 func StartMinigame():
-	print("Starting minigame")
-	t.set_wait_time(2)
+	t.set_wait_time(10)
 	t.start()
+	graph_width=4
+	graph_height=6
+	hasSelected=false
+	objectiveNode = rng.randi_range(0,graph_width-1)
+	print("El objetivo es el nodo ",objectiveNode+1)
 	AddNodes()
 	AddEdges()
 	yield(t, "timeout")
-	print("Minigame ended")
 	emit_signal("minigame_ended")
 	pass
+	
 
 func AddNodes():
-	graph_width=5
-	graph_height=7
 
 	for i in graph_width:
 		graph.append([])
@@ -50,27 +55,53 @@ func AddNodes():
 		InstanceNode(i,0)
 	for i in range(0,graph_width):
 		InstanceNode(i,graph_height-1)
-	var order =[0,1,2,3,4]
-	#for i in range(0,graph_width):
-	#	order.append(i)
+	var order =[0,1,2,3]
 	order.shuffle()
-	print(order)
 	for i in range(0,graph_width):
 		var nodePos = order[i]
+		var node = InstanceNode(nodePos,i+1)
+		var nodeConnection
 		if(nodePos == 0):
-			var node = InstanceNode(nodePos,i+1)
-			var nodeConnection = InstanceNode(1,i+1)
-			node.connection = nodeConnection
+			nodeConnection = InstanceNode(1,i+1)
 		elif(nodePos == graph_width-1):
-			var node = InstanceNode(nodePos,i+1)
-			var nodeConnection = InstanceNode(graph_width-2,i+1)
-			node.connection = nodeConnection
+			nodeConnection = InstanceNode(graph_width-2,i+1)
 		else:
-			var node = InstanceNode(nodePos,i+1)
 			var aux = 1 -2*rng.randi_range(0,1)
-			var nodeConnection = InstanceNode(nodePos+aux,i+1)
-			node.connection = nodeConnection
+			nodeConnection = InstanceNode(nodePos+aux,i+1)
+		node.connection = nodeConnection
+		nodeConnection.connection = node
 	pass
+	
+func SelectedNode(selectedPos):
+	if(hasSelected):
+		return
+	var y = 0
+	var x = selectedPos
+	var endNode
+	var ended = false
+	while(ended==false):
+		var startingGraph = graph[x][y]
+		y=y+1
+		while(graph[x][y]==null):
+			graph
+			y = y+1
+		var node = graph[x][y]
+		for edge in edgeDic[[Vector2(startingGraph.x,startingGraph.y),Vector2(node.x,node.y)]]:
+			edge.get_node("Sprite").self_modulate  = Color(0, 0, 1)
+		if(y==graph_height-1):
+			endNode=x
+			ended = true
+		elif(node.connection!=null):
+			x = node.connection.x
+			y = node.connection.y
+			for edge in edgeDic[[Vector2(node.x,node.y),Vector2(node.connection.x,node.connection.y)]]:
+				edge.get_node("Sprite").self_modulate  = Color(0, 0, 1)
+	if(endNode == objectiveNode):
+		print("Ganaste!")
+	else:
+		print("Perdiste :(")
+	hasSelected=true
+	pass	
 	
 func AddEdges():
 	for x in graph_width:
@@ -91,11 +122,12 @@ func AddEdges():
 
 func InstanceNode(x,y):
 	var node = nodeScene.instance()
-	node.position = Vector2(300+x*100,100+y*100)
+	node.position = Vector2(300+x*100,50+y*100)
 	add_child(node)
 	node.x = x
 	node.y = y
 	graph[x][y]=node
+	node.connect("selectStartingNode",self,"SelectedNode")
 	return node
 	pass
 
@@ -105,13 +137,13 @@ func InstanceEdge(pos1,pos2):
 		add_child(edge)
 		var x = pos1.x
 		var y = pos1.y
-		edge.position = Vector2(300+x*100,100+y*100) + Vector2(0,50)
+		edge.position = Vector2(300+x*100,50+y*100) + Vector2(0,50)
 		edgeDic[[pos1,pos2]]=[edge]
 		y=y+1
 		while(y < pos2.y):
 			edge = edgeScene.instance()
 			add_child(edge)
-			edge.position = Vector2(300+x*100,100+y*100) + Vector2(0,50)
+			edge.position = Vector2(300+x*100,50+y*100) + Vector2(0,50)
 			edgeDic[[pos1,pos2]].append(edge)
 			y=y+1
 	else: # Horizontal edge
@@ -123,4 +155,6 @@ func InstanceEdge(pos1,pos2):
 			edge.position = graph[pos1.x][pos1.y].position + Vector2(-50,0)
 		edge.rotation_degrees = 90
 		edgeDic[[pos1,pos2]]=[edge]
+		edgeDic[[pos2,pos1]]=[edge] #Esto es medio feo pero ya fue. 
+		#Forma posible de arreglarlo, poner un set en el valor del diccionary??
 	pass
