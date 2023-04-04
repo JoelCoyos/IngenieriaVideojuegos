@@ -11,7 +11,8 @@ var nodeScene
 var edgeScene
 var rng
 var objectiveNode
-var hasSelected
+var gameIsOver
+var currentObjectiveNode
 
 func _init():
 	pass
@@ -33,11 +34,11 @@ func _process(delta):
 func StartMinigame():
 	t.set_wait_time(10)
 	t.start()
-	graph_width=4
-	graph_height=6
-	hasSelected=false
+	currentObjectiveNode=0
+	graph_width=3
+	graph_height=graph_width+2
+	gameIsOver=false
 	objectiveNode = rng.randi_range(0,graph_width-1)
-	print("El objetivo es el nodo ",objectiveNode+1)
 	AddNodes()
 	AddEdges()
 	yield(t, "timeout")
@@ -55,7 +56,7 @@ func AddNodes():
 		InstanceNode(i,0)
 	for i in range(0,graph_width):
 		InstanceNode(i,graph_height-1)
-	var order =[0,1,2,3]
+	var order = range(0,graph_width)
 	order.shuffle()
 	for i in range(0,graph_width):
 		var nodePos = order[i]
@@ -73,7 +74,7 @@ func AddNodes():
 	pass
 	
 func SelectedNode(selectedPos):
-	if(hasSelected):
+	if(gameIsOver):
 		return
 	var y = 0
 	var x = selectedPos
@@ -96,11 +97,15 @@ func SelectedNode(selectedPos):
 			y = node.connection.y
 			for edge in edgeDic[[Vector2(node.x,node.y),Vector2(node.connection.x,node.connection.y)]]:
 				edge.get_node("Sprite").self_modulate  = Color(0, 0, 1)
-	if(endNode == objectiveNode):
-		print("Ganaste!")
+	print(endNode)
+	if(endNode == currentObjectiveNode):
+		if(currentObjectiveNode==graph_width-1):
+			print("Ganaste!")
+			gameIsOver=true
+		currentObjectiveNode = currentObjectiveNode+1
 	else:
 		print("Perdiste :(")
-	hasSelected=true
+		gameIsOver=true
 	pass	
 	
 func AddEdges():
@@ -156,5 +161,5 @@ func InstanceEdge(pos1,pos2):
 		edge.rotation_degrees = 90
 		edgeDic[[pos1,pos2]]=[edge]
 		edgeDic[[pos2,pos1]]=[edge] #Esto es medio feo pero ya fue. 
-		#Forma posible de arreglarlo, poner un set en el valor del diccionary??
+		#Forma posible de arreglarlo, poner un set en la clave del diccionary??
 	pass
