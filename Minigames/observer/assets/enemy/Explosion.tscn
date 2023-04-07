@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/enemy/sounds/Explosion.ogg" type="AudioStream" id=1]
-[ext_resource path="res://assets/enemy/Explosion.gd" type="Script" id=2]
+[ext_resource path="res://Minigames/observer/assets/enemy/sounds/Explosion.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Minigames/observer/assets/enemy/Explosion.gd" type="Script" id=2]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4

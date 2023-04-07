@@ -27,7 +27,7 @@ func _ready():
 
 func leer():
 	var file = File.new()
-	file.open("res://Ruleta/preg.txt", File.READ)
+	file.open("res://Minigames/Ruleta/preg.txt", File.READ)
 	var preguntasTXT = []
 	var totalPreguntas = file.get_line()
 	for i in range(totalPreguntas):

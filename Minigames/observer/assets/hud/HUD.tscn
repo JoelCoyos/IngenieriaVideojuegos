@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/hud/music/Game Over.ogg" type="AudioStream" id=1]
-[ext_resource path="res://assets/hud/HUD.gd" type="Script" id=2]
+[ext_resource path="res://Minigames/observer/assets/hud/music/Game Over.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Minigames/observer/assets/hud/HUD.gd" type="Script" id=2]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )

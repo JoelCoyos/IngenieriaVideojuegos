@@ -24,6 +24,10 @@ config/name="IngenieriaVideojuegos"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GLOBAL="*res://Minigames/observer/global.gd"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

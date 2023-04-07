@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/player/sprites/player-vertical-2.png" type="Texture" id=1]
-[ext_resource path="res://assets/player/sprites/player-vertical-1.png" type="Texture" id=2]
-[ext_resource path="res://assets/player/sprites/player-horizontal-1.png" type="Texture" id=3]
-[ext_resource path="res://assets/player/sprites/player-horizontal-2.png" type="Texture" id=4]
-[ext_resource path="res://assets/player/Player.gd" type="Script" id=5]
-[ext_resource path="res://assets/enemy/Explosion.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Minigames/observer/assets/player/sprites/player-vertical-2.png" type="Texture" id=1]
+[ext_resource path="res://Minigames/observer/assets/player/sprites/player-vertical-1.png" type="Texture" id=2]
+[ext_resource path="res://Minigames/observer/assets/player/sprites/player-horizontal-1.png" type="Texture" id=3]
+[ext_resource path="res://Minigames/observer/assets/player/sprites/player-horizontal-2.png" type="Texture" id=4]
+[ext_resource path="res://Minigames/observer/assets/player/Player.gd" type="Script" id=5]
+[ext_resource path="res://Minigames/observer/assets/enemy/Explosion.tscn" type="PackedScene" id=7]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {

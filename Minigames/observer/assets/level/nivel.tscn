@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/level/sprites/desert-backgorund.png" type="Texture" id=1]
-[ext_resource path="res://assets/level/music/Common Fight.ogg" type="AudioStream" id=2]
-[ext_resource path="res://assets/level/sprites/clouds.png" type="Texture" id=3]
-[ext_resource path="res://assets/level/nivel.gd" type="Script" id=4]
-[ext_resource path="res://assets/player/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/enemy/Enemy.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/hud/HUD.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/enemy/EnemyOBS.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Minigames/observer/assets/level/sprites/desert-backgorund.png" type="Texture" id=1]
+[ext_resource path="res://Minigames/observer/assets/level/music/Common Fight.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Minigames/observer/assets/level/sprites/clouds.png" type="Texture" id=3]
+[ext_resource path="res://Minigames/observer/assets/level/nivel.gd" type="Script" id=4]
+[ext_resource path="res://Minigames/observer/assets/player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Minigames/observer/assets/enemy/Enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Minigames/observer/assets/hud/HUD.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Minigames/observer/assets/enemy/EnemyOBS.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
