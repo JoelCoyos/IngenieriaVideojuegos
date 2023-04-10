@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Minigames/State/Cross.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Minigames/State/State.gd" type="Script" id=2]
+[ext_resource path="res://Minigames/State/car.png" type="Texture" id=3]
+[ext_resource path="res://Minigames/State/Car.gd" type="Script" id=4]
+
+[node name="State" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="CarPath" type="Path2D" parent="."]
+
+[node name="Car" type="PathFollow2D" parent="CarPath"]
+rotation = 1.5708
+loop = false
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="CarPath/Car"]
+scale = Vector2( 0.542253, 0.542254 )
+texture = ExtResource( 3 )
+
+[node name="Cross" parent="." instance=ExtResource( 1 )]
