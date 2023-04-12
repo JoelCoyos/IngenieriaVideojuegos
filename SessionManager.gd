@@ -6,7 +6,6 @@ extends Node2D
 var LevelSelection
 var minigame
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	LevelSelection = $"../LevelSelection"

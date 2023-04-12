@@ -18,6 +18,13 @@ var crossScene
 var canCross
 var forcedContinue
 
+var distanceCross = 200
+var xStartingStreet = 100
+var yStartingStreet = 100
+
+var objetiveScene
+
+
 func _init():
 	pass
 
@@ -25,9 +32,11 @@ func _ready():
 	t = Timer.new()
 	self.add_child(t)
 	car = $CarPath/Car
+	car.connect("getObjetive",self,"CarGetObjective")
 	carPath = $CarPath.curve
 	rng = RandomNumberGenerator.new()
 	crossScene = load("res://Minigames//State/Cross.tscn")
+	objetiveScene = load("res://Minigames//State/Objective.tscn")
 	pass
 
 func _draw():
@@ -51,15 +60,18 @@ func StartMinigame():
 	rng.randomize()
 	t.set_wait_time(100)
 	t.start()
+	objectiveCount=3
+	objectiveCleared=0
 	SetStreet()
+	AddObjetives()
 	yield(t, "timeout")
 	print("Minigame ended")
 	emit_signal("minigame_ended")
 	pass
 
 func SetStreet():
-	street_width=10
-	street_height=10
+	street_width=4
+	street_height=4
 	for y in street_width:
 		street.append([])
 		for x in street_height:
@@ -67,7 +79,7 @@ func SetStreet():
 	for y in street_width:
 		for x in street_height:
 			var cross =  crossScene.instance()
-			cross.position = Vector2(300+x*200,50+y*200)
+			cross.position = Vector2(xStartingStreet + x*distanceCross,yStartingStreet+ y*distanceCross)
 			add_child(cross)
 			street[x][y] = cross
 	carPosition = Vector2(2,2)
@@ -131,10 +143,28 @@ func AddCarDirection(direction,turn):
 		print(lastCarPosition)
 		print(carPosition)
 		carPath.add_point(GetStreetPosition(carPosition))
-	
+	pass
+
+func AddObjetives():
+	for i in range(0,objectiveCount):
+		rng.randomize()
+		var xPosition = (rng.randi_range(0,street_width-2))*distanceCross + xStartingStreet
+		var yPosition = rng.randi_range(0,street_height-2)*distanceCross + yStartingStreet
+		if(rng.randi_range(0,1)==0):
+			xPosition+= distanceCross/2
+		else:
+			yPosition+=distanceCross/2
+		var objetive = objetiveScene.instance()
+		objetive.position = Vector2(xPosition,yPosition)
+		add_child(objetive)
 	pass
 
 func GetStreetPosition(pos):
 	return street[pos.x][pos.y].position
 	pass
 
+func CarGetObjective():
+	objectiveCleared+=1
+	if(objectiveCleared==objectiveCount):
+		emit_signal("minigame_ended")
+	pass

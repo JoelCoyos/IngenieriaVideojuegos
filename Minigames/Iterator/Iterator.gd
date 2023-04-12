@@ -35,7 +35,7 @@ func StartMinigame():
 	t.set_wait_time(10)
 	t.start()
 	currentObjectiveNode=0
-	graph_width=3
+	graph_width=5
 	graph_height=graph_width+2
 	gameIsOver=false
 	objectiveNode = rng.randi_range(0,graph_width-1)
