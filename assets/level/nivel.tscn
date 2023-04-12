@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/level/sprites/desert-backgorund.png" type="Texture" id=1]
+[ext_resource path="res://assets/level/music/Common Fight.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/level/sprites/clouds.png" type="Texture" id=3]
+[ext_resource path="res://assets/level/nivel.gd" type="Script" id=4]
+[ext_resource path="res://assets/player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/enemy/Enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/hud/HUD.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/enemy/EnemyOBS.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 201.704, 2, 0, 0, 0, 0, 69, 3, 0, 0, 0, 0, 1, 1 )
+}
+
+[node name="nivel" type="Node2D" groups=["level"]]
+script = ExtResource( 4 )
+Enemy = ExtResource( 6 )
+EnemyOBS = ExtResource( 8 )
+
+[node name="BgMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -10.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 0, 272 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="ParallaxBackgroundNube1" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackgroundNube1"]
+motion_mirroring = Vector2( 0, 272 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackgroundNube1/ParallaxLayer"]
+modulate = Color( 1, 1, 1, 0.313726 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="ParallaxBackgroundNube2" type="ParallaxBackground" parent="."]
+offset = Vector2( 0, 128 )
+transform = Transform2D( 1, 0, 0, 1, 0, 128 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackgroundNube2"]
+motion_mirroring = Vector2( 0, 272 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackgroundNube2/ParallaxLayer"]
+modulate = Color( 1, 1, 1, 0.470588 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 78, 224 )
+
+[node name="EnemyTimer" type="Timer" parent="."]
+
+[node name="EnemyPath2D" type="Path2D" parent="."]
+position = Vector2( -0.260563, 0 )
+scale = Vector2( 1.26056, 1 )
+curve = SubResource( 1 )
+
+[node name="EnemySpawnPathFollow2D" type="PathFollow2D" parent="EnemyPath2D"]
+position = Vector2( 201.704, 2 )
+rotation = 3.13406
+
+[node name="HUD" parent="." instance=ExtResource( 7 )]
+
+[node name="TimerOBS" type="Timer" parent="."]
+
+[connection signal="tree_exiting" from="Player" to="HUD" method="_on_Player_tree_exiting"]
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]
+[connection signal="game_over" from="HUD" to="." method="_on_HUD_game_over"]
+[connection signal="tree_exiting" from="HUD" to="HUD" method="_on_HUD_tree_exiting"]
+[connection signal="timeout" from="TimerOBS" to="." method="_on_TimerOBS_timeout"]

@@ -1,0 +1,218 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://factory/escPrin.gd" type="Script" id=1]
+[ext_resource path="res://factory/linea.png" type="Texture" id=2]
+[ext_resource path="res://factory/elemetno.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 320.249, 3.20846 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 321.67, 2.54817 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 318.324, 3.10442 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 320.234, 2.61394 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 320.249, 2.98315 )
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 683, 0, 0, 0, 0, 0, 6, -4 )
+}
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 2 ), null ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 321.696, 12 )
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 4, 6 )
+script = ExtResource( 1 )
+elemento = ExtResource( 3 )
+
+[node name="Sprite1" type="Sprite" parent="."]
+position = Vector2( 344.625, 122.75 )
+scale = Vector2( 1.05543, 1.4322 )
+texture = ExtResource( 2 )
+
+[node name="Area2D1" type="Area2D" parent="Sprite1" groups=["caja1"]]
+position = Vector2( -1.42072, -6 )
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="Sprite1/Area2D1"]
+position = Vector2( 0.828552, 38.2442 )
+shape = SubResource( 3 )
+
+[node name="InicioC1" type="Area2D" parent="Sprite1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite1/InicioC1"]
+position = Vector2( -2.0134, -25.5797 )
+shape = SubResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 339.125, 231.5 )
+scale = Vector2( 1.04767, 1.33898 )
+texture = ExtResource( 2 )
+
+[node name="Area2D2" type="Area2D" parent="Sprite2" groups=["caja2"]]
+position = Vector2( -8.36636, 22 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2/Area2D2"]
+position = Vector2( 11.1106, 2.3893 )
+shape = SubResource( 1 )
+
+[node name="InicioC2" type="Area2D" parent="Sprite2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2/InicioC2"]
+position = Vector2( -0.596558, -23.152 )
+shape = SubResource( 7 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 340, 331.5 )
+scale = Vector2( 1.05543, 1.50847 )
+texture = ExtResource( 2 )
+
+[node name="Area2D3" type="Area2D" parent="Sprite3" groups=["caja3"]]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Sprite3/Area2D3"]
+position = Vector2( 1.78814e-06, 23.5338 )
+shape = SubResource( 1 )
+
+[node name="InicioC3" type="Area2D" parent="Sprite3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite3/InicioC3"]
+position = Vector2( -1.89493, -21.8765 )
+shape = SubResource( 8 )
+
+[node name="Button1" type="Button" parent="."]
+visible = false
+margin_left = 727.0
+margin_top = 84.0
+margin_right = 785.0
+margin_bottom = 138.0
+text = "A"
+
+[node name="Button2" type="Button" parent="."]
+visible = false
+margin_left = 806.0
+margin_top = 82.0
+margin_right = 864.0
+margin_bottom = 136.0
+rect_pivot_offset = Vector2( 0, 54 )
+text = "B"
+
+[node name="Button3" type="Button" parent="."]
+visible = false
+margin_left = 891.0
+margin_top = 81.0
+margin_right = 949.0
+margin_bottom = 135.0
+text = "C"
+
+[node name="Button4" type="Button" parent="."]
+visible = false
+margin_left = 728.0
+margin_top = 208.0
+margin_right = 786.0
+margin_bottom = 262.0
+text = "1"
+
+[node name="Button5" type="Button" parent="."]
+visible = false
+margin_left = 826.0
+margin_top = 204.0
+margin_right = 884.0
+margin_bottom = 258.0
+text = "2"
+
+[node name="Button6" type="Button" parent="."]
+visible = false
+margin_left = 920.0
+margin_top = 203.0
+margin_right = 978.0
+margin_bottom = 257.0
+text = "3"
+
+[node name="Button7" type="Button" parent="."]
+visible = false
+margin_left = 727.0
+margin_top = 317.0
+margin_right = 785.0
+margin_bottom = 371.0
+text = "/"
+
+[node name="Button8" type="Button" parent="."]
+visible = false
+margin_left = 816.0
+margin_top = 319.0
+margin_right = 874.0
+margin_bottom = 373.0
+text = "*"
+
+[node name="Button9" type="Button" parent="."]
+visible = false
+margin_left = 912.0
+margin_top = 322.0
+margin_right = 970.0
+margin_bottom = 376.0
+text = "-"
+
+[node name="elementTimer" type="Timer" parent="."]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 2 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 683, 0 )
+rotation = -3.13568
+
+[node name="validacion" type="AnimatedSprite" parent="."]
+position = Vector2( 507.75, 476 )
+scale = Vector2( 1.55426, 1 )
+frames = SubResource( 5 )
+
+[node name="Area2D" type="Area2D" parent="validacion"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="validacion/Area2D"]
+position = Vector2( -1.12598, -2 )
+shape = SubResource( 6 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 839.0
+margin_top = 16.0
+margin_right = 877.0
+margin_bottom = 30.0
+text = "Score"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 889.0
+margin_top = 17.0
+margin_right = 929.0
+margin_bottom = 31.0
+
+[connection signal="area_entered" from="Sprite1/Area2D1" to="." method="_on_Area2D1_area_entered"]
+[connection signal="area_entered" from="Sprite1/InicioC1" to="." method="_on_InicioC1_area_entered"]
+[connection signal="area_entered" from="Sprite2/Area2D2" to="." method="_on_Area2D2_area_entered"]
+[connection signal="area_entered" from="Sprite2/InicioC2" to="." method="_on_InicioC2_area_entered"]
+[connection signal="area_entered" from="Sprite3/Area2D3" to="." method="_on_Area2D3_area_entered"]
+[connection signal="area_entered" from="Sprite3/InicioC3" to="." method="_on_InicioC3_area_entered"]
+[connection signal="pressed" from="Button1" to="." method="_on_Button1_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_Button4_pressed"]
+[connection signal="pressed" from="Button5" to="." method="_on_Button5_pressed"]
+[connection signal="pressed" from="Button6" to="." method="_on_Button6_pressed"]
+[connection signal="pressed" from="Button7" to="." method="_on_Button7_pressed"]
+[connection signal="pressed" from="Button8" to="." method="_on_Button8_pressed"]
+[connection signal="pressed" from="Button9" to="." method="_on_Button9_pressed"]
+[connection signal="timeout" from="elementTimer" to="." method="_on_elementTimer_timeout"]
+[connection signal="area_entered" from="validacion/Area2D" to="." method="_on_Area2D_area_entered"]

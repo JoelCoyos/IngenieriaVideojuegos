@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ruleta.png-56d5c36c6170233e5fd87bf836366d0d.stex"
+path="res://.import/shot-1.png-7515ffe8873d3486846438c30f0303f8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/Ruleta/ruleta.png"
-dest_files=[ "res://.import/ruleta.png-56d5c36c6170233e5fd87bf836366d0d.stex" ]
+source_file="res://assets/enemy/sprites/shot-1.png"
+dest_files=[ "res://.import/shot-1.png-7515ffe8873d3486846438c30f0303f8.stex" ]
 
 [params]
 
