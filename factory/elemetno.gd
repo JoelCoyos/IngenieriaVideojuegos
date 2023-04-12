@@ -38,4 +38,6 @@ func _physics_process(delta):
 
 
 func _on_VisibilityNotifier2D_screen_exited():
-	queue_free()
+	print()
+	#queue_free() si lo pongo se actualiza el indice de tablas y salt aeeror entonces lo dejo y digo que cuando termine el minijuego se borre todo
+	#cuando se haga el cambio de escena se deberia borrar todos los que existan

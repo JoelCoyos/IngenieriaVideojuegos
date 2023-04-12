@@ -8,3 +8,8 @@ func _on_close_pressed():
 
 func _on_Button_pressed():
 	get_tree().change_scene("res://Ruleta/RuletaScene.tscn")
+
+
+
+func _on_Button2_pressed():
+	get_tree().change_scene("res://factory/scenePrin.tscn")

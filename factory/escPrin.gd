@@ -2,7 +2,13 @@ extends Node2D
 
 export (PackedScene) var elemento
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
-var con = -1
+
+var inicio = 0
+var posArea1 = 0
+var posArea2 = 0
+var posArea3 = 0
+var validacion = -1
+
 var valCajaACT = 0
 var arrayResultados = []
 var score = 0
@@ -20,47 +26,62 @@ func _ready():
 
 func _physics_process(delta):
 	$Label2.text=str(score)
-#hacer un array de tipos valCaja
+
+#con el timer no puede haber mas de un elemto por area
 #guardarle valores aleatorios 
-#mostrar en label 
+
 #avanzar un contador para validar
-#en caso de que no llegues a respondes setear las respuestas en 0
-#en validacion, compara y suma
+
 #ver number Attack para la dificultad
 
-
-func salida_buscada():
-	get_tree().get_nodes_in_group("elemento")[0].valPretendido.caja1 = 1
-	get_tree().get_nodes_in_group("elemento")[0].valPretendido.caja2 = 2
-	get_tree().get_nodes_in_group("elemento")[0].valPretendido.caja3 = 3
+##pierdo la referencia del array de nodos
+func random(min_number, max_number ):
+	rng.randomize()
+	var random = rng.randi_range(min_number, max_number)# 
+	return random
+	
+func salida_buscada(pos):
+	get_tree().get_nodes_in_group("elemento")[pos].valPretendido.caja1 = random(1,3)
+	get_tree().get_nodes_in_group("elemento")[pos].valPretendido.caja2 = random(1,3)
+	get_tree().get_nodes_in_group("elemento")[pos].valPretendido.caja3 = random(1,3)
 	#$HBoxContainer/Label2.text=str(get_tree().get_nodes_in_group("elemento")[con].valPretendido.caja1)
 	
-	
+
 
 func _on_elementTimer_timeout():
 	get_node("Path2D/PathFollow2D").set_offset(randi())#toma posicion en un pto aleatorio
 	var elem = elemento.instance()#guardamos la referencia a nuestra escena enem6
 	add_child(elem)#instanciamos la escena
 	elem.position = get_node("Path2D/PathFollow2D").position
-	salida_buscada()
-	$elementTimer.wait_time = 30#10+random(1,15)
+	#var myGroup = get_tree().get_nodes_in_group("elemento")
+	#print(myGroup.size())
+	
+	salida_buscada(inicio)
+	inicio = inicio+1
+	$elementTimer.wait_time = 20#10+random(1,15)
 	$elementTimer.start()
 	
-	con = con+1
 
 
-func random(min_number, max_number ):
-	rng.randomize()
-	var random = rng.randf_range(min_number, max_number)# 
-	return random
-	
 
+
+##con esas modificaciones deberia poder ver la forma de tener varios elementos
 func _on_Area2D1_area_entered(area):
 	if area.is_in_group("elemento"):
-		
-			get_tree().get_nodes_in_group("elemento")[0].valAdquirido.caja1 = valorCaja.caja1
+			#var myGroup = get_tree().get_nodes_in_group("elemento")[].get_index()
+			#print("****")
+			#print(myGroup)
+			#	for i in range(miChild.size()):
+			#	var child = miChild[i]
+			#	var position = myGroup.get_child_index(child)
+			#	print("El elemento en la posición", position, "es", child)
+			
+			#print(" pos area 1 ",posArea1)
+			get_tree().get_nodes_in_group("elemento")[posArea1].valAdquirido.caja1 = valorCaja.caja1
+			#print(" *area 1* ",get_tree().get_nodes_in_group("elemento")[posArea1].valAdquirido.caja1)
 			#print(get_tree().get_nodes_in_group("elemento")[con].valCaja.caja1)
 			valorCaja.caja1=0
+			posArea1+=1
 			$Button1.visible = false
 			$Button2.visible = false
 			$Button3.visible = false
@@ -72,8 +93,9 @@ func _on_Area2D1_area_entered(area):
 func _on_Area2D2_area_entered(area):
 	if area.is_in_group("elemento"):
 		
-			get_tree().get_nodes_in_group("elemento")[0].valAdquirido.caja2 = valorCaja.caja2
+			get_tree().get_nodes_in_group("elemento")[posArea2].valAdquirido.caja2 = valorCaja.caja2
 			valorCaja.caja2=0
+			posArea2+=1
 			#print(get_tree().get_nodes_in_group("elemento")[con].valCaja.caja1)
 			$Button4.visible = false
 			$Button5.visible = false
@@ -82,8 +104,9 @@ func _on_Area2D2_area_entered(area):
 
 func _on_Area2D3_area_entered(area):
 	if area.is_in_group("elemento"):
-			get_tree().get_nodes_in_group("elemento")[0].valAdquirido.caja3 = valorCaja.caja3
+			get_tree().get_nodes_in_group("elemento")[posArea3].valAdquirido.caja3 = valorCaja.caja3
 			valorCaja.caja3=0
+			posArea3+=1
 			#print(get_tree().get_nodes_in_group("elemento")[con].valCaja.caja1)
 			$Button7.visible = false
 			$Button8.visible = false
@@ -151,14 +174,19 @@ func _on_Button9_pressed():
 
 
 func _on_Area2D_area_entered(area):
-	var pos = 0
-	if (get_tree().get_nodes_in_group("elemento")[pos].valPretendido.caja1 == get_tree().get_nodes_in_group("elemento")[pos].valAdquirido.caja1
-	and get_tree().get_nodes_in_group("elemento")[pos].valPretendido.caja2 == get_tree().get_nodes_in_group("elemento")[pos].valAdquirido.caja2
-		):
+	print(" *pretendido* ",get_tree().get_nodes_in_group("elemento")[validacion].valPretendido)
+	
+	print(" *adquiridoo* ",get_tree().get_nodes_in_group("elemento")[validacion].valAdquirido)
+	validacion+=1
+	if (get_tree().get_nodes_in_group("elemento")[validacion].valPretendido.caja1 == get_tree().get_nodes_in_group("elemento")[validacion].valAdquirido.caja1
+	and get_tree().get_nodes_in_group("elemento")[validacion].valPretendido.caja2 == get_tree().get_nodes_in_group("elemento")[validacion].valAdquirido.caja2
+	and get_tree().get_nodes_in_group("elemento")[validacion].valPretendido.caja3 == get_tree().get_nodes_in_group("elemento")[validacion].valAdquirido.caja3):
 		score += 10
 		print("coincide")
 	else:
 		score -= 10
 		print("fallo")
+	
+
 
 
