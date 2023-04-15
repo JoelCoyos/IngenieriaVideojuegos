@@ -1,7 +1,7 @@
 extends Node2D
 
 var rng
-var levels = ["State","Decorator","Iterator"]
+var levels = ["MVC"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
