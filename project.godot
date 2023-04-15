@@ -24,6 +24,14 @@ config/name="IngenieriaVideojuegos"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/size/resizable=false
+window/size/test_width=1280
+window/size/test_height=720
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

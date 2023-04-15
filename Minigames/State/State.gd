@@ -58,7 +58,8 @@ func _process(delta):
 func StartMinigame():
 	print("Starting minigame")
 	rng.randomize()
-	t.set_wait_time(100)
+	time = 20
+	t.set_wait_time(20)
 	t.start()
 	objectiveCount=3
 	objectiveCleared=0

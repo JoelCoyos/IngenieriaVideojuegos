@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://GameManager.gd" type="Script" id=1]
 [ext_resource path="res://SessionManager.gd" type="Script" id=2]
 [ext_resource path="res://MinigameManager.gd" type="Script" id=3]
 [ext_resource path="res://LevelSelection.gd" type="Script" id=4]
+[ext_resource path="res://arial.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://SessionUIManager.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 5 )
 
 [node name="Game" type="Node2D"]
 
@@ -15,6 +21,43 @@ script = ExtResource( 4 )
 
 [node name="SessionManager" type="Node2D" parent="."]
 script = ExtResource( 2 )
+
+[node name="SessionUI" type="Node2D" parent="SessionManager"]
+script = ExtResource( 6 )
+
+[node name="BetweenMinigames" type="Node2D" parent="SessionManager/SessionUI"]
+
+[node name="Score" type="RichTextLabel" parent="SessionManager/SessionUI/BetweenMinigames"]
+margin_left = 431.0
+margin_top = 227.0
+margin_right = 951.0
+margin_bottom = 350.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "Puntuación: 0"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="NextMinigame" type="RichTextLabel" parent="SessionManager/SessionUI/BetweenMinigames"]
+margin_left = 358.0
+margin_top = 350.0
+margin_right = 1143.0
+margin_bottom = 473.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "Siguiente minijuego:"
+
+[node name="OnMinigame" type="Node2D" parent="SessionManager/SessionUI"]
+
+[node name="TimeLeft" type="RichTextLabel" parent="SessionManager/SessionUI/OnMinigame"]
+margin_left = 744.0
+margin_top = 595.0
+margin_right = 1264.0
+margin_bottom = 718.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "Tiempo:"
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="MinigameManager" type="Node2D" parent="."]
 script = ExtResource( 3 )

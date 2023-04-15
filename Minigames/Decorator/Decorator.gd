@@ -27,7 +27,9 @@ func StartMinigame():
 	print("Starting minigame")
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
-	t.set_wait_time(10)
+	objectiveCount=clothes.size()
+	time = 10
+	t.set_wait_time(time)
 	t.start()
 	SetWeather()
 	AddSelectionClothes()
@@ -56,7 +58,7 @@ func AddSelectionClothes():
 
 func HasSelectedClothe(clothe,bodyPart):
 	if(clothesDic[clothe][0] ==bodyPart and clothesDic[clothe][1] == currentWeather):
-		print("bien")
+		objectiveCleared+=1
 	else:
 		print("mal")
 	pass

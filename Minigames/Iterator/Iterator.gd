@@ -32,10 +32,12 @@ func _process(delta):
 	pass
 
 func StartMinigame():
-	t.set_wait_time(10)
+	time = 10
+	t.set_wait_time(time)
 	t.start()
 	currentObjectiveNode=0
-	graph_width=5
+	objectiveCount=3
+	graph_width=objectiveCount
 	graph_height=graph_width+2
 	gameIsOver=false
 	objectiveNode = rng.randi_range(0,graph_width-1)
@@ -100,7 +102,7 @@ func SelectedNode(selectedPos):
 	print(endNode)
 	if(endNode == currentObjectiveNode):
 		if(currentObjectiveNode==graph_width-1):
-			print("Ganaste!")
+			objectiveCleared+=1
 			gameIsOver=true
 		currentObjectiveNode = currentObjectiveNode+1
 	else:

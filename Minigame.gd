@@ -6,7 +6,7 @@ signal minigame_ended
 var time
 var difficulty
 var objectiveCount
-var objectiveCleared
+var objectiveCleared=0
 
 func _ready():
 	pass
