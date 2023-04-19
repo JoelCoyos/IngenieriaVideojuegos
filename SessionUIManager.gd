@@ -7,15 +7,16 @@ var onMinigame
 
 var minigameTime
 
+var session
+
 var t
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	t = Timer.new()
 	self.add_child(t)
 	
 	BetweenMinigamesUI = $BetweenMinigames
 	OnMinigamesUI = $OnMinigame
-	pass # Replace with function body.
+	pass
 
 
 func EnterGame(minigame):
@@ -32,12 +33,14 @@ func LeaveGame(nextMinigame):
 	onMinigame=false
 
 func ChangeScore(newScore):
-	$BetweenMinigames/Score.text = str("Puntuacion: ", newScore) 
+	$BetweenMinigames/Score.text = str("Nota: ", newScore) 
+	$BetweenMinigames/Aplazo.text = str("Aplazos\n",session.cantidadAplazos,"/",session.maxAplazos)
+
 func ChangeTimeLeft():
 	while(onMinigame):
+		$OnMinigame/TimeLeft.text = str("Faltan:",minigameTime)
 		t.set_wait_time(1)
 		t.start()
 		yield(t, "timeout")
-		$OnMinigame/TimeLeft.text = str("Faltan:",minigameTime)
 		minigameTime-=1
 	pass

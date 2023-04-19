@@ -59,7 +59,7 @@ func StartMinigame():
 	print("Starting minigame")
 	rng.randomize()
 	time = 20
-	t.set_wait_time(20)
+	t.set_wait_time(10)
 	t.start()
 	objectiveCount=3
 	objectiveCleared=0

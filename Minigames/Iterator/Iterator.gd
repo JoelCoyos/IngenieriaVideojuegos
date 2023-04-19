@@ -46,7 +46,6 @@ func StartMinigame():
 	yield(t, "timeout")
 	emit_signal("minigame_ended")
 	pass
-	
 
 func AddNodes():
 

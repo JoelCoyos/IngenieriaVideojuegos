@@ -28,6 +28,7 @@ func StartMinigame():
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
 	objectiveCount=clothes.size()
+	objectiveCleared=0
 	time = 10
 	t.set_wait_time(time)
 	t.start()

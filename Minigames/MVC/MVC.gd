@@ -43,8 +43,8 @@ func StartMinigame():
 	pass
 
 func SetPuzzle():
-	puzzle_height=2
-	puzzle_width=2
+	puzzle_height=3
+	puzzle_width=3
 	for x in puzzle_height:
 		puzzle.append([])
 		for y in puzzle_width:

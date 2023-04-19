@@ -7,20 +7,26 @@ var LevelSelection
 var minigame
 var SessionUI
 var currentScore=0
+var cantidadAplazos=0
+var maxAplazos
+var difficulty
 
 var rng
 var t
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	LevelSelection = $"../LevelSelection"
 	SessionUI = $SessionUI
+	SessionUI.session = self
 	t = Timer.new()
 	self.add_child(t)
+	cantidadAplazos=0
+	maxAplazos=5
+	difficulty=1
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
 	SessionRoutine()
-	pass # Replace with function body.
+	pass
 
 func SessionRoutine():
 	var next = LevelSelection.SelectMinigame()
@@ -32,19 +38,23 @@ func SessionRoutine():
 	minigame = minigameScene.instance()
 	add_child(minigame)
 	minigame.StartMinigame()
+	var transitionScene = load("res://TransitionBlur.tscn")
+	var transition = transitionScene.instance()
+	add_child(transition)
+	transition.MinigameTransition()
 	SessionUI.EnterGame(minigame)
 	minigame.connect("minigame_ended", self, "NextMinigame")
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
 func NextMinigame():
 	print("Seleccionando el siguiente minijuego")
-	minigame.queue_free()
-	var gainedScore = minigame.objectiveCleared
+	var total = minigame.objectiveCount
+	var cant = minigame.objectiveCleared
+	var gainedScore = (cant/total)*difficulty
+	if((cant/total)*10<=3):
+		cantidadAplazos+=1
 	currentScore+=gainedScore
+	minigame.queue_free()
 	SessionUI.ChangeScore(currentScore)
 	SessionRoutine()
 	pass
