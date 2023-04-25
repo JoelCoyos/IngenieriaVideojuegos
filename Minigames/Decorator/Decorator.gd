@@ -6,6 +6,7 @@ var rng
 var clothesDic = {}
 var weather = ["sunny","rain"]
 var clothes = ["shirt","sunglasses","umbrella"]
+var clothesArray
 
 var currentWeather
 
@@ -18,6 +19,7 @@ func _ready():
 	clothesDic["sunglasses"] = ["head","sunny"]
 	clothesDic["shirt"] = ["body","sunny"]
 	clothesDic["umbrella"] = ["body","rain"]
+	clothesArray = []
 	pass
 
 func _process(delta):
@@ -35,7 +37,7 @@ func StartMinigame():
 	SetWeather()
 	AddSelectionClothes()
 	yield(t, "timeout")
-	print("Minigame ended")
+	CheckClothes()
 	emit_signal("minigame_ended")
 	pass
 	
@@ -52,14 +54,15 @@ func AddSelectionClothes():
 		var clothe = clotheScene.instance()
 		clothe.position.x = 300 + 150*i
 		clothe.position.y = 500
-		clothe.clothe = clothes[i]
-		clothe.connect("putClothe",self,"HasSelectedClothe")
+		clothe.clotheType = clothes[i]
+		clothesArray.append(clothe)
 		add_child(clothe)
 	pass
 
-func HasSelectedClothe(clothe,bodyPart):
-	if(clothesDic[clothe][0] ==bodyPart and clothesDic[clothe][1] == currentWeather):
-		objectiveCleared+=1
-	else:
-		print("mal")
+func CheckClothes():
+	for clothe in clothesArray:
+		if(clothe.currentBodyPart.has(clothesDic[clothe.clotheType][0]) and clothesDic[clothe.clotheType][1] == currentWeather):
+			objectiveCleared+=1
+		elif(clothe.currentBodyPart == [] and clothesDic[clothe.clotheType][1]!=currentWeather):
+			objectiveCleared+=1
 	pass

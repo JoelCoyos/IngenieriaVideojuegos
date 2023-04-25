@@ -100,9 +100,10 @@ func SelectedNode(selectedPos):
 				edge.get_node("Sprite").self_modulate  = Color(0, 0, 1)
 	print(endNode)
 	if(endNode == currentObjectiveNode):
+		objectiveCleared+=1
 		if(currentObjectiveNode==graph_width-1):
-			objectiveCleared+=1
 			gameIsOver=true
+			emit_signal("minigame_ended")
 		currentObjectiveNode = currentObjectiveNode+1
 	else:
 		print("Perdiste :(")

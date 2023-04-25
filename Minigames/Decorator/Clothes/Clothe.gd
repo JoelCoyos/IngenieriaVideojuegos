@@ -1,12 +1,16 @@
 extends Area2D
 
-signal putClothe(clothe,bodyPart)
 
 var can_grab = false
 var grabbed_offset = Vector2()
-var currentBodyPart
+var currentBodyPart = []
 var hasGrabbed=false
-var clothe
+var clotheType
+
+func _ready():
+	connect("area_entered",self,"_area_entered")
+	connect("area_exited",self,"_area_exited")
+	pass
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
@@ -19,9 +23,13 @@ func _process(delta):
 		hasGrabbed=true
 	if (Input.is_action_just_released("game_select") and hasGrabbed):
 		can_grab = false
-		emit_signal("putClothe",clothe,currentBodyPart)
 
-func _on_shirt_area_entered(other):
-	var node = other as Node2D
-	currentBodyPart = node.get_groups()[0]
-	pass # Replace with function body.
+func _area_entered(other):
+	currentBodyPart.append(other.get_groups()[0])
+	pass
+
+
+func _area_exited(area):
+	currentBodyPart.erase(area.get_groups()[0])
+	pass
+

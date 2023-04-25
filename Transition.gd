@@ -17,3 +17,8 @@ func MinigameTransition():
 	texture = screenshot
 	var anim = $AnimationPlayer
 	anim.play(animation)
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	queue_free()
+	pass # Replace with function body.
