@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.png-3bdb1b67a68e5c1b150be85f3e68b23d.stex"
+path="res://.import/background.png-3caa267a7f4a028b3c8a99c26b47701d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/observer/assets/menu/sprites/background.png"
-dest_files=[ "res://.import/background.png-3bdb1b67a68e5c1b150be85f3e68b23d.stex" ]
+source_file="res://Minigames/Observer/assets/menu/sprites/background.png"
+dest_files=[ "res://.import/background.png-3caa267a7f4a028b3c8a99c26b47701d.stex" ]
 
 [params]
 

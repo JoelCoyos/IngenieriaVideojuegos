@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player-vertical-2.png-d780119db25bcf6e7c3475b92b2e2752.stex"
+path="res://.import/player-vertical-2.png-266b047379a1e398f5de49e3b23ba256.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/observer/assets/player/sprites/player-vertical-2.png"
-dest_files=[ "res://.import/player-vertical-2.png-d780119db25bcf6e7c3475b92b2e2752.stex" ]
+source_file="res://Minigames/Observer/assets/player/sprites/player-vertical-2.png"
+dest_files=[ "res://.import/player-vertical-2.png-266b047379a1e398f5de49e3b23ba256.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

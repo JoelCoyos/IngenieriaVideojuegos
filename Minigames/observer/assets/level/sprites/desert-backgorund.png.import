@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/desert-backgorund.png-0aa99d19301f50953d371cd0b9e7d227.stex"
+path="res://.import/desert-backgorund.png-95aa5117206953adac041244ecb3af2e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/observer/assets/level/sprites/desert-backgorund.png"
-dest_files=[ "res://.import/desert-backgorund.png-0aa99d19301f50953d371cd0b9e7d227.stex" ]
+source_file="res://Minigames/Observer/assets/level/sprites/desert-backgorund.png"
+dest_files=[ "res://.import/desert-backgorund.png-95aa5117206953adac041244ecb3af2e.stex" ]
 
 [params]
 

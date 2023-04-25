@@ -67,10 +67,10 @@ __meta__ = {
 [node name="OnMinigame" type="Node2D" parent="SessionManager/SessionUI"]
 
 [node name="TimeLeft" type="RichTextLabel" parent="SessionManager/SessionUI/OnMinigame"]
-margin_left = 744.0
-margin_top = 595.0
-margin_right = 1264.0
-margin_bottom = 718.0
+margin_left = 987.0
+margin_top = 649.0
+margin_right = 1507.0
+margin_bottom = 772.0
 mouse_filter = 2
 custom_fonts/normal_font = SubResource( 1 )
 text = "Tiempo:"

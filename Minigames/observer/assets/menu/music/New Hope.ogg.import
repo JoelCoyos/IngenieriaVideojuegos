@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/New Hope.ogg-9b082b11c245a9fd55dba575b4a91449.oggstr"
+path="res://.import/New Hope.ogg-f7cb0373357d6061b83476490374220e.oggstr"
 
 [deps]
 
-source_file="res://Minigames/observer/assets/menu/music/New Hope.ogg"
-dest_files=[ "res://.import/New Hope.ogg-9b082b11c245a9fd55dba575b4a91449.oggstr" ]
+source_file="res://Minigames/Observer/assets/menu/music/New Hope.ogg"
+dest_files=[ "res://.import/New Hope.ogg-f7cb0373357d6061b83476490374220e.oggstr" ]
 
 [params]
 

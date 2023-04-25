@@ -1,35 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Minigames/observer/assets/enemy/sounds/Explosion.ogg" type="AudioStream" id=1]
-[ext_resource path="res://Minigames/observer/assets/enemy/Explosion.gd" type="Script" id=2]
-
-[sub_resource type="StreamTexture" id=1]
-flags = 4
-load_path = "res://.import/explosion-1.png-c85ec20e26398e3361842942fe8159ca.stex"
-
-[sub_resource type="StreamTexture" id=2]
-flags = 4
-load_path = "res://.import/explosion-2.png-e0ef908c2019775ed32b01dbb0e50a6a.stex"
-
-[sub_resource type="StreamTexture" id=3]
-flags = 4
-load_path = "res://.import/explosion-3.png-78f23a0f1be20f6a8d818dd88ef76474.stex"
-
-[sub_resource type="StreamTexture" id=4]
-flags = 4
-load_path = "res://.import/explosion-4.png-9558247d9865436d433bf28f0c06cddf.stex"
-
-[sub_resource type="StreamTexture" id=5]
-flags = 4
-load_path = "res://.import/explosion-5.png-fb6e71fc12a9a03ed8777c72afacdb0e.stex"
-
-[sub_resource type="SpriteFrames" id=6]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), null ],
-"loop": true,
-"name": "Explosion",
-"speed": 5.0
-} ]
+[ext_resource path="res://Minigames/Observer/assets/enemy/sounds/Explosion.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Minigames/Observer/assets/enemy/Explosion.gd" type="Script" id=2]
 
 [node name="Explosion" type="Node2D"]
 script = ExtResource( 2 )
@@ -37,9 +9,5 @@ script = ExtResource( 2 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
 volume_db = -6.0
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 6 )
-animation = "Explosion"
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

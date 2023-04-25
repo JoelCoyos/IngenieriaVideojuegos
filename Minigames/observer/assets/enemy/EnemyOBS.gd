@@ -3,15 +3,18 @@ extends Area2D
 export (PackedScene) var Explosion# var expllosion del tipo packedScene
 #la ponemos mediante un export para ponerle luego la referencia a nuestra escena explosicon que aun no existe
 var speed
+var minVel = 150
+var maxVel = 200
+
+signal touchObserver
 
 func _ready():
-	
 	$AnimatedSprite.play()
 	if GLOBAL.score == GLOBAL.controlPtos :
 		GLOBAL.minVel+=100
 		GLOBAL.maxVel+=100
 		GLOBAL.controlPtos += 30
-	speed = GLOBAL.random(GLOBAL.minVel,GLOBAL.maxVel)
+	speed = GLOBAL.random(minVel,maxVel)
 
 
 func  _physics_process(delta):
@@ -31,7 +34,7 @@ func explosion_ctrl():
 
 func _on_Enemy_body_entered(body):# detecta si el enemigo entro en contacto con el player//el player es un cuerpo fisico
 	if body.is_in_group("player"):
-		GLOBAL.score += 10
+		emit_signal("touchObserver")
 		death_enemy()
 		queue_free()
 #obs

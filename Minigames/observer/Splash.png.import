@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Splash.png-a35b658516f96ef1a4dc45a5533fbe62.stex"
+path="res://.import/Splash.png-90a07eea8acb2c60d010c764ab6a4134.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/observer/Splash.png"
-dest_files=[ "res://.import/Splash.png-a35b658516f96ef1a4dc45a5533fbe62.stex" ]
+source_file="res://Minigames/Observer/Splash.png"
+dest_files=[ "res://.import/Splash.png-90a07eea8acb2c60d010c764ab6a4134.stex" ]
 
 [params]
 
