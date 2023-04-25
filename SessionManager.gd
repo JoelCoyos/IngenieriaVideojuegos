@@ -15,7 +15,7 @@ var rng
 var t
 
 func _ready():
-	LevelSelection = $"../LevelSelection"
+	LevelSelection = $LevelSelection
 	SessionUI = $SessionUI
 	SessionUI.session = self
 	t = Timer.new()
