@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/New Hope.ogg-9b082b11c245a9fd55dba575b4a91449.oggstr"
+
+[deps]
+
+source_file="res://Minigames/observer/assets/menu/music/New Hope.ogg"
+dest_files=[ "res://.import/New Hope.ogg-9b082b11c245a9fd55dba575b4a91449.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

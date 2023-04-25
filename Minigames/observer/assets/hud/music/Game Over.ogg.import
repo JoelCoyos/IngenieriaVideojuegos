@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Game Over.ogg-b543e4e855b49c03da43ee24b00f9c4f.oggstr"
+
+[deps]
+
+source_file="res://Minigames/observer/assets/hud/music/Game Over.ogg"
+dest_files=[ "res://.import/Game Over.ogg-b543e4e855b49c03da43ee24b00f9c4f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
