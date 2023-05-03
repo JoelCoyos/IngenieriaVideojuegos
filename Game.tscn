@@ -1,7 +1,73 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://GameManager.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/—Pngtree—education blackboard green culture_3881393.png" type="Texture" id=2]
+[ext_resource path="res://wall.jpg" type="Texture" id=3]
+[ext_resource path="res://door-clipart-school-4.png" type="Texture" id=4]
 [ext_resource path="res://schoolTheme.tres" type="Theme" id=5]
+[ext_resource path="res://Sprites/floor.png" type="Texture" id=6]
+[ext_resource path="res://arial.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://1020421.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 68
+outline_size = 12
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.001 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 540, 360 ), Vector2( 540, 360 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "startClass"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 540, 360 ), Vector2( 233, 305 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.461, 0.451 ) ]
+}
 
 [node name="Game" type="Node2D"]
 
@@ -13,52 +79,67 @@ margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
 
-[node name="Menu" type="VBoxContainer" parent="GameManager/UI"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 410.216
-margin_top = 69.0
-margin_right = 770.216
-margin_bottom = 620.0
-grow_horizontal = 0
-grow_vertical = 2
-rect_min_size = Vector2( 300, 0 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 128
+[node name="Node2D" type="Node2D" parent="GameManager/UI"]
 
-[node name="JugarButton" type="Button" parent="GameManager/UI/Menu"]
-margin_right = 360.0
-margin_bottom = 60.0
-grow_horizontal = 0
-rect_min_size = Vector2( 360, 60 )
+[node name="Sprite" type="TextureRect" parent="GameManager/UI/Node2D"]
+margin_right = 1282.0
+margin_bottom = 714.0
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="—Pngtree—educationBlackboardGreenCulture3881393" type="Sprite" parent="GameManager/UI/Node2D"]
+position = Vector2( 333, 308 )
+scale = Vector2( 0.19803, 0.164812 )
+texture = ExtResource( 2 )
+
+[node name="Door-clipart-school-4" type="Sprite" parent="GameManager/UI/Node2D"]
+position = Vector2( 1129, 381 )
+scale = Vector2( 1.224, 1.224 )
+texture = ExtResource( 4 )
+
+[node name="1020421" type="Sprite" parent="GameManager/UI/Node2D"]
+position = Vector2( 812.75, 382.25 )
+scale = Vector2( 0.743164, 0.743164 )
+texture = ExtResource( 8 )
+
+[node name="Sprite2" type="Sprite" parent="GameManager/UI/Node2D"]
+position = Vector2( 640, 502 )
+scale = Vector2( 1.25882, 0.89375 )
+texture = ExtResource( 6 )
+
+[node name="Comenzar" type="Button" parent="GameManager/UI"]
+margin_left = 87.0
+margin_top = 249.0
+margin_right = 581.0
+margin_bottom = 305.0
 theme = ExtResource( 5 )
-text = "Jugar"
-align = 0
-icon_align = 1
+text = "Comenzar Clase"
 
-[node name="ConfigurationButton" type="Button" parent="GameManager/UI/Menu"]
-margin_top = 188.0
-margin_right = 360.0
-margin_bottom = 248.0
-grow_horizontal = 0
-rect_min_size = Vector2( 360, 60 )
+[node name="Tienda" type="Button" parent="GameManager/UI"]
+margin_left = 553.0
+margin_top = 305.0
+margin_right = 1047.0
+margin_bottom = 382.0
 theme = ExtResource( 5 )
-text = "Configuracion"
-align = 0
-icon_align = 1
+custom_fonts/font = SubResource( 1 )
+text = "TIENDA"
 
-[node name="ShopButton" type="Button" parent="GameManager/UI/Menu"]
-margin_top = 376.0
-margin_right = 360.0
-margin_bottom = 436.0
-grow_horizontal = 0
-rect_min_size = Vector2( 360, 60 )
+[node name="Salir" type="Button" parent="GameManager/UI"]
+margin_left = 871.0
+margin_top = 305.0
+margin_right = 1365.0
+margin_bottom = 382.0
 theme = ExtResource( 5 )
-text = "Tienda"
-align = 0
-icon_align = 1
+custom_fonts/font = SubResource( 1 )
+text = "SALIR"
 
-[connection signal="pressed" from="GameManager/UI/Menu/JugarButton" to="GameManager" method="_on_JugarButton_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameManager/UI"]
+anims/RESET = SubResource( 3 )
+anims/startClass = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 540, 360 )
+offset = Vector2( 100, 0 )
+current = true
+
+[connection signal="pressed" from="GameManager/UI/Comenzar" to="GameManager" method="_on_Button_pressed"]
