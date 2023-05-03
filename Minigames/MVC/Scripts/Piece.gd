@@ -4,7 +4,7 @@ signal selectPiece
 
 var x
 var y
-
+var number
 
 func SetText(text):
 	$Text.text = text

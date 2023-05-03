@@ -50,8 +50,10 @@ func NextMinigame():
 	print("Seleccionando el siguiente minijuego")
 	var total = minigame.objectiveCount
 	var cant = minigame.objectiveCleared
-	var gainedScore = (cant/total)*difficulty
-	if((cant/total)*10<=3):
+	print(total)
+	print(cant)
+	var gainedScore = (float(cant)/float(total))*difficulty
+	if((float(cant)/float(total))*10<=3):
 		cantidadAplazos+=1
 	currentScore+=gainedScore
 	minigame.queue_free()

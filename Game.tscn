@@ -18,14 +18,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 410.0
-margin_top = 60.0
-margin_right = 770.0
+margin_left = 410.216
+margin_top = 69.0
+margin_right = 770.216
 margin_bottom = 620.0
 grow_horizontal = 0
+grow_vertical = 2
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 128
 
 [node name="JugarButton" type="Button" parent="GameManager/UI/Menu"]
 margin_right = 360.0
@@ -38,9 +40,9 @@ align = 0
 icon_align = 1
 
 [node name="ConfigurationButton" type="Button" parent="GameManager/UI/Menu"]
-margin_top = 64.0
+margin_top = 188.0
 margin_right = 360.0
-margin_bottom = 124.0
+margin_bottom = 248.0
 grow_horizontal = 0
 rect_min_size = Vector2( 360, 60 )
 theme = ExtResource( 5 )
@@ -49,9 +51,9 @@ align = 0
 icon_align = 1
 
 [node name="ShopButton" type="Button" parent="GameManager/UI/Menu"]
-margin_top = 128.0
+margin_top = 376.0
 margin_right = 360.0
-margin_bottom = 188.0
+margin_bottom = 436.0
 grow_horizontal = 0
 rect_min_size = Vector2( 360, 60 )
 theme = ExtResource( 5 )

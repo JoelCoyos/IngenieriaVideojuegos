@@ -23,6 +23,7 @@ var xStartingStreet = 100
 var yStartingStreet = 100
 
 var objetiveScene
+var coneScene
 
 
 func _init():
@@ -33,10 +34,12 @@ func _ready():
 	self.add_child(t)
 	car = $CarPath/Car
 	car.connect("getObjetive",self,"CarGetObjective")
+	car.connect("crash",self,"CarCrash")
 	carPath = $CarPath.curve
 	rng = RandomNumberGenerator.new()
 	crossScene = load("res://Minigames//State/Cross.tscn")
 	objetiveScene = load("res://Minigames//State/Objective.tscn")
+	coneScene = load("res://Minigames//State/Cone.tscn")
 	pass
 
 func _draw():
@@ -158,6 +161,17 @@ func AddObjetives():
 		var objetive = objetiveScene.instance()
 		objetive.position = Vector2(xPosition,yPosition)
 		add_child(objetive)
+	for i in range(0,3):
+		rng.randomize()
+		var xPosition = (rng.randi_range(0,street_width-2))*distanceCross + xStartingStreet
+		var yPosition = rng.randi_range(0,street_height-2)*distanceCross + yStartingStreet
+		if(rng.randi_range(0,1)==0):
+			xPosition+= distanceCross/2
+		else:
+			yPosition+=distanceCross/2
+		var cone = coneScene.instance()
+		cone.position = Vector2(xPosition,yPosition)
+		add_child(cone)
 	pass
 
 func GetStreetPosition(pos):
@@ -168,4 +182,9 @@ func CarGetObjective():
 	objectiveCleared+=1
 	if(objectiveCleared==objectiveCount):
 		emit_signal("minigame_ended")
+	pass
+
+func CarCrash():
+	print("Crash")
+	emit_signal("minigame_ended")
 	pass

@@ -5,6 +5,7 @@ var on
 var speed = 200
 
 signal getObjetive
+signal crash
 
 func _ready():
 	on = false
@@ -22,6 +23,10 @@ func newPath():
 
 
 func _on_Area2D_area_entered(area):
-	emit_signal("getObjetive")
+	if(area.get_groups()[0]=="Objetive"):
+		emit_signal("getObjetive")
+	elif(area.get_groups()[0]=="Cone"):
+		emit_signal("crash")
+		
 	area.queue_free()
 	pass

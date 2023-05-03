@@ -25,7 +25,6 @@ func _ready():
 	t.set_wait_time(rng.randi_range(1,3))
 	nodeScene = load("res://Minigames//Iterator/GraphNode.tscn")
 	edgeScene = load("res://Minigames//Iterator/Edge.tscn")
-	StartMinigame()
 	pass
 
 # warning-ignore:unused_argument
