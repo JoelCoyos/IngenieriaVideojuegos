@@ -2,11 +2,11 @@ extends KinematicBody2D
 
 export (PackedScene) var Explosion
 
-const SPEED = 130
+const SPEED = 300
 onready var motion =Vector2.ZERO # /onready declara un valor inmediatamente, sin tener que hacerlo en _ready
 onready var screensize = get_viewport_rect().size#tamanio de la ventana
 
-
+signal deathPlayer
 
 func _ready():
 	$AnimatedSprite.play()
@@ -52,6 +52,7 @@ func explosion_ctrl():
 	get_tree().call_group("level","add_child",explosion)
 	
 func death_enemy():
+	emit_signal("deathPlayer")
 	queue_free()
 	explosion_ctrl()
 

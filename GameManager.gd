@@ -3,11 +3,19 @@ extends Node2D
 var monedas
 var notaPromedio
 
-# Called when the node enters the scene tree for the first time.
+var sessionScene
+
 func _ready():
+	sessionScene = load("res://Session.tscn")
+	pass
+
+
+
+func _on_Button_pressed():
+	$UI/AnimationPlayer.play("startClass")
+	yield($UI/AnimationPlayer,"animation_finished")
+	var session = sessionScene.instance()
+	$UI/AnimationPlayer.play("RESET")
+	$UI.visible=false
+	add_child(session)
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

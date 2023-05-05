@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://SessionUIManager.gd" type="Script" id=1]
+[ext_resource path="res://SessionManager.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/—Pngtree—education blackboard green culture_3881393.png" type="Texture" id=3]
+[ext_resource path="res://EraserRegular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://LevelSelection.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 4 )
+
+[node name="Session" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="SessionUI" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="BetweenMinigames" type="Node2D" parent="SessionUI"]
+
+[node name="Sprite" type="Sprite" parent="SessionUI/BetweenMinigames"]
+position = Vector2( 641.813, 360 )
+scale = Vector2( 0.425458, 0.36025 )
+texture = ExtResource( 3 )
+
+[node name="Score" type="RichTextLabel" parent="SessionUI/BetweenMinigames"]
+margin_left = 431.0
+margin_top = 227.0
+margin_right = 951.0
+margin_bottom = 350.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "PuntuaciOn: 0"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="NextMinigame" type="RichTextLabel" parent="SessionUI/BetweenMinigames"]
+margin_left = 358.0
+margin_top = 350.0
+margin_right = 1143.0
+margin_bottom = 473.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "Siguiente minijuego:"
+
+[node name="Aplazo" type="RichTextLabel" parent="SessionUI/BetweenMinigames"]
+margin_left = 988.0
+margin_top = 54.0
+margin_right = 1508.0
+margin_bottom = 177.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "APLAZOS
+0/5"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="OnMinigame" type="Node2D" parent="SessionUI"]
+
+[node name="TimeLeft" type="RichTextLabel" parent="SessionUI/OnMinigame"]
+margin_left = 987.0
+margin_top = 649.0
+margin_right = 1507.0
+margin_bottom = 772.0
+mouse_filter = 2
+custom_fonts/normal_font = SubResource( 1 )
+text = "Tiempo:"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="LevelSelection" type="Node2D" parent="."]
+script = ExtResource( 5 )

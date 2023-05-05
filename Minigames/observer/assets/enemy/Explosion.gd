@@ -2,7 +2,7 @@ extends Node2D
 
 
 func _ready():
-	$AnimatedSprite.play()
+	#$AnimatedSprite.play()
 	$AudioStreamPlayer.play()
 	
 

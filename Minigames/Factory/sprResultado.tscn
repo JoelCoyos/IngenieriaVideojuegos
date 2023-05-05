@@ -1,0 +1,184 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Minigames/Factory/spritResultado.gd" type="Script" id=1]
+[ext_resource path="res://Minigames/Factory/figurasFinal/desierto/circleBlue.png" type="Texture" id=2]
+[ext_resource path="res://Minigames/Factory/figurasFinal/cielo/circleYellow.png" type="Texture" id=3]
+[ext_resource path="res://Minigames/Factory/figurasFinal/hongo/circleGreen.png" type="Texture" id=4]
+[ext_resource path="res://Minigames/Factory/figurasFinal/hongo/sheepBlue.png" type="Texture" id=5]
+[ext_resource path="res://Minigames/Factory/figurasFinal/desierto/frontBlue.png" type="Texture" id=6]
+[ext_resource path="res://Minigames/Factory/figurasFinal/desierto/frontGreen.png" type="Texture" id=7]
+[ext_resource path="res://Minigames/Factory/figurasFinal/hongo/circleBlue.png" type="Texture" id=8]
+[ext_resource path="res://Minigames/Factory/figurasFinal/desierto/circleYellow.png" type="Texture" id=9]
+[ext_resource path="res://Minigames/Factory/figurasFinal/cielo/circleGreen.png" type="Texture" id=10]
+[ext_resource path="res://Minigames/Factory/figurasFinal/hongo/sheepYelloe.png" type="Texture" id=11]
+[ext_resource path="res://Minigames/Factory/figurasFinal/cielo/frontGreen.png" type="Texture" id=12]
+[ext_resource path="res://Minigames/Factory/figurasFinal/desierto/sheepBlue.png" type="Texture" id=13]
+[ext_resource path="res://Minigames/Factory/figurasFinal/cielo/sheepBlue.png" type="Texture" id=14]
+[ext_resource path="res://Minigames/Factory/figurasFinal/desierto/sheppGreen.png" type="Texture" id=15]
+[ext_resource path="res://Minigames/Factory/figurasFinal/desierto/circleGreen.png" type="Texture" id=16]
+[ext_resource path="res://Minigames/Factory/figurasFinal/hongo/sheepGreen.png" type="Texture" id=17]
+[ext_resource path="res://Minigames/Factory/figurasFinal/hongo/frontYellow.png" type="Texture" id=18]
+[ext_resource path="res://Minigames/Factory/figurasFinal/desierto/sheepYellow.png" type="Texture" id=19]
+[ext_resource path="res://Minigames/Factory/figurasFinal/hongo/circleYellow.png" type="Texture" id=20]
+[ext_resource path="res://Minigames/Factory/figurasFinal/cielo/frontBlue.png" type="Texture" id=21]
+[ext_resource path="res://Minigames/Factory/figurasFinal/hongo/frintGreen.png" type="Texture" id=22]
+[ext_resource path="res://Minigames/Factory/figurasFinal/cielo/sheepYellow.png" type="Texture" id=23]
+[ext_resource path="res://Minigames/Factory/figurasFinal/cielo/sheepGreen.png" type="Texture" id=24]
+[ext_resource path="res://Minigames/Factory/figurasFinal/cielo/frontYellow.png" type="Texture" id=25]
+[ext_resource path="res://Minigames/Factory/figurasFinal/desierto/frontYellow.png" type="Texture" id=26]
+[ext_resource path="res://Minigames/Factory/figurasFinal/cielo/circleBlue.png" type="Texture" id=27]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "111",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "112",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 27 ) ],
+"loop": true,
+"name": "113",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "121",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ) ],
+"loop": true,
+"name": "122",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": true,
+"name": "123",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "131",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "132",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "133",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "211",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "212",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "213",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "221",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ) ],
+"loop": true,
+"name": "222",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "223",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "231",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "232",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ) ],
+"loop": true,
+"name": "233",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "311",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ) ],
+"loop": true,
+"name": "312",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "313",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 26 ) ],
+"loop": true,
+"name": "321",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "322",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 25 ) ],
+"loop": true,
+"name": "323",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "331",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "332",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 23 ) ],
+"loop": true,
+"name": "333",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "New Anim 9",
+"speed": 5.0
+} ]
+
+[node name="sprResultado" type="Node2D" groups=["resBuscado"]]
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 71, 60.75 )
+scale = Vector2( 0.25283, 0.233 )
+frames = SubResource( 1 )
+animation = "313"
+
+[node name="img" type="Sprite" parent="."]
+position = Vector2( 35, 37 )

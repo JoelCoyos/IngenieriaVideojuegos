@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Minigames/Templete/daniable/daniable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Minigames/Templete/daniable/personajes/personaje.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Minigames/Templete/icon - Copy (2).png" type="Texture" id=4]
+[ext_resource path="res://Minigames/Templete/icon - Copy.png" type="Texture" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 34.2345
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "dos",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "tres",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "uno",
+"speed": 5.0
+} ]
+
+[node name="personaje" groups=["player"] instance=ExtResource( 1 )]
+z_index = 1
+script = ExtResource( 2 )
+vida = 500
+vel_transferencia = 100
+
+[node name="pos" type="Position2D" parent="." index="1"]
+
+[node name="AnimatedSprite" parent="." index="2"]
+visible = false
+
+[node name="Area2D" parent="." index="4" groups=["player"]]
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource( 1 )
+
+[node name="camPJ" type="AnimatedSprite" parent="." index="5"]
+frames = SubResource( 2 )
+animation = "uno"
+
+[connection signal="body_entered" from="." to="." method="_on_personaje_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

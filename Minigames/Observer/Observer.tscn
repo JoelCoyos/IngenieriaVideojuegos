@@ -1,0 +1,143 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Minigames/Observer/assets/level/sprites/desert-backgorund.png" type="Texture" id=1]
+[ext_resource path="res://Minigames/Observer/assets/level/sprites/clouds.png" type="Texture" id=2]
+[ext_resource path="res://Minigames/Observer/assets/level/music/Common Fight.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Minigames/Observer/assets/player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Minigames/Observer/assets/enemy/EnemyOBS.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Minigames/Observer/assets/hud/HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Minigames/Observer/assets/enemy/Enemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Minigames/Observer/assets/level/Observer.gd" type="Script" id=8]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 810.957, -2, 0, 0, 0, 0, 69, 3, 0, 0, 0, 0, 1, 1 )
+}
+
+[node name="Observer" type="Node2D" groups=["level"]]
+script = ExtResource( 8 )
+Enemy = ExtResource( 7 )
+EnemyOBS = ExtResource( 5 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 600, 700 )
+
+[node name="EnemyTimer" type="Timer" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource( 6 )]
+
+[node name="TimerOBS" type="Timer" parent="."]
+
+[node name="BgMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="MarginContainer"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="MarginContainer/ParallaxBackground"]
+motion_mirroring = Vector2( 0, 272 )
+
+[node name="Sprite" type="Sprite" parent="MarginContainer/ParallaxBackground/ParallaxLayer"]
+position = Vector2( -9, 557 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( 9, -109 )
+
+[node name="Sprite2" type="Sprite" parent="MarginContainer/ParallaxBackground/ParallaxLayer"]
+position = Vector2( -9, 557 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( 265, -109 )
+flip_h = true
+
+[node name="Sprite3" type="Sprite" parent="MarginContainer/ParallaxBackground/ParallaxLayer"]
+position = Vector2( -9, 557 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( 521, -108.772 )
+
+[node name="Sprite4" type="Sprite" parent="MarginContainer/ParallaxBackground/ParallaxLayer"]
+position = Vector2( -9, 557 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( 777, -109 )
+flip_h = true
+
+[node name="Sprite5" type="Sprite" parent="MarginContainer/ParallaxBackground/ParallaxLayer"]
+position = Vector2( -9, 557 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( 1033, -109 )
+
+[node name="Sprite6" type="Sprite" parent="MarginContainer/ParallaxBackground/ParallaxLayer"]
+position = Vector2( -9, 285 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( 9, -109 )
+
+[node name="Sprite7" type="Sprite" parent="MarginContainer/ParallaxBackground/ParallaxLayer"]
+position = Vector2( -9, 285 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( 265, -109 )
+flip_h = true
+
+[node name="Sprite8" type="Sprite" parent="MarginContainer/ParallaxBackground/ParallaxLayer"]
+position = Vector2( -9, 285 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( 521, -108.772 )
+
+[node name="Sprite9" type="Sprite" parent="MarginContainer/ParallaxBackground/ParallaxLayer"]
+position = Vector2( -9, 285 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( 777, -109 )
+flip_h = true
+
+[node name="Sprite10" type="Sprite" parent="MarginContainer/ParallaxBackground/ParallaxLayer"]
+position = Vector2( -9, 285 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( 1033, -109 )
+
+[node name="ParallaxBackgroundNube1" type="ParallaxBackground" parent="MarginContainer"]
+visible = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="MarginContainer/ParallaxBackgroundNube1"]
+motion_mirroring = Vector2( 0, 272 )
+
+[node name="Sprite" type="Sprite" parent="MarginContainer/ParallaxBackgroundNube1/ParallaxLayer"]
+modulate = Color( 1, 1, 1, 0.313726 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="ParallaxBackgroundNube2" type="ParallaxBackground" parent="MarginContainer"]
+visible = false
+offset = Vector2( 0, 128 )
+transform = Transform2D( 1, 0, 0, 1, 0, 128 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="MarginContainer/ParallaxBackgroundNube2"]
+motion_mirroring = Vector2( 0, 272 )
+
+[node name="Sprite" type="Sprite" parent="MarginContainer/ParallaxBackgroundNube2/ParallaxLayer"]
+modulate = Color( 1, 1, 1, 0.470588 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="EnemyPath2D" type="Path2D" parent="MarginContainer"]
+position = Vector2( -0.260563, 0 )
+scale = Vector2( 1.26056, 1 )
+curve = SubResource( 1 )
+
+[node name="EnemySpawnPathFollow2D" type="PathFollow2D" parent="MarginContainer/EnemyPath2D"]
+position = Vector2( 810.957, -2 )
+rotation = 3.13485
+
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]
+[connection signal="tree_exiting" from="HUD" to="HUD" method="_on_HUD_tree_exiting"]
+[connection signal="timeout" from="TimerOBS" to="." method="_on_TimerOBS_timeout"]

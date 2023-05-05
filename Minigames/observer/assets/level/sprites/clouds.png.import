@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/clouds.png-4665c171d94fccfdd86b6eb2b1af20c5.stex"
+path="res://.import/clouds.png-6dd3a03f06278cb1f4aee354703d262b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/observer/assets/level/sprites/clouds.png"
-dest_files=[ "res://.import/clouds.png-4665c171d94fccfdd86b6eb2b1af20c5.stex" ]
+source_file="res://Minigames/Observer/assets/level/sprites/clouds.png"
+dest_files=[ "res://.import/clouds.png-6dd3a03f06278cb1f4aee354703d262b.stex" ]
 
 [params]
 

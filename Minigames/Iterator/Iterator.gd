@@ -32,19 +32,21 @@ func _process(delta):
 	pass
 
 func StartMinigame():
-	t.set_wait_time(10)
+	time = 10
+	t.set_wait_time(time)
 	t.start()
 	currentObjectiveNode=0
-	graph_width=3
+	objectiveCount=3
+	graph_width=objectiveCount
 	graph_height=graph_width+2
 	gameIsOver=false
 	objectiveNode = rng.randi_range(0,graph_width-1)
 	AddNodes()
+	graph[0][graph_height-1].TweenScale()
 	AddEdges()
 	yield(t, "timeout")
 	emit_signal("minigame_ended")
 	pass
-	
 
 func AddNodes():
 
@@ -81,6 +83,7 @@ func SelectedNode(selectedPos):
 	var endNode
 	var ended = false
 	while(ended==false):
+		graph[currentObjectiveNode][graph_height-1].StopTween()
 		var startingGraph = graph[x][y]
 		y=y+1
 		while(graph[x][y]==null):
@@ -88,7 +91,8 @@ func SelectedNode(selectedPos):
 			y = y+1
 		var node = graph[x][y]
 		for edge in edgeDic[[Vector2(startingGraph.x,startingGraph.y),Vector2(node.x,node.y)]]:
-			edge.get_node("Sprite").self_modulate  = Color(0, 0, 1)
+			edge.FillEdge("down")
+			yield(edge.animation,"animation_finished")
 		if(y==graph_height-1):
 			endNode=x
 			ended = true
@@ -96,15 +100,20 @@ func SelectedNode(selectedPos):
 			x = node.connection.x
 			y = node.connection.y
 			for edge in edgeDic[[Vector2(node.x,node.y),Vector2(node.connection.x,node.connection.y)]]:
-				edge.get_node("Sprite").self_modulate  = Color(0, 0, 1)
-	print(endNode)
+				if(abs(node.x) < abs(node.connection.x)):
+					edge.FillEdge("right")
+				else:
+					edge.FillEdge("left")
+				yield(edge.animation,"animation_finished")
 	if(endNode == currentObjectiveNode):
+		objectiveCleared+=1
 		if(currentObjectiveNode==graph_width-1):
-			print("Ganaste!")
 			gameIsOver=true
-		currentObjectiveNode = currentObjectiveNode+1
+			emit_signal("minigame_ended")
+		else:
+			currentObjectiveNode = currentObjectiveNode+1
+			graph[currentObjectiveNode][graph_height-1].TweenScale()
 	else:
-		print("Perdiste :(")
 		gameIsOver=true
 	pass	
 	
@@ -155,7 +164,7 @@ func InstanceEdge(pos1,pos2):
 		var edge = edgeScene.instance()
 		add_child(edge)
 		if(pos1.x < pos2.x):
-			edge.position = graph[pos1.x][pos1.y].position + Vector2(50,0)
+			edge.position = graph[pos1.x][pos1.y].position + Vector2(51,0)
 		else:
 			edge.position = graph[pos1.x][pos1.y].position + Vector2(-50,0)
 		edge.rotation_degrees = 90

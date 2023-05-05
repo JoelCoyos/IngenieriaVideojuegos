@@ -1,12 +1,14 @@
 extends Node2D
 
-
-var levels = ["Iterator"]
+var rng
+var levels = ["Factory"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rng = RandomNumberGenerator.new()
+	rng.randomize()
 	pass # Replace with function body.
 
 func SelectMinigame():
-	return levels[0]
+	return levels[rng.randi_range(0,levels.size()-1)]
 	pass

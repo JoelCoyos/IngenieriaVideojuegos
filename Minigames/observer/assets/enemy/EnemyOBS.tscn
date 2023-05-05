@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Minigames/observer/assets/enemy/EnemyOBS.gd" type="Script" id=1]
-[ext_resource path="res://Minigames/observer/assets/enemy/sprites/enemy-1.png" type="Texture" id=2]
-[ext_resource path="res://Minigames/observer/assets/enemy/sprites/enemy-2.png" type="Texture" id=3]
-[ext_resource path="res://Minigames/observer/assets/enemy/Explosion.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Minigames/observer/assets/enemy/sprites/enemyOBS (2).png" type="Texture" id=6]
-[ext_resource path="res://Minigames/observer/assets/enemy/sprites/enemyOBS.png" type="Texture" id=7]
+[ext_resource path="res://Minigames/Observer/assets/enemy/EnemyOBS.gd" type="Script" id=1]
+[ext_resource path="res://Minigames/Observer/assets/enemy/sprites/enemy-1.png" type="Texture" id=2]
+[ext_resource path="res://Minigames/Observer/assets/enemy/sprites/enemy-2.png" type="Texture" id=3]
+[ext_resource path="res://Minigames/Observer/assets/enemy/Explosion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Minigames/Observer/assets/enemy/sprites/enemyOBS (2).png" type="Texture" id=6]
+[ext_resource path="res://Minigames/Observer/assets/enemy/sprites/enemyOBS.png" type="Texture" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -19,6 +19,7 @@ animations = [ {
 extents = Vector2( 13, 10 )
 
 [node name="EnemyOBS" type="Area2D" groups=["enemy"]]
+scale = Vector2( 4, 4 )
 script = ExtResource( 1 )
 Explosion = ExtResource( 4 )
 
@@ -38,7 +39,6 @@ position = Vector2( 0, 16 )
 
 [node name="Timer" type="Timer" parent="."]
 
-[connection signal="area_entered" from="." to="." method="_on_Enemy_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Enemy_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

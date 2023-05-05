@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/explosion-5.png-69bfaa16f7e0ca966fd316fc68e4d06a.stex"
+path="res://.import/explosion-5.png-8a909707994adbb9da3acb6e5da2924c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/observer/assets/enemy/sprites/explosion-5.png"
-dest_files=[ "res://.import/explosion-5.png-69bfaa16f7e0ca966fd316fc68e4d06a.stex" ]
+source_file="res://Minigames/Observer/assets/enemy/sprites/explosion-5.png"
+dest_files=[ "res://.import/explosion-5.png-8a909707994adbb9da3acb6e5da2924c.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
