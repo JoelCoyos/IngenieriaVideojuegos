@@ -1,5 +1,6 @@
 extends Minigame
 # al integra hacer un auto load para los aleatorios
+var t
 export (PackedScene) var elemento
 export (PackedScene) var sprResultado
 
@@ -25,6 +26,8 @@ var valorCaja = {
 func _ready():
 	randomize()
 	$elementTimer.start()
+	t = Timer.new()
+	self.add_child(t)
 
 func _physics_process(delta):
 	$Label2.text=str(score)
@@ -35,10 +38,15 @@ func StartMinigame():
 	print("Starting minigame")
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
-	objectiveCount=1
+	objectiveCount=3
 	objectiveCleared=0
+	time = 20
+	t.set_wait_time(time)
+	t.start()
+	yield(t, "timeout")
 	emit_signal("minigame_ended")
 	pass
+	
 #con el timer no puede haber mas de un elemto por area
 #guardarle valores aleatorios 
 

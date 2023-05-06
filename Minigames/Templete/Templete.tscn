@@ -7,7 +7,7 @@
 [ext_resource path="res://Minigames/Templete/tileSet/suelo_grass.tres" type="TileSet" id=5]
 [ext_resource path="res://Minigames/Templete/PNG/Backgrounds/colored_shroom.png" type="Texture" id=6]
 [ext_resource path="res://Minigames/Templete/PNG/Backgrounds/colored_grass.png" type="Texture" id=7]
-[ext_resource path="res://Minigames/Templete/script/escena.gd" type="Script" id=8]
+[ext_resource path="res://Minigames/Templete/Templete.gd" type="Script" id=8]
 [ext_resource path="res://Minigames/Templete/script/Camera2D.gd" type="Script" id=9]
 
 [node name="escena" type="Node2D"]
