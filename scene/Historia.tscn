@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://schoolTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Sprites/Historia/job_teacher_man.png" type="Texture" id=2]
@@ -10,12 +10,20 @@
 [ext_resource path="res://Sprites/Historia/school_inemuri.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/Historia/bg_digital_pattern_green.jpg" type="Texture" id=9]
 [ext_resource path="res://Sprites/Historia/school_gakuran_boy2.png" type="Texture" id=10]
+[ext_resource path="res://scene/Historia.gd" type="Script" id=11]
+[ext_resource path="res://arial.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Minigames/Decorator/blue_panel.png" type="Texture" id=13]
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 86
 font_data = ExtResource( 4 )
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 11 )
 
 [node name="1" type="Node2D" parent="."]
 visible = false
@@ -29,6 +37,19 @@ texture = ExtResource( 3 )
 position = Vector2( 870.5, 454.338 )
 scale = Vector2( 1.26961, 1.26961 )
 texture = ExtResource( 10 )
+
+[node name="BluePanel" type="Sprite" parent="1"]
+position = Vector2( 660, 612 )
+scale = Vector2( 11.01, 1.81 )
+texture = ExtResource( 13 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="1"]
+margin_left = 145.0
+margin_top = 529.0
+margin_right = 1182.0
+margin_bottom = 695.0
+custom_fonts/normal_font = SubResource( 2 )
+text = "Texto 1"
 
 [node name="2" type="Node2D" parent="."]
 visible = false
@@ -52,6 +73,19 @@ theme = ExtResource( 1 )
 custom_fonts/normal_font = SubResource( 1 )
 text = "Patrones"
 
+[node name="BluePanel" type="Sprite" parent="2"]
+position = Vector2( 660, 612 )
+scale = Vector2( 11.01, 1.81 )
+texture = ExtResource( 13 )
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="2"]
+margin_left = 145.0
+margin_top = 529.0
+margin_right = 1182.0
+margin_bottom = 695.0
+custom_fonts/normal_font = SubResource( 2 )
+text = "Texto 2"
+
 [node name="3" type="Node2D" parent="."]
 visible = false
 
@@ -70,6 +104,20 @@ texture = ExtResource( 7 )
 position = Vector2( 607, 382 )
 texture = ExtResource( 5 )
 
+[node name="BluePanel" type="Sprite" parent="3"]
+position = Vector2( 660, 612 )
+scale = Vector2( 11.01, 1.81 )
+texture = ExtResource( 13 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="3"]
+margin_left = 145.0
+margin_top = 529.0
+margin_right = 1182.0
+margin_bottom = 695.0
+custom_fonts/normal_font = SubResource( 2 )
+text = "Texto 3
+"
+
 [node name="4" type="Node2D" parent="."]
 visible = false
 
@@ -84,3 +132,16 @@ stretch_mode = 2
 position = Vector2( 673, 444 )
 scale = Vector2( 0.76625, 0.76625 )
 texture = ExtResource( 8 )
+
+[node name="BluePanel" type="Sprite" parent="4"]
+position = Vector2( 660, 612 )
+scale = Vector2( 11.01, 1.81 )
+texture = ExtResource( 13 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="4"]
+margin_left = 145.0
+margin_top = 529.0
+margin_right = 1182.0
+margin_bottom = 695.0
+custom_fonts/normal_font = SubResource( 2 )
+text = "Texto 4"
