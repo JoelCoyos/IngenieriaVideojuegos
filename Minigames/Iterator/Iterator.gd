@@ -36,7 +36,7 @@ func StartMinigame():
 	t.set_wait_time(time)
 	t.start()
 	currentObjectiveNode=0
-	objectiveCount=3
+	SetDifficulty()
 	graph_width=objectiveCount
 	graph_height=graph_width+2
 	gameIsOver=false
@@ -171,4 +171,22 @@ func InstanceEdge(pos1,pos2):
 		edgeDic[[pos1,pos2]]=[edge]
 		edgeDic[[pos2,pos1]]=[edge] #Esto es medio feo pero ya fue. 
 		#Forma posible de arreglarlo, poner un set en la clave del diccionary??
+	pass
+
+func SetDifficulty():
+	if(difficulty ==1):
+		objectiveCount = 2
+		time = 20
+	elif(difficulty == 2):
+		objectiveCount = 3
+		time = 15
+	elif(difficulty == 3):
+		objectiveCount= 4
+		time = 20
+	elif(difficulty == 4):
+		objectiveCount = 4
+		time = 15
+	elif(difficulty == 5):
+		objectiveCount = 5
+		time = 20
 	pass

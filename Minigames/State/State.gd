@@ -9,6 +9,7 @@ var street_height
 var street = []
 var car
 var carPath
+var carSpeed
 
 var lastCarPosition
 var carPosition
@@ -64,8 +65,9 @@ func StartMinigame():
 	time = 20
 	t.set_wait_time(10)
 	t.start()
-	objectiveCount=3
+	SetDifficulty()
 	objectiveCleared=0
+	#car.carSpeed = carSpeed
 	SetStreet()
 	AddObjetives()
 	yield(t, "timeout")
@@ -187,4 +189,27 @@ func CarGetObjective():
 func CarCrash():
 	print("Crash")
 	emit_signal("minigame_ended")
+	pass
+	
+func SetDifficulty():
+	if(difficulty ==1):
+		objectiveCount = 2
+		time = 20
+		carSpeed = 200
+	elif(difficulty == 2):
+		objectiveCount = 3
+		time = 15
+		carSpeed = 250
+	elif(difficulty == 3):
+		objectiveCount= 4
+		time = 20
+		carSpeed = 300
+	elif(difficulty == 4):
+		objectiveCount = 4
+		time = 15
+		carSpeed = 350
+	elif(difficulty == 5):
+		objectiveCount = 5
+		time = 20
+		carSpeed = 400
 	pass
