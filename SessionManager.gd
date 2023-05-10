@@ -11,6 +11,10 @@ var cantidadAplazos=0
 var maxAplazos
 var difficulty
 
+var currentRound = 1
+var countInRound = 0 #cantidad de minijuegos que se dieron en esta ronda
+var roundMinigames
+
 var rng
 var t
 
@@ -29,7 +33,16 @@ func _ready():
 	pass
 
 func SessionRoutine():
-	var next = LevelSelection.SelectMinigame()
+	countInRound+=1
+	if(countInRound == 1):
+		roundMinigames = LevelSelection.SelectRoundMinigames()
+	if(countInRound == 5):
+		roundMinigames = LevelSelection.SelectRoundMinigames()
+		countInRound = 0
+		currentRound+=1
+		difficulty+=1
+		#Entre medio de rondas
+	var next = roundMinigames[countInRound]
 	SessionUI.LeaveGame(next)
 	t.set_wait_time(3)
 	t.start()

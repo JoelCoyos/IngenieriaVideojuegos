@@ -67,7 +67,7 @@ func StartMinigame():
 	t.start()
 	SetDifficulty()
 	objectiveCleared=0
-	car.carSpeed = carSpeed
+	#car.carSpeed = carSpeed
 	SetStreet()
 	AddObjetives()
 	yield(t, "timeout")

@@ -43,8 +43,7 @@ func StartMinigame():
 	pass
 
 func SetPuzzle():
-	puzzle_height=3
-	puzzle_width=2
+	SetDifficulty()
 	objectiveCount = puzzle_height*puzzle_width -1
 	objectiveCleared=0
 	var order = range(1,puzzle_height*puzzle_width)
@@ -92,4 +91,27 @@ func EndPuzzle():
 			else:
 				print("mal")
 			count+=1
+	pass
+
+func SetDifficulty():
+	if(difficulty ==1):
+		puzzle_height=3
+		puzzle_width=2
+		time = 30
+	elif(difficulty == 2):
+		puzzle_height=3
+		puzzle_width=2
+		time = 25
+	elif(difficulty == 3):
+		puzzle_height=3
+		puzzle_width=2
+		time = 20
+	elif(difficulty == 4):
+		puzzle_height=3
+		puzzle_width=3
+		time = 30
+	elif(difficulty == 5):
+		puzzle_height=3
+		puzzle_width=3
+		time = 25
 	pass

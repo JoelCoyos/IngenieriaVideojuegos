@@ -4,8 +4,8 @@ var t
 var rng
 
 var clothesDic = {}
-var weather = ["sunny","rain"]
-var clothes = ["shirt","sunglasses","umbrella"]
+var weather = ["sunny","rain","nieve","school","sports","party"]
+var clothes = ["shirt","sunglasses","umbrella","jeans","capa","guantes","libro","computadora","lapiz","pelota","pesa","hockey","cotillon","lentes brillan","afro"]
 var clothesArray
 
 var currentWeather
@@ -65,4 +65,22 @@ func CheckClothes():
 			objectiveCleared+=1
 		elif(clothe.currentBodyPart == [] and clothesDic[clothe.clotheType][1]!=currentWeather):
 			objectiveCleared+=1
+	pass
+	
+func SetDifficulty():
+	if(difficulty ==1):
+		objectiveCount = 3
+		time = 25
+	elif(difficulty == 2):
+		objectiveCount = 4
+		time = 20
+	elif(difficulty == 3):
+		objectiveCount= 5
+		time = 25
+	elif(difficulty == 4):
+		objectiveCount = 5
+		time = 20
+	elif(difficulty == 5):
+		objectiveCount = 5
+		time = 15
 	pass
