@@ -1,8 +1,9 @@
 extends Node2D
 
 var rng
-var levels = ["Decorator","Factory","Iterator","MVC","Observer","Singleton","State","Templete"]
+#var levels = ["Decorator","Factory","Iterator","MVC","Observer","Singleton","State","Templete"]
 
+var levels = ["Singleton","Singleton","Singleton","Singleton","Singleton","Singleton"]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng = RandomNumberGenerator.new()
