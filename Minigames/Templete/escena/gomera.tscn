@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Minigames/Templete/script/gomeraTrayectori.gd" type="Script" id=1]
+[ext_resource path="res://Minigames/Templete/gomera.png" type="Texture" id=2]
+[ext_resource path="res://Minigames/Templete/escena/ptoTrayectoria.tscn" type="PackedScene" id=3]
+
+[node name="gomera" type="Node2D"]
+script = ExtResource( 1 )
+punto_trajectoria = ExtResource( 3 )
+
+[node name="Gomera" type="Sprite" parent="."]
+position = Vector2( 160, 819.063 )
+scale = Vector2( 0.0441403, 0.0238879 )
+texture = ExtResource( 2 )
+
+[node name="pos_salida" type="Position2D" parent="."]
+position = Vector2( 170, 754 )
+
+[node name="trajectoria" type="Node2D" parent="."]
