@@ -37,6 +37,7 @@ func SessionRoutine():
 	var minigameScene = load("res://Minigames//"+next+"//"+next+".tscn")
 	minigame = minigameScene.instance()
 	add_child(minigame)
+	minigame.difficulty = difficulty
 	minigame.StartMinigame()
 	var transitionScene = load("res://TransitionBlur.tscn")
 	var transition = transitionScene.instance()
