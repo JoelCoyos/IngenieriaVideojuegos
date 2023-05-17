@@ -6,24 +6,23 @@
 [ext_resource path="res://arial.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 35
+size = 23
 font_data = ExtResource( 4 )
 
 [node name="RuletaScene" type="Node2D"]
 position = Vector2( -157, 169 )
 script = ExtResource( 3 )
 rotation_direction = -1
-revolutions = 10
 target_rotation = -75.0
 
 [node name="SpriteRuleta" type="Sprite" parent="."]
-position = Vector2( 489, 300 )
+position = Vector2( 494.5, 198.712 )
 texture = ExtResource( 1 )
 
-[node name="04" type="Node2D" parent="SpriteRuleta"]
+[node name="4" type="Node2D" parent="SpriteRuleta"]
 rotation = 0.261799
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/04"]
+[node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/4"]
 margin_left = 100.526
 margin_top = -22.7946
 margin_right = 294.526
@@ -31,10 +30,10 @@ margin_bottom = 26.2054
 custom_fonts/normal_font = SubResource( 1 )
 text = "Ruleta 4"
 
-[node name="05" type="Node2D" parent="SpriteRuleta"]
+[node name="5" type="Node2D" parent="SpriteRuleta"]
 rotation = 0.785398
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/05"]
+[node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/5"]
 margin_left = 107.48
 margin_top = -25.4558
 margin_right = 301.48
@@ -42,11 +41,10 @@ margin_bottom = 23.5442
 custom_fonts/normal_font = SubResource( 1 )
 text = "Ruleta 5"
 
-[node name="06" type="Node2D" parent="SpriteRuleta"]
+[node name="6" type="Node2D" parent="SpriteRuleta"]
 rotation = 1.309
-scale = Vector2( 1, 1 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/06"]
+[node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/6"]
 margin_left = 106.187
 margin_top = -25.3815
 margin_right = 300.187
@@ -54,11 +52,10 @@ margin_bottom = 23.6185
 custom_fonts/normal_font = SubResource( 1 )
 text = "Ruleta 6"
 
-[node name="07" type="Node2D" parent="SpriteRuleta"]
+[node name="7" type="Node2D" parent="SpriteRuleta"]
 rotation = 1.8326
-scale = Vector2( 1, 1 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/07"]
+[node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/7"]
 margin_left = 104.131
 margin_top = -24.7959
 margin_right = 298.131
@@ -66,11 +63,10 @@ margin_bottom = 24.2041
 custom_fonts/normal_font = SubResource( 1 )
 text = "Ruleta 7"
 
-[node name="08" type="Node2D" parent="SpriteRuleta"]
+[node name="8" type="Node2D" parent="SpriteRuleta"]
 rotation = 2.35619
-scale = Vector2( 1, 1 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/08"]
+[node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/8"]
 margin_left = 110.309
 margin_top = -24.0417
 margin_right = 304.309
@@ -78,11 +74,10 @@ margin_bottom = 24.9583
 custom_fonts/normal_font = SubResource( 1 )
 text = "Ruleta 8"
 
-[node name="09" type="Node2D" parent="SpriteRuleta"]
+[node name="9" type="Node2D" parent="SpriteRuleta"]
 rotation = 2.72271
-scale = Vector2( 1, 1 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/09"]
+[node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/9"]
 margin_left = 105.803
 margin_top = -6.53049
 margin_right = 299.803
@@ -92,7 +87,6 @@ text = "Ruleta 9"
 
 [node name="10" type="Node2D" parent="SpriteRuleta"]
 rotation = 3.40339
-scale = Vector2( 1, 1 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/10"]
 margin_left = 109.737
@@ -104,7 +98,6 @@ text = "Ruleta 10"
 
 [node name="11" type="Node2D" parent="SpriteRuleta"]
 rotation = 3.92699
-scale = Vector2( 1, 1 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/11"]
 margin_left = 109.737
@@ -114,11 +107,10 @@ margin_bottom = 25.8078
 custom_fonts/normal_font = SubResource( 1 )
 text = "Ruleta 11"
 
-[node name="9" type="Node2D" parent="SpriteRuleta"]
+[node name="12" type="Node2D" parent="SpriteRuleta"]
 rotation = 4.45059
-scale = Vector2( 1, 1 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/9"]
+[node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/12"]
 margin_left = 109.737
 margin_top = -23.1922
 margin_right = 303.737
@@ -126,11 +118,10 @@ margin_bottom = 25.8078
 custom_fonts/normal_font = SubResource( 1 )
 text = "Ruleta 12"
 
-[node name="01" type="Node2D" parent="SpriteRuleta"]
+[node name="1" type="Node2D" parent="SpriteRuleta"]
 rotation = 4.97419
-scale = Vector2( 1, 1 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/01"]
+[node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/1"]
 margin_left = 109.737
 margin_top = -23.1922
 margin_right = 303.737
@@ -138,11 +129,10 @@ margin_bottom = 25.8078
 custom_fonts/normal_font = SubResource( 1 )
 text = "Ruleta 1"
 
-[node name="02" type="Node2D" parent="SpriteRuleta"]
+[node name="2" type="Node2D" parent="SpriteRuleta"]
 rotation = 5.49779
-scale = Vector2( 1, 1 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/02"]
+[node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/2"]
 margin_left = 110.0
 margin_top = -23.0
 margin_right = 341.0
@@ -151,11 +141,10 @@ custom_fonts/normal_font = SubResource( 1 )
 text = "Ruleta 2
 "
 
-[node name="03" type="Node2D" parent="SpriteRuleta"]
+[node name="3" type="Node2D" parent="SpriteRuleta"]
 rotation = 6.02139
-scale = Vector2( 1, 1 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/03"]
+[node name="RichTextLabel" type="RichTextLabel" parent="SpriteRuleta/3"]
 margin_left = 109.737
 margin_top = -23.1922
 margin_right = 303.737
@@ -164,34 +153,19 @@ custom_fonts/normal_font = SubResource( 1 )
 text = "Ruleta 3"
 
 [node name="SpriteManecilla" type="Sprite" parent="."]
-position = Vector2( 488, -19 )
+position = Vector2( 493.5, -142.288 )
+scale = Vector2( 0.512658, 0.512658 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, 80 )
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="Button" type="Button" parent="."]
-margin_left = 813.0
-margin_top = 65.0
-margin_right = 908.0
-margin_bottom = 114.0
+margin_left = 888.0
+margin_top = 148.0
+margin_right = 983.0
+margin_bottom = 197.0
 text = "Lanzar"
 
-[node name="Label" type="Label" parent="."]
-margin_left = 217.0
-margin_top = -139.0
-margin_right = 838.0
-margin_bottom = -99.0
-text = "Preguntas"
-
-[node name="ButtonAceptar" type="Button" parent="."]
-visible = false
-margin_left = 810.0
-margin_top = 155.0
-margin_right = 909.0
-margin_bottom = 206.0
-text = "aceptar"
-
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="ButtonAceptar" to="." method="_on_ButtonAceptar_pressed"]

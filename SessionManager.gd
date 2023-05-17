@@ -10,17 +10,25 @@ var currentScore=0
 var cantidadAplazos=0
 var maxAplazos
 var difficulty
+var gameManager
 
 var currentRound = 1
 var countInRound = 0 #cantidad de minijuegos que se dieron en esta ronda
 var roundMinigames
 
+var beneficio
+
 var rng
 var t
+
+var rouletteScene
+
+enum TiposBeneficios {MONEDAS,NOTA,APLAZO} #eh, funciona
 
 func _ready():
 	LevelSelection = $LevelSelection
 	SessionUI = $SessionUI
+	rouletteScene = load("res://Ruleta//RuletaScene.tscn")
 	SessionUI.session = self
 	t = Timer.new()
 	self.add_child(t)
@@ -41,9 +49,9 @@ func SessionRoutine():
 		countInRound = 0
 		currentRound+=1
 		difficulty+=1
-		#Entre medio de rondas
 	var next = roundMinigames[countInRound]
 	SessionUI.LeaveGame(next)
+	yield(SpawnRoulette(), "completed") #Horrible
 	t.set_wait_time(3)
 	t.start()
 	yield(t, "timeout")
@@ -64,13 +72,30 @@ func NextMinigame():
 	print("Seleccionando el siguiente minijuego")
 	var total = minigame.objectiveCount
 	var cant = minigame.objectiveCleared
-	print(total)
-	print(cant)
 	var gainedScore = (float(cant)/float(total))*difficulty
+	var gainedCoins = 10
 	if((float(cant)/float(total))*10<=3):
 		cantidadAplazos+=1
+	if(beneficio[0] == TiposBeneficios.NOTA):
+		gainedScore*beneficio[1]
+	if(beneficio[0] == TiposBeneficios.APLAZO):
+		cantidadAplazos += beneficio[1]
+		if(cantidadAplazos < 0):
+			cantidadAplazos = 0
+	if(beneficio[0] == TiposBeneficios.MONEDAS):
+		gainedCoins*beneficio[1]
 	currentScore+=gainedScore
+	gameManager.coins+=gainedCoins
 	minigame.queue_free()
 	SessionUI.ChangeScore(currentScore)
 	SessionRoutine()
+	pass
+
+func SpawnRoulette():
+	print("Instance ruleta")
+	var roulette = rouletteScene.instance()
+	add_child(roulette)
+	yield(roulette,"endRoulette")
+	beneficio = roulette.beneficio
+	roulette.queue_free()
 	pass
