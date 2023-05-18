@@ -1,7 +1,6 @@
 extends Node2D
 
-var posX = 100
-var posY = 100
+var estado
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -9,11 +8,17 @@ var posY = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimatedSprite.play()
+	if estado==0:
+		$AnimatedSprite.play("aliado")
+	else:
+		$AnimatedSprite.play("enemigo")
 
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("player"):
-		print("encontrado")
+		if estado == 0:
+			print("aliado")
+		else:
+			print("enemigo")
 		queue_free()
 

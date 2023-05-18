@@ -46,6 +46,7 @@ func dibujar_puntos (lugar):
 	sp.position = lugar
 	$trajectoria.add_child(sp)
 	
+	
 func tomar_personaje(personake):
 	Personaje = personake
 

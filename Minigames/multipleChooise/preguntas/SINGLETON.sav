@@ -1,0 +1,8 @@
+{"pos_rta_correc":1,"cantPreguntas":5}
+{"pregunta":"De que tipo es este patron? ","cantRTA":3,"rta1":"creacional","rta2":"estructura","rta3":"comportamiento"}
+{"pregunta":"Tambien se lo conoce como patron de instancia unica?","cantRTA":3,"rta1":"SI","rta2":"NO","rta3":"TAL VE"}
+{"pregunta":"Prohibe su acceso de forma global?","cantRTA":2,"rta1":"FALSO","rta2":"VERDADERO"}
+{"pregunta":"Garantiza que un clase tenga MAS de una instancia","cantRTA":2,"rta1":"FALSO","rta2":"VERDADERO"}
+{"pregunta":"Este patron tiene la particularidad de poseer un constructor:","cantRTA":3,"rta1":"PRIVADO","rta2":"PUBLICO","rta3":"PROTECTED"}
+{"pregunta":"Combiene utilizar este patron cuando es necesario que una clase tenga ______ instancias ","cantRTA":4,"rta1":"UNA","rta2":"POCAS","rta3":"MUCHAS","rta4":"DOS"}
+
