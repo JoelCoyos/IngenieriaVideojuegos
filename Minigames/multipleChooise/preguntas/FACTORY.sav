@@ -1,4 +1,4 @@
-{"pos_rta_correc":1,"cantPreguntas":6}
+{"pos_rta_correc":1,"cantPreguntas":5}
 {"pregunta":"De que tipo es este patron? ","cantRTA":3,"rta1":"creacional","rta2":"estructura","rta3":"comportamiento"}
 {"pregunta":"Tambien se lo conoce como patron de instancia unica?","cantRTA":3,"rta1":"SI","rta2":"NO","rta3":"TAL VE"}
 {"pregunta":"Prohibe su acceso de forma global?","cantRTA":2,"rta1":"FALSO","rta2":"VERDADERO"}

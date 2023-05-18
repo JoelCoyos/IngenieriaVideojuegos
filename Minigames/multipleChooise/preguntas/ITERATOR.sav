@@ -1,0 +1,8 @@
+{"pos_rta_correc":1,"cantPreguntas":5}
+{"pregunta":"De que tipo es este patron? ","cantRTA":3,"rta1":"COMPORTAMIENTO","rta2":"ESTRUCTURA","rta3":"CREACION"}
+{"pregunta":"Permite recorrer elementos de una colección sin exponer su representación?","cantRTA":3,"rta1":"SI","rta2":"NO","rta3":"TAL VEZ"}
+{"pregunta":"Se lo aconseja usar cuando tu colección tenga una estructura de datos _____","cantRTA":2,"rta1":"COMPLEJA","rta2":"SENCILLA"}
+{"pregunta":"Se lo recomienda cuando quieres que tu código pueda recorrer distintas estructuras de datos?","cantRTA":3,"rta1":"SI","rta2":"NO","rta3":"DEPENDE"}
+{"pregunta":"Usarlo puede ser MAS eficiente que recorrer directamente los elementos de algunas colecciones especializadas","cantRTA":3,"rta1":"DEPENDE","rta2":"SI","rta3":"NO"}
+{"pregunta":"Es necesario implementar este patron para los array nativo? ","cantRTA":4,"rta1":"FALSO","rta2":"SIEMPRE","rta3":"VERDADERO","rta4":"POCAS VECES"}
+
