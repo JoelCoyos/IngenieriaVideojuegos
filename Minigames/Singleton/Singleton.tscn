@@ -28,6 +28,7 @@ scale = Vector2( 1.03809, 1 )
 texture = ExtResource( 6 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0, 0, 0, 1 )
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 2 )]

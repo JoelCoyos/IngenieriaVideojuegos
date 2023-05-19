@@ -17,6 +17,9 @@ var valAdquirido = {
 
 func _ready():
 	$AnimatedSprite.play("default")
+	
+func adVelocity(inc):
+	speed+=inc
 
 #las imagenes son muy chicas //ver escalado u otro pack u como definirlas en el button achicando
 		# se resuelve con la opcion expand del button

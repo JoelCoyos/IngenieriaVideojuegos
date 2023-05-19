@@ -24,11 +24,11 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 32.3883
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 31.5, 31.5 )
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 32.1403
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 32, 32 )
 
 [node name="daniable" type="RigidBody2D"]
 contacts_reported = 7
@@ -44,12 +44,13 @@ frames = SubResource( 2 )
 animation = "uno"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+position = Vector2( -0.5, 0.5 )
+shape = SubResource( 3 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [connection signal="body_entered" from="." to="." method="_on_daniable_body_entered"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

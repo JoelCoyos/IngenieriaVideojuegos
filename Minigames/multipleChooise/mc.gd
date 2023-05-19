@@ -47,7 +47,7 @@ func cargar_pregunta(var patron):
 	if value != null:
 		  totP = int(value)
 	
-	
+	rng.randomize()
 	var nroPregAzar = rng.randi_range(1,totP) 
 
 	for i in range(nroPregAzar):
