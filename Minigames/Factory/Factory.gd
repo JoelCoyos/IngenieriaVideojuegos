@@ -69,12 +69,12 @@ func salida_buscada(pos):#cada que e crea un objeto incrementa la vel
 	get_tree().get_nodes_in_group("elemento")[pos].valPretendido.caja1 = salUno
 	get_tree().get_nodes_in_group("elemento")[pos].valPretendido.caja2 = salDos
 	get_tree().get_nodes_in_group("elemento")[pos].valPretendido.caja3 = salTres
-	get_tree().get_nodes_in_group("elemento")[pos].adVelocity(incremento)
+	#get_tree().get_nodes_in_group("elemento")[pos].adVelocity(incremento)
 	
 	get_tree().get_nodes_in_group("resBuscado")[pos].valBuscado.caja1 = salUno
 	get_tree().get_nodes_in_group("resBuscado")[pos].valBuscado.caja2 = salDos
 	get_tree().get_nodes_in_group("resBuscado")[pos].valBuscado.caja3 = salTres
-	get_tree().get_nodes_in_group("resBuscado")[pos].adVelocity(incremento)
+	#get_tree().get_nodes_in_group("resBuscado")[pos].adVelocity(incremento)
 	#$HBoxContainer/Label2.text=str(get_tree().get_nodes_in_group("elemento")[con].valPretendido.caja1)
 	
 

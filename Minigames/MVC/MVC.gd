@@ -24,7 +24,6 @@ func _ready():
 	self.add_child(t)
 	rng = RandomNumberGenerator.new()
 	pieceScene = load("res://Minigames//MVC//Scenes//Piece.tscn")
-	time=20
 	pass
 
 func _process(delta):
@@ -33,6 +32,7 @@ func _process(delta):
 func StartMinigame():
 	print("Starting minigame")
 	rng.randomize()
+	SetDifficulty()
 	t.set_wait_time(time)
 	t.start()
 	SetPuzzle()

@@ -36,10 +36,9 @@ func StartMinigame():
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
 	objectiveCleared=0
-
+	SetDifficulty()
 	t.set_wait_time(time)
 	t.start()
-	SetDifficulty()
 	yield(t, "timeout")
 	emit_signal("minigame_ended")
 	pass

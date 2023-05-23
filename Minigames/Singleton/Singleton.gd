@@ -25,11 +25,8 @@ func elemenScene():
  
 func StartMinigame():
 	print("Starting minigame")
-
-	#SetDifficulty()
-
+	SetDifficulty()
 	camara.limit_right = limitR
-	
 	t.set_wait_time(time)
 	t.start()
 	yield(t, "timeout")

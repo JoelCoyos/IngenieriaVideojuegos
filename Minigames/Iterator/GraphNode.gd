@@ -17,8 +17,17 @@ func _input_event(viewport, event, shape_idx):
 	if(Input.is_action_just_pressed("game_select") and y == 0 and !hasBeenSelected):
 		emit_signal("selectStartingNode",x)
 		hasBeenSelected=true
-		
+		if(y==0):
+			$ArrowHead.queue_free()
+			$AnimationPlayer.stop()
+
 	pass
+	
+func AddNode():
+	if(y!=0):
+		$ArrowHead.queue_free()
+	else:
+		$AnimationPlayer.play("arrow")
 
 func TweenScale():
 	tween = create_tween().set_loops()

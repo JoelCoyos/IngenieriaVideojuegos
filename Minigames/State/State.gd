@@ -62,10 +62,9 @@ func _process(delta):
 func StartMinigame():
 	print("Starting minigame")
 	rng.randomize()
-	time = 20
-	t.set_wait_time(10)
-	t.start()
 	SetDifficulty()
+	t.set_wait_time(time)
+	t.start()
 	objectiveCleared=0
 	#car.carSpeed = carSpeed
 	SetStreet()

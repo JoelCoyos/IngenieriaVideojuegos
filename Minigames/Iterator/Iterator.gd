@@ -14,6 +14,9 @@ var objectiveNode
 var gameIsOver
 var currentObjectiveNode
 
+var initialGraphX
+var initialGraphY
+
 func _init():
 	pass
 
@@ -32,11 +35,10 @@ func _process(delta):
 	pass
 
 func StartMinigame():
-	time = 10
-	t.set_wait_time(time)
-	t.start()
 	currentObjectiveNode=0
 	SetDifficulty()
+	t.set_wait_time(time)
+	t.start()
 	graph_width=objectiveCount
 	graph_height=graph_width+2
 	gameIsOver=false
@@ -49,7 +51,11 @@ func StartMinigame():
 	pass
 
 func AddNodes():
-
+	initialGraphY = 200
+	if(graph_width%2 == 0):
+		initialGraphX = 640 - ((graph_width)/2-0.5)*100
+	else:
+		initialGraphX = 640 - ((graph_width-1)/2)*100
 	for i in graph_width:
 		graph.append([])
 		for j in graph_height:
@@ -136,12 +142,13 @@ func AddEdges():
 
 func InstanceNode(x,y):
 	var node = nodeScene.instance()
-	node.position = Vector2(300+x*100,50+y*100)
+	node.position = Vector2(initialGraphX+x*100,initialGraphY+y*100)
 	add_child(node)
 	node.x = x
 	node.y = y
 	graph[x][y]=node
 	node.connect("selectStartingNode",self,"SelectedNode")
+	node.AddNode()
 	return node
 	pass
 
@@ -151,13 +158,13 @@ func InstanceEdge(pos1,pos2):
 		add_child(edge)
 		var x = pos1.x
 		var y = pos1.y
-		edge.position = Vector2(300+x*100,50+y*100) + Vector2(0,50)
+		edge.position = Vector2(initialGraphX+x*100,initialGraphY+y*100) + Vector2(0,50)
 		edgeDic[[pos1,pos2]]=[edge]
 		y=y+1
 		while(y < pos2.y):
 			edge = edgeScene.instance()
 			add_child(edge)
-			edge.position = Vector2(300+x*100,50+y*100) + Vector2(0,50)
+			edge.position = Vector2(initialGraphX+x*100,initialGraphY+y*100) + Vector2(0,50)
 			edgeDic[[pos1,pos2]].append(edge)
 			y=y+1
 	else: # Horizontal edge
