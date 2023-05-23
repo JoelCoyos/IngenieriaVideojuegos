@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-export (int , 1, 10000) var vida = 30 #podria ser el parametro de dificultad se generee entre rango como la posicion
+export (int , 1, 10000) var vida = 10
 
 var codActual =0
 

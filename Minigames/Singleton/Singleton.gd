@@ -2,34 +2,34 @@ extends Minigame
 
 export (PackedScene) var Objetivo
 onready var camara = get_node("Camera2D")
-onready var limitR = 3000#dependiendo la dificultad que tan grandde sea el mapa
-onready var limitD = 1000
-onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
-var cantEnemi
+onready var limitR = 3000
+onready var limitD =3000
 var t
+var enemigos = 6
+var aliados = 6
 
-func random(min_number, max_number ):
-	rng.randomize()
-	var random = rng.randf_range(min_number, max_number)# 
-	return random
+#los limites de la camara no me deja crearlos/modificarlos luego de instanciar
 	
 func _ready():
-	cantEnemi = 5
-	camara.limit_right = limitR
-	for i in range(cantEnemi):
-		createEnemy()
 	t = Timer.new()
 	self.add_child(t)
+	elemenScene()
 
-
-
+func elemenScene():
+	for i in range(enemigos):
+		createElement(0)
+		print("dd00")
+	for i in range(aliados ):
+		createElement(1)
+		print("d11d")
+ 
 func StartMinigame():
 	print("Starting minigame")
-	rng = RandomNumberGenerator.new()
-	rng.randomize()
-	objectiveCount=3
-	objectiveCleared=0
-	time = 20
+
+	#SetDifficulty()
+
+	camara.limit_right = limitR
+	
 	t.set_wait_time(time)
 	t.start()
 	yield(t, "timeout")
@@ -37,8 +37,44 @@ func StartMinigame():
 	pass
 	
 
-func createEnemy():
+func createElement(est):
 	var obs = Objetivo.instance()
-	var pos=Vector2(random(100,limitR)-100,random(100,limitD)-100)
+	var pos=Vector2(GLOBAL.random(100,limitR)-100,GLOBAL.random(100,limitD)-100)
 	add_child(obs)
 	obs.position = pos
+	obs.definirIMG(est)
+	
+
+func SetDifficulty():
+	if(difficulty ==1):
+		objectiveCount = 5
+		time = 20
+		aliados = objectiveCount
+		enemigos = objectiveCount
+
+	elif(difficulty == 2):
+		objectiveCount = 8
+		time = 20
+		aliados = objectiveCount
+		enemigos = objectiveCount +5
+
+	elif(difficulty == 3):
+		objectiveCount= 10
+		time = 25
+		aliados = objectiveCount
+		enemigos = objectiveCount
+
+	elif(difficulty == 4):
+		objectiveCount = 13
+		time = 25
+		aliados = objectiveCount
+		enemigos = objectiveCount+5
+
+	elif(difficulty == 5):
+		objectiveCount = 15
+		time = 30
+		aliados = objectiveCount
+		enemigos = objectiveCount+6
+
+	pass
+

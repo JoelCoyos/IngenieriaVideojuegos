@@ -1,0 +1,8 @@
+{"pos_rta_correc":1,"cantPreguntas":6}
+{"pregunta":"De que tipo es este patron? ","cantRTA":3,"rta1":"COMPORTAMIENTO","rta2":"CREACIONAL","rta3":"ESTRUCTURA"}
+{"pregunta":"Permite notificar a varios objetos sobre cualquier evento que le suceda al objeto que están observando?","cantRTA":3,"rta1":"SI","rta2":"NO","rta3":"TAL VE"}
+{"pregunta":"No es recomendable cuando algunos objetos deban observar a otros?","cantRTA":2,"rta1":"FALSO","rta2":"VERDADERO"}
+{"pregunta":"Los suscriptores son notificados en un orden _____","cantRTA":2,"rta1":"ALEATORIO","rta2":"ESPECIFICO","rta3":"NO SE NOTIFICA"}
+{"pregunta":"Puedes introducir nuevas clases suscriptoras pero debes cambiar el código de la notificadora?","cantRTA":3,"rta1":"FALSO","rta2":"VERDAD","rta3":"DEPENDE"}
+{"pregunta":"El patron se conforma por observers y ____  ","cantRTA":4,"rta1":"OBSERVABLES","rta2":"OBSERVER","rta3":"CONTROLLERS","rta4":"REGISTERS"}
+

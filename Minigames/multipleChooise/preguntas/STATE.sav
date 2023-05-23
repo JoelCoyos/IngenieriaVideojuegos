@@ -1,0 +1,6 @@
+{"pos_rta_correc":1,"cantPreguntas":5}
+{"pregunta":"De que tipo es este patron? ","cantRTA":3,"rta1":"COMPORTAMIENTO","rta2":"ESTRUCTURA","rta3":"CREACIONAL"}
+{"pregunta":"Su implementacion sirve para prohibir el cambio de comportamiento de un objeto?","cantRTA":3,"rta1":"NO","rta2":"SI","rta3":"TAL VE"}
+{"pregunta":"Se recomienda cuando un objeto se comporta de forma diferente dependiendo de su estado actual?","cantRTA":2,"rta1":"VERDADERO","rta2":"FALSO"}
+{"pregunta":"Aplicarlo puede resultar excesivo si una máquina de estados sólo tiene unos pocos estados o raramente cambia?","cantRTA":2,"rta1":"VERDADERO","rta2":"FALSO"}
+{"pregunta":"Organiza el código relacionado con estados particulares en clases separadas:","cantRTA":3,"rta1":"SI","rta2":"NO","rta3":"JAMAS"}

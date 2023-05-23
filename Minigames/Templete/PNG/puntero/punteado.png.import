@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/blue_panel.png-31024087305e18b532d068cbcfd8ae33.stex"
+path="res://.import/punteado.png-fc1b4cb52596465f87cce591929b6414.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/Decorator/Sprites/blue_panel.png"
-dest_files=[ "res://.import/blue_panel.png-31024087305e18b532d068cbcfd8ae33.stex" ]
+source_file="res://Minigames/Templete/PNG/puntero/punteado.png"
+dest_files=[ "res://.import/punteado.png-fc1b4cb52596465f87cce591929b6414.stex" ]
 
 [params]
 

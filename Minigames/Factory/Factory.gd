@@ -15,6 +15,7 @@ var validacion = -1
 var valCajaACT = 0
 var arrayResultados = []
 var score = 0
+var incremento = 0
 
 var valorCaja = {
 	caja1 = 0,
@@ -38,11 +39,11 @@ func StartMinigame():
 	print("Starting minigame")
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
-	objectiveCount=3
-	objectiveCleared=0
+
 	time = 20
 	t.set_wait_time(time)
 	t.start()
+	SetDifficulty()
 	yield(t, "timeout")
 	emit_signal("minigame_ended")
 	pass
@@ -60,18 +61,20 @@ func random(min_number, max_number ):
 	var random = rng.randi_range(min_number, max_number)# 
 	return random
 	
-func salida_buscada(pos):
+func salida_buscada(pos):#cada que e crea un objeto incrementa la vel
 	var salUno = random(1,3)
 	var salDos = random(1,3)
 	var salTres = random(1,3)
+	incremento += 5
 	get_tree().get_nodes_in_group("elemento")[pos].valPretendido.caja1 = salUno
 	get_tree().get_nodes_in_group("elemento")[pos].valPretendido.caja2 = salDos
 	get_tree().get_nodes_in_group("elemento")[pos].valPretendido.caja3 = salTres
+	get_tree().get_nodes_in_group("elemento")[pos].adVelocity(incremento)
 	
 	get_tree().get_nodes_in_group("resBuscado")[pos].valBuscado.caja1 = salUno
 	get_tree().get_nodes_in_group("resBuscado")[pos].valBuscado.caja2 = salDos
 	get_tree().get_nodes_in_group("resBuscado")[pos].valBuscado.caja3 = salTres
-	
+	get_tree().get_nodes_in_group("resBuscado")[pos].adVelocity(incremento)
 	#$HBoxContainer/Label2.text=str(get_tree().get_nodes_in_group("elemento")[con].valPretendido.caja1)
 	
 
@@ -226,11 +229,40 @@ func _on_Area2D_area_entered(area):
 	and get_tree().get_nodes_in_group("elemento")[validacion].valPretendido.caja3 == get_tree().get_nodes_in_group("elemento")[validacion].valAdquirido.caja3):
 		score += 10
 		print("coincide")
+		#objectiveCleared+=1
 	else:
 		score -= 10
 		print("fallo")
 	
 
 
+
+func SetDifficulty():#ver que el tiempo sea suficiente 
+	if(difficulty ==1):
+		objectiveCount = 1
+		time = 20
+		incremento = 0
+
+	elif(difficulty == 2):
+		objectiveCount = 2
+		time = 20
+		incremento = 10
+
+	elif(difficulty == 3):
+		objectiveCount= 3
+		time = 25
+		incremento = 20
+
+	elif(difficulty == 4):
+		objectiveCount = 4
+		time = 25
+		incremento = 30
+
+	elif(difficulty == 5):
+		objectiveCount = 5
+		time = 30
+		incremento = 40
+
+	pass
 
 

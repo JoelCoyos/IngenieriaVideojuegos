@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Minigames/Templete/script/gomeraTrayectori.gd" type="Script" id=1]
 [ext_resource path="res://Minigames/Templete/gomera.png" type="Texture" id=2]
-[ext_resource path="res://Minigames/Templete/escena/ptoTrayectoria.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Minigames/Templete/escena/punteroTrayecto.tscn" type="PackedScene" id=3]
 
 [node name="gomera" type="Node2D"]
 script = ExtResource( 1 )

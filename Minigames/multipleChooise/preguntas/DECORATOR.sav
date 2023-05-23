@@ -1,0 +1,6 @@
+{"pos_rta_correc":1,"cantPreguntas":5}
+{"pregunta":"De que tipo es este patron? ","cantRTA":3,"rta1":"estructura","rta2":"creacional","rta3":"comportamiento"}
+{"pregunta":"Su principal funcion es la de añadir funcionalidades a objetos?","cantRTA":2,"rta1":"SI","rta2":"NO"}
+{"pregunta":"Se recomineda su uso cuando sea posible extender el comportamiento de un objeto utilizando la herencia?","cantRTA":2,"rta1":"FALSO","rta2":"VERDADERO"}
+{"pregunta":"Puedes combinar varios comportamientos envolviendo un objeto con varios decoradores?","cantRTA":3,"rta1":"SI","rta2":"NO","rta3":"QUIZAS"}
+{"pregunta":"Te permite crear una unica clase a partir de varias clases pequeñas que implementan variantes de comportamiento?","cantRTA":2,"rta1":"FALSO","rta2":"VERDADERO"}

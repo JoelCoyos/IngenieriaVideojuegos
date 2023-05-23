@@ -1,0 +1,23 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Minigames/Templete/PNG/puntero/lleno.png" type="Texture" id=1]
+[ext_resource path="res://Minigames/Templete/PNG/puntero/lineal.png" type="Texture" id=2]
+[ext_resource path="res://Minigames/Templete/PNG/puntero/semicompleto.png" type="Texture" id=3]
+[ext_resource path="res://Minigames/Templete/PNG/puntero/punteado.png" type="Texture" id=4]
+[ext_resource path="res://Minigames/Templete/escena/punteroTrayecto.gd" type="Script" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
+
+[node name="punteroTrayecto" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -8.49995, 5.25 )
+scale = Vector2( 0.0922618, 0.0808532 )
+frames = SubResource( 1 )

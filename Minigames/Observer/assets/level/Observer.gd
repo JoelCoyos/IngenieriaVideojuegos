@@ -23,9 +23,13 @@ func StartMinigame():
 	print("Starting minigame")
 	t.set_wait_time(time)
 	t.start()
+	SetDifficulty()
+	
 	yield(t, "timeout")
 	emit_signal("minigame_ended")
 	pass
+	
+	
 func _physics_process(delta):
 	$MarginContainer/ParallaxBackground
 	get_node("MarginContainer/ParallaxBackground").scroll_base_offset += Vector2(0,1) * 8 * delta
@@ -68,3 +72,28 @@ func TouchObserver():
 func DeathPlayer():
 	emit_signal("minigame_ended")
 	print("Minigame ended")
+	
+	
+func SetDifficulty():
+	if(difficulty ==1):
+		objectiveCount = 5
+		time = 20
+
+	elif(difficulty == 2):
+		objectiveCount = 8
+		time = 20
+
+	elif(difficulty == 3):
+		objectiveCount= 4
+		time = 25
+
+	elif(difficulty == 4):
+		objectiveCount = 10
+		time = 25
+
+	elif(difficulty == 5):
+		objectiveCount = 15
+		time = 30
+
+	pass
+

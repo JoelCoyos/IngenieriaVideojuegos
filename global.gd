@@ -7,6 +7,7 @@ onready var minVel : int
 onready var maxVel : int
 onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
+
 var datosPartida = {
 	score = 0,
 	controlPos = 0,
@@ -20,9 +21,10 @@ func _ready():
 	if (!path.dir_exists("res://assets/menu/savArch")):
 		path.open("res://assets/menu")
 		path.make_dir("res://assets/menu/savArch")
+		
 func random(min_number, max_number ):
 	rng.randomize()
-	var random = rng.randf_range(min_number, max_number)# 
+	var random = rng.randi_range(min_number, max_number)# 
 	return random
 #f5 y f7 para gurardar y cargar
 

@@ -1,0 +1,4 @@
+{"pos_rta_correc":1,"cantPreguntas":3}
+{"pregunta":"De que tipo es este patron? ","cantRTA":3,"rta1":"COMPORTAMIENTO","rta2":"CREACIONAL","rta3":"ESTRUCTURA"}
+{"pregunta":"Se recomienda cuando se tengan muchas clases que contengan algoritmos casi idénticos, pero con algunas diferencias mínimas?","cantRTA":3,"rta1":"SI","rta2":"NO","rta3":"TAL VE"}
+{"pregunta":"Define el esqueleto de un algoritmo en la superclase pero permite que las subclases sobrescriban pasos del algoritmo sin cambiar su estructura?","cantRTA":2,"rta1":"SI","rta2":"NO"}

@@ -1,0 +1,6 @@
+{"pos_rta_correc":1,"cantPreguntas":4}
+{"pregunta":"De que tipo es este patron? ","cantRTA":3,"rta1":"ESTRUCTURA","rta2":"COMPORTAMIENTO","rta3":"CREACIONAL"}
+{"pregunta":"Se divide en modelo/vista/controlador","cantRTA":2,"rta1":"SI","rta2":"NO"}
+{"pregunta":"Sirve para tener tanto la vista como el controlador en una unica clase ?","cantRTA":2,"rta1":"VERDADERO","rta2":"FALSO"}
+{"pregunta":" La vista se encarga de implementar______  ","cantRTA":4,"rta1":"INTERFAZ VISUAL","rta2":"BASE DE DATOS","rta3":"MANEJAR MEMORIA","rta4":"IMPLEMENTAR HILOS"}
+

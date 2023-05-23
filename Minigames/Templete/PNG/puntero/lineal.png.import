@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/blue_panel.png-31024087305e18b532d068cbcfd8ae33.stex"
+path="res://.import/lineal.png-7a9584fcd76737fa160a1f432d2b4dc4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/Decorator/Sprites/blue_panel.png"
-dest_files=[ "res://.import/blue_panel.png-31024087305e18b532d068cbcfd8ae33.stex" ]
+source_file="res://Minigames/Templete/PNG/puntero/lineal.png"
+dest_files=[ "res://.import/lineal.png-7a9584fcd76737fa160a1f432d2b4dc4.stex" ]
 
 [params]
 
