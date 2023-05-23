@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rain.png-1582068335921dcc3955dc0648a4a424.stex"
+path="res://.import/laptop.png-784fdf845979b7e922310f743e6c04a7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/Decorator/rain.png"
-dest_files=[ "res://.import/rain.png-1582068335921dcc3955dc0648a4a424.stex" ]
+source_file="res://Minigames/Decorator/Sprites/Clothes/laptop.png"
+dest_files=[ "res://.import/laptop.png-784fdf845979b7e922310f743e6c04a7.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

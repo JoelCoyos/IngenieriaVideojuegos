@@ -2,6 +2,8 @@ extends Node2D
 
 var rng
 var levels = ["Decorator","Factory","Iterator","MVC","Observer","Singleton","State","Templete"]
+export(bool) var testing = false
+export(String) var levelToTest
 
 #var levels = ["Singleton","Singleton","Singleton","Singleton","Singleton","Singleton"]
 # Called when the node enters the scene tree for the first time.

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/man.png-6a0388f70eb3ebb98fcf55eb941719f8.stex"
+path="res://.import/beer.png-2216a9d1118b1961371252ece027c451.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/Decorator/man.png"
-dest_files=[ "res://.import/man.png-6a0388f70eb3ebb98fcf55eb941719f8.stex" ]
+source_file="res://Minigames/Decorator/Sprites/Clothes/beer.png"
+dest_files=[ "res://.import/beer.png-2216a9d1118b1961371252ece027c451.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

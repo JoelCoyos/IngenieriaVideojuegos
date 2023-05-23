@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sunny.png-28f0b587f09e56f2840df0e1872d84c9.stex"
+path="res://.import/rain.png-2227e9168607ece17b20d5035d092df6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/Decorator/sunny.png"
-dest_files=[ "res://.import/sunny.png-28f0b587f09e56f2840df0e1872d84c9.stex" ]
+source_file="res://Minigames/Decorator/Sprites/States/rain.png"
+dest_files=[ "res://.import/rain.png-2227e9168607ece17b20d5035d092df6.stex" ]
 
 [params]
 

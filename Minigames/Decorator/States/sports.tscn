@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Minigames/Decorator/Sprites/States/sports.png" type="Texture" id=1]
+
+[node name="State" type="Sprite"]
+rotation = -0.000927549
+scale = Vector2( 0.234743, 0.234743 )
+texture = ExtResource( 1 )

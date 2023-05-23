@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sunglasses.png-aaf870c8c65ac38e54bcf58178588e24.stex"
+path="res://.import/gloves.png-27c4ff42a0f8c2dce8dec9f7f286f0cb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/Decorator/sunglasses.png"
-dest_files=[ "res://.import/sunglasses.png-aaf870c8c65ac38e54bcf58178588e24.stex" ]
+source_file="res://Minigames/Decorator/Sprites/Clothes/gloves.png"
+dest_files=[ "res://.import/gloves.png-27c4ff42a0f8c2dce8dec9f7f286f0cb.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -49,9 +49,12 @@ func SessionRoutine():
 		countInRound = 0
 		currentRound+=1
 		difficulty+=1
-	var next = roundMinigames[countInRound]
+	var next
+	if(LevelSelection.testing):
+		next = LevelSelection.levelToTest
+	else: next = roundMinigames[countInRound]
 	SessionUI.LeaveGame(next)
-	yield(SpawnRoulette(), "completed") #Horrible
+	#yield(SpawnRoulette(), "completed") #Horrible
 	t.set_wait_time(3)
 	t.start()
 	yield(t, "timeout")
@@ -74,20 +77,22 @@ func NextMinigame():
 	var cant = minigame.objectiveCleared
 	var gainedScore = (float(cant)/float(total))*difficulty
 	var gainedCoins = 10
-	if((float(cant)/float(total))*10<=3):
-		cantidadAplazos+=1
-	if(beneficio[0] == TiposBeneficios.NOTA):
-		gainedScore*beneficio[1]
-	if(beneficio[0] == TiposBeneficios.APLAZO):
-		cantidadAplazos += beneficio[1]
-		if(cantidadAplazos < 0):
-			cantidadAplazos = 0
-	if(beneficio[0] == TiposBeneficios.MONEDAS):
-		gainedCoins*beneficio[1]
-	currentScore+=gainedScore
+	if(beneficio!=null):
+		if((float(cant)/float(total))*10<=3):
+			cantidadAplazos+=1
+		elif(beneficio[0] == TiposBeneficios.NOTA):
+			gainedScore*beneficio[1]
+		elif(beneficio[0] == TiposBeneficios.APLAZO):
+			cantidadAplazos += beneficio[1]
+			if(cantidadAplazos < 0):
+				cantidadAplazos = 0
+		elif(beneficio[0] == TiposBeneficios.MONEDAS):
+			gainedCoins*beneficio[1]
+	currentScore+= stepify(gainedScore,0.1)
 	gameManager.coins+=gainedCoins
 	minigame.queue_free()
 	SessionUI.ChangeScore(currentScore)
+	beneficio = null
 	SessionRoutine()
 	pass
 

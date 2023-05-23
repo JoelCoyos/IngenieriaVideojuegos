@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/umbrella.png-37ce9508dbaab23301614723d480dde7.stex"
+path="res://.import/man.png-50ac1bde31bc83efa485669184cc7497.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/Decorator/umbrella.png"
-dest_files=[ "res://.import/umbrella.png-37ce9508dbaab23301614723d480dde7.stex" ]
+source_file="res://Minigames/Decorator/Sprites/man.png"
+dest_files=[ "res://.import/man.png-50ac1bde31bc83efa485669184cc7497.stex" ]
 
 [params]
 

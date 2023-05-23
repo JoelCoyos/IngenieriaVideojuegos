@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/blue_panel.png-d126b985293bdbf8ded765c6ad09a328.stex"
+path="res://.import/ball.png-c330db5602137f4b882f2426a6b23ff1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/Decorator/blue_panel.png"
-dest_files=[ "res://.import/blue_panel.png-d126b985293bdbf8ded765c6ad09a328.stex" ]
+source_file="res://Minigames/Decorator/Sprites/Clothes/ball.png"
+dest_files=[ "res://.import/ball.png-c330db5602137f4b882f2426a6b23ff1.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

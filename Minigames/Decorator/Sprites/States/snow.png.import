@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cloudyWeather.png-4896dc4ac131d64f0dbad9579e56397e.stex"
+path="res://.import/snow.png-4dfc31d7fe0b5114489d0b2371b91f82.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/Decorator/cloudyWeather.png"
-dest_files=[ "res://.import/cloudyWeather.png-4896dc4ac131d64f0dbad9579e56397e.stex" ]
+source_file="res://Minigames/Decorator/Sprites/States/snow.png"
+dest_files=[ "res://.import/snow.png-4dfc31d7fe0b5114489d0b2371b91f82.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

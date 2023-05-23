@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shirt.png-ef2eda0718813b259e46d2a9b6dedd0c.stex"
+path="res://.import/blue_panel.png-31024087305e18b532d068cbcfd8ae33.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/Decorator/shirt.png"
-dest_files=[ "res://.import/shirt.png-ef2eda0718813b259e46d2a9b6dedd0c.stex" ]
+source_file="res://Minigames/Decorator/Sprites/blue_panel.png"
+dest_files=[ "res://.import/blue_panel.png-31024087305e18b532d068cbcfd8ae33.stex" ]
 
 [params]
 

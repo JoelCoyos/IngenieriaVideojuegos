@@ -4,11 +4,13 @@ var t
 var rng
 
 var clothesDic = {}
-var weather = ["sunny","rain","nieve","school","sports","party"]
-var clothes = ["shirt","sunglasses","umbrella","jeans","capa","guantes","libro","computadora","lapiz","pelota","pesa","hockey","cotillon","lentes brillan","afro"]
+var statesDic = {}
+var weather = ["sunny","rain","school","sports","party"]
+var clothes = ["shirt","sunglasses","umbrella","jeans","gloves","book","laptop","pencil","ball","soccershoes","hockey","confetti","beer"]
 var clothesArray
 
 var currentWeather
+
 
 func _init():
 	pass
@@ -16,9 +18,24 @@ func _init():
 func _ready():
 	t = Timer.new()
 	self.add_child(t)
-	clothesDic["sunglasses"] = ["head","sunny"]
-	clothesDic["shirt"] = ["body","sunny"]
-	clothesDic["umbrella"] = ["body","rain"]
+	clothesDic["sunglasses"] = "head"
+	clothesDic["shirt"] ="body"
+	clothesDic["umbrella"] = "body"
+	clothesDic["jeans"] ="legs"
+	clothesDic["gloves"] = "body"
+	clothesDic["book"] = "body"
+	clothesDic["laptop"] = "body"
+	clothesDic["pencil"] = "body"
+	clothesDic["ball"] = "legs"
+	clothesDic["soccershoes"] = "legs"
+	clothesDic["hockey"] = "body"
+	clothesDic["confetti"] = "body"
+	clothesDic["beer"] = "body"
+	statesDic["sunny"] = ["sunglasses","shirt"]
+	statesDic["rain"] = ["umbrella","jeans","gloves"]
+	statesDic["school"] = ["laptop","pencil"]
+	statesDic["sports"] = ["ball","soccershoes","hockey"]
+	statesDic["party"] = ["confetti","beer"]
 	clothesArray = []
 	pass
 
@@ -29,7 +46,7 @@ func StartMinigame():
 	print("Starting minigame")
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
-	objectiveCount=clothes.size()
+	SetDifficulty()
 	objectiveCleared=0
 	time = 10
 	t.set_wait_time(time)
@@ -43,27 +60,37 @@ func StartMinigame():
 	
 func SetWeather():
 	currentWeather = weather[rng.randi_range(0,weather.size())-1]
-	var weatherSprite = load("res://Minigames/Decorator/"+currentWeather+".png")
-	$Weather.texture = weatherSprite
+	var stateScene = load("res://Minigames/Decorator/States/"+currentWeather+".tscn")
+	var state = stateScene.instance()
+	add_child(state)
+	state.position = $Man.position + Vector2(200,-200)
 	pass
 
 func AddSelectionClothes():
-	var clothesShuffle = clothes.shuffle()
-	for i in range(clothes.size()):
-		var clotheScene = load("res://Minigames/Decorator/Clothes/"+clothes[i]+".tscn")
+	var selectedClothes = []
+	var obligatoryClothe = statesDic[currentWeather][rng.randi_range(0,statesDic[currentWeather].size()-1)]
+	selectedClothes.append(obligatoryClothe)
+	var auxClothes = clothes
+	auxClothes.erase(obligatoryClothe)
+	auxClothes.shuffle()
+	auxClothes = auxClothes.slice(0,objectiveCount-2)
+	selectedClothes.append_array(auxClothes)
+	selectedClothes.shuffle()
+	for i in range(objectiveCount):
+		var clotheScene = load("res://Minigames/Decorator/Clothes/"+selectedClothes[i]+".tscn")
 		var clothe = clotheScene.instance()
 		clothe.position.x = 300 + 150*i
 		clothe.position.y = 500
-		clothe.clotheType = clothes[i]
+		clothe.clotheType = selectedClothes[i]
 		clothesArray.append(clothe)
 		add_child(clothe)
 	pass
 
 func CheckClothes():
 	for clothe in clothesArray:
-		if(clothe.currentBodyPart.has(clothesDic[clothe.clotheType][0]) and clothesDic[clothe.clotheType][1] == currentWeather):
+		if(clothe.currentBodyPart.has(clothesDic[clothe.clotheType]) and statesDic[currentWeather].has(clothe.clotheType)):
 			objectiveCleared+=1
-		elif(clothe.currentBodyPart == [] and clothesDic[clothe.clotheType][1]!=currentWeather):
+		elif(clothe.currentBodyPart == [] and !statesDic[currentWeather].has(clothe.clotheType)):
 			objectiveCleared+=1
 	pass
 	
