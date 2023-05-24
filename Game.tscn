@@ -18,7 +18,7 @@ font_data = ExtResource( 7 )
 [sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("../../Camera2D:zoom")
+tracks/0/path = NodePath("../Camera2D:zoom")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -30,7 +30,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../../Camera2D:position")
+tracks/1/path = NodePath("../Camera2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -45,7 +45,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=2]
 resource_name = "startClass"
 tracks/0/type = "value"
-tracks/0/path = NodePath("../../Camera2D:position")
+tracks/0/path = NodePath("../Camera2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -57,7 +57,7 @@ tracks/0/keys = {
 "values": [ Vector2( 540, 360 ), Vector2( 233, 305 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../../Camera2D:zoom")
+tracks/1/path = NodePath("../Camera2D:zoom")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -137,9 +137,12 @@ text = "SALIR"
 anims/RESET = SubResource( 3 )
 anims/startClass = SubResource( 2 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="GameManager"]
 position = Vector2( 540, 360 )
-offset = Vector2( 100, 0 )
 current = true
+limit_left = 0
+limit_top = 0
+limit_right = 3000
+limit_bottom = 1000
 
 [connection signal="pressed" from="GameManager/UI/Comenzar" to="GameManager" method="_on_Button_pressed"]

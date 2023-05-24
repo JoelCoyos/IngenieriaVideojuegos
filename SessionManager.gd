@@ -77,10 +77,11 @@ func NextMinigame():
 	var cant = minigame.objectiveCleared
 	var gainedScore = (float(cant)/float(total))*difficulty
 	var gainedCoins = 10
+	GLOBAL.camara.position = Vector2(640,360) #No se muy bien porque hay que poner 640 en vez de 540
+	if((float(cant)/float(total))*10<=3):
+		cantidadAplazos+=1
 	if(beneficio!=null):
-		if((float(cant)/float(total))*10<=3):
-			cantidadAplazos+=1
-		elif(beneficio[0] == TiposBeneficios.NOTA):
+		if(beneficio[0] == TiposBeneficios.NOTA):
 			gainedScore*beneficio[1]
 		elif(beneficio[0] == TiposBeneficios.APLAZO):
 			cantidadAplazos += beneficio[1]

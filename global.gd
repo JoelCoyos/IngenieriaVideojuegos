@@ -6,6 +6,7 @@ onready var controlPtos : int
 onready var minVel : int
 onready var maxVel : int
 onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
+var camara
 
 
 var datosPartida = {

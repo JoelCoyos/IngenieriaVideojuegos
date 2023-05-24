@@ -121,6 +121,7 @@ func SelectedNode(selectedPos):
 			graph[currentObjectiveNode][graph_height-1].TweenScale()
 	else:
 		gameIsOver=true
+		emit_signal("minigame_ended")
 	pass	
 	
 func AddEdges():
@@ -182,7 +183,7 @@ func InstanceEdge(pos1,pos2):
 
 func SetDifficulty():
 	if(difficulty ==1):
-		objectiveCount = 2
+		objectiveCount = 4
 		time = 20
 	elif(difficulty == 2):
 		objectiveCount = 3

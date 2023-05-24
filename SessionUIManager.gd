@@ -18,7 +18,6 @@ func _ready():
 	OnMinigamesUI = $OnMinigame
 	pass
 
-
 func EnterGame(minigame):
 	BetweenMinigamesUI.visible = false
 	OnMinigamesUI.visible = true

@@ -54,7 +54,7 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="OnMinigame" type="Node2D" parent="SessionUI"]
+[node name="OnMinigame" type="CanvasLayer" parent="SessionUI"]
 
 [node name="TimeLeft" type="RichTextLabel" parent="SessionUI/OnMinigame"]
 margin_left = 987.0

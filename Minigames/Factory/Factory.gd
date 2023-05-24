@@ -228,6 +228,7 @@ func _on_Area2D_area_entered(area):
 	and get_tree().get_nodes_in_group("elemento")[validacion].valPretendido.caja2 == get_tree().get_nodes_in_group("elemento")[validacion].valAdquirido.caja2
 	and get_tree().get_nodes_in_group("elemento")[validacion].valPretendido.caja3 == get_tree().get_nodes_in_group("elemento")[validacion].valAdquirido.caja3):
 		score += 10
+		objectiveCleared+=1
 		print("coincide")
 		#objectiveCleared+=1
 	else:

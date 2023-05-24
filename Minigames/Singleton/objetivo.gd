@@ -1,5 +1,9 @@
 extends Node2D
 var estado
+
+signal GetAliado
+signal GetEnemigo
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -18,8 +22,8 @@ func definirIMG(est):
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("player"):
 		if estado == 1:
-			print("aliado")
+			emit_signal("GetAliado")
 		else:
-			print("enemigo")
+			emit_signal("GetEnemigo")
 		queue_free()
 
