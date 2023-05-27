@@ -62,6 +62,12 @@ func cargar_partida(var nro):
 	get_tree().get_nodes_in_group("player")[0].global_position.y = datos_cargar.pos_y
 	
 	
-	
-	
+func SuperAlgoritmoJoel(var position,var totalCant,distance):
+	var aux
+	if(totalCant%2 == 0):
+		aux = 640 - ((totalCant)/2-0.5)*distance
+	else:
+		aux = 640 - ((totalCant-1)/2)*distance
+	return aux + distance*position
+	pass
 	

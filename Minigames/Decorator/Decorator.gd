@@ -63,7 +63,7 @@ func SetWeather():
 	var stateScene = load("res://Minigames/Decorator/States/"+currentWeather+".tscn")
 	var state = stateScene.instance()
 	add_child(state)
-	state.position = $Man.position + Vector2(200,-200)
+	state.position = $Man.position + Vector2(500,-200)
 	pass
 
 func AddSelectionClothes():
@@ -79,12 +79,13 @@ func AddSelectionClothes():
 	for i in range(objectiveCount):
 		var clotheScene = load("res://Minigames/Decorator/Clothes/"+selectedClothes[i]+".tscn")
 		var clothe = clotheScene.instance()
-		clothe.position.x = 300 + 150*i
-		clothe.position.y = 500
+		clothe.position.x = GLOBAL.SuperAlgoritmoJoel(i,objectiveCount,150)
+		clothe.position.y = 600
 		clothe.clotheType = selectedClothes[i]
 		clothesArray.append(clothe)
 		add_child(clothe)
 	pass
+
 
 func CheckClothes():
 	for clothe in clothesArray:
@@ -97,16 +98,16 @@ func CheckClothes():
 func SetDifficulty():
 	if(difficulty ==1):
 		objectiveCount = 3
-		time = 25
+		time = 10
 	elif(difficulty == 2):
 		objectiveCount = 4
-		time = 20
+		time = 10
 	elif(difficulty == 3):
 		objectiveCount= 5
-		time = 25
+		time = 10
 	elif(difficulty == 4):
 		objectiveCount = 5
-		time = 20
+		time = 15
 	elif(difficulty == 5):
 		objectiveCount = 5
 		time = 15

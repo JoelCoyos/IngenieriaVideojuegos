@@ -8,6 +8,7 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
+outline_color = Color( 0.14902, 0.14902, 0.14902, 1 )
 font_data = ExtResource( 4 )
 
 [node name="Session" type="Node2D"]
@@ -62,6 +63,7 @@ margin_top = 649.0
 margin_right = 1507.0
 margin_bottom = 772.0
 mouse_filter = 2
+custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_fonts/normal_font = SubResource( 1 )
 text = "Tiempo:"
 __meta__ = {
@@ -71,4 +73,4 @@ __meta__ = {
 [node name="LevelSelection" type="Node2D" parent="."]
 script = ExtResource( 5 )
 testing = true
-levelToTest = "Iterator"
+levelToTest = "Decorator"
