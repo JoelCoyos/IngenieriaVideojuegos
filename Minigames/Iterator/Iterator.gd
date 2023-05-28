@@ -51,7 +51,7 @@ func StartMinigame():
 	pass
 
 func AddNodes():
-	initialGraphY = 200
+	initialGraphY = 100
 	if(graph_width%2 == 0):
 		initialGraphX = 640 - ((graph_width)/2-0.5)*100
 	else:
@@ -183,17 +183,17 @@ func InstanceEdge(pos1,pos2):
 
 func SetDifficulty():
 	if(difficulty ==1):
-		objectiveCount = 4
+		objectiveCount = 2
 		time = 20
 	elif(difficulty == 2):
 		objectiveCount = 3
-		time = 15
+		time = 25
 	elif(difficulty == 3):
 		objectiveCount= 4
-		time = 20
+		time = 30
 	elif(difficulty == 4):
-		objectiveCount = 4
-		time = 15
+		objectiveCount = 5
+		time = 25
 	elif(difficulty == 5):
 		objectiveCount = 5
 		time = 20

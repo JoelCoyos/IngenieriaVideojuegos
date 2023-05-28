@@ -47,7 +47,8 @@ func SessionRoutine():
 		roundMinigames = LevelSelection.SelectRoundMinigames()
 		countInRound = 0
 		currentRound+=1
-		difficulty+=1
+		if(difficulty<=5):
+			difficulty+=1
 	var next
 	if(LevelSelection.testing):
 		next = LevelSelection.levelToTest

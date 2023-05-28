@@ -6,8 +6,11 @@ var OnMinigamesUI
 var onMinigame
 
 var minigameTime
+var totalTime
 
 var session
+
+var timeGoing
 
 var t
 func _ready():
@@ -18,11 +21,19 @@ func _ready():
 	OnMinigamesUI = $OnMinigame
 	pass
 
+func _process(delta):
+	if(onMinigame):
+		timeGoing+=delta
+		$OnMinigame/ChalkBoardSprite.material.set_shader_param("cut_start",Vector2(timeGoing/totalTime,0))
+	pass
+
 func EnterGame(minigame):
 	BetweenMinigamesUI.visible = false
 	OnMinigamesUI.visible = true
 	onMinigame=true
 	minigameTime = minigame.time
+	totalTime = minigame.time
+	timeGoing=0
 	ChangeTimeLeft()
 	
 func LeaveGame(nextMinigame):

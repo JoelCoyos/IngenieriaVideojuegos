@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/red_point.png-cc5ada6214b5145b3f5bda54c066b221.stex"
+path="res://.import/red_point.png-66b9461b07d204625a6b484f0e598967.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/Iterator/red_point.png"
-dest_files=[ "res://.import/red_point.png-cc5ada6214b5145b3f5bda54c066b221.stex" ]
+source_file="res://Minigames/Iterator/Sprites/red_point.png"
+dest_files=[ "res://.import/red_point.png-66b9461b07d204625a6b484f0e598967.stex" ]
 
 [params]
 

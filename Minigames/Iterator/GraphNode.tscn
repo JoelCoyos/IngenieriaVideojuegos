@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Minigames/Iterator/red_point.png" type="Texture" id=1]
+[ext_resource path="res://Minigames/Iterator/Sprites/red_point.png" type="Texture" id=1]
 [ext_resource path="res://Minigames/Iterator/GraphNode.gd" type="Script" id=2]
-[ext_resource path="res://Minigames/Iterator/arrow_head.png" type="Texture" id=3]
+[ext_resource path="res://Minigames/Iterator/Sprites/arrow_head.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 43, 42 )

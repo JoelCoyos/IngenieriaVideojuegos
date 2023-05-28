@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/arrow_head.png-ac71ba34f5c8eef8ec93f8ac3fd331b6.stex"
+path="res://.import/arrow_head.png-ee269c24189d5681f9899201b1de51e5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/Iterator/arrow_head.png"
-dest_files=[ "res://.import/arrow_head.png-ac71ba34f5c8eef8ec93f8ac3fd331b6.stex" ]
+source_file="res://Minigames/Iterator/Sprites/arrow_head.png"
+dest_files=[ "res://.import/arrow_head.png-ee269c24189d5681f9899201b1de51e5.stex" ]
 
 [params]
 
