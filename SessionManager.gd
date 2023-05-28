@@ -9,7 +9,7 @@ var SessionUI
 var currentScore=0
 var cantidadAplazos=0
 var maxAplazos
-var difficulty
+export (int) var difficulty
 var gameManager
 
 var currentRound = 1
@@ -34,7 +34,6 @@ func _ready():
 	self.add_child(t)
 	cantidadAplazos=0
 	maxAplazos=5
-	difficulty=1
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
 	SessionRoutine()

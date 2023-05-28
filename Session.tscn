@@ -13,6 +13,7 @@ font_data = ExtResource( 4 )
 
 [node name="Session" type="Node2D"]
 script = ExtResource( 2 )
+difficulty = 5
 
 [node name="SessionUI" type="Node2D" parent="."]
 script = ExtResource( 1 )
@@ -73,4 +74,4 @@ __meta__ = {
 [node name="LevelSelection" type="Node2D" parent="."]
 script = ExtResource( 5 )
 testing = true
-levelToTest = "Decorator"
+levelToTest = "Factory"

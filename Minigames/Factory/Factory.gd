@@ -1,269 +1,229 @@
 extends Minigame
-# al integra hacer un auto load para los aleatorios
 var t
-export (PackedScene) var elemento
-export (PackedScene) var sprResultado
+var timerElements
+
 
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
-var inicio = 0
-var posArea1 = 0
-var posArea2 = 0
-var posArea3 = 0
-var validacion = -1
+var speed
+var numberElements
+var elementsValidated
 
-var valCajaACT = 0
-var arrayResultados = []
-var score = 0
-var incremento = 0
+var changeShapeElements = []
+var changeColorElements = []
+var changeBkgElements = []
 
-var valorCaja = {
-	caja1 = 0,
-	caja2 = 0,
-	caja3 = 0
-}
+export(Texture) var circleGray
+export(Texture) var helmetGray
+export(Texture) var mannedGray
 
+export(Texture) var background1
+export(Texture) var background2
+export(Texture) var background3
+
+export(PackedScene) var elementScene
+
+enum Colors {blue,green,yellow}
+enum Shapes {circle,helmet,manned}
+enum Background {desert,jungle,factory}
 
 func _ready():
 	randomize()
-	$elementTimer.start()
 	t = Timer.new()
-	self.add_child(t)
-
-func _physics_process(delta):
-	$Label2.text=str(score)
-
-
+	timerElements = Timer.new()
+	add_child(t)
+	add_child(timerElements)
+	objectiveCleared=0
+	elementsValidated = 0
+	pass
 
 func StartMinigame():
 	print("Starting minigame")
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
-
-	time = 20
+	SetDifficulty()
+	SpawnElements()
 	t.set_wait_time(time)
 	t.start()
-	SetDifficulty()
 	yield(t, "timeout")
 	emit_signal("minigame_ended")
 	pass
-	
-#con el timer no puede haber mas de un elemto por area
-#guardarle valores aleatorios 
 
-#avanzar un contador para validar
+func SpawnElements():
+	var xPositions = []
+	for i in range(0,numberElements):
+		xPositions.append(GLOBAL.SuperAlgoritmoJoel(i,numberElements,800/numberElements)-300)
+	xPositions.shuffle()
+	for i in range(0,numberElements):
+		var expectedColor = rng.randi_range(0,Colors.size()-1)
+		var expectedShape = rng.randi_range(0,Shapes.size()-1)
+		var expectedBackground = rng.randi_range(0,Background.size()-1)
+		var element = elementScene.instance()
+		element.position = Vector2(xPositions[i],0)
+		element.speed = speed
+		element.expectedColor = expectedColor
+		element.expectedShape = expectedShape
+		element.expectedBackground = expectedBackground
+		add_child(element)
+		var expectedElement = elementScene.instance()
+		expectedElement.position = Vector2(-100,0)
+		expectedElement.speed = speed
+		expectedElement.ChangeColor(GetColor(expectedColor))
+		expectedElement.ChangeShape(GetShapeTexture(expectedShape))
+		expectedElement.ChangeBackground(GetBackgroundTexture(expectedBackground))
+		add_child(expectedElement)
+		timerElements.set_wait_time(rng.randi_range(3,5))
+		timerElements.start()
+		yield(timerElements,"timeout")
+	pass
 
-#ver number Attack para la dificultad
-
-##pierdo la referencia del array de nodos
-func random(min_number, max_number ):
-	rng.randomize()
-	var random = rng.randi_range(min_number, max_number)# 
-	return random
-	
-func salida_buscada(pos):#cada que e crea un objeto incrementa la vel
-	var salUno = random(1,3)
-	var salDos = random(1,3)
-	var salTres = random(1,3)
-	incremento += 5
-	get_tree().get_nodes_in_group("elemento")[pos].valPretendido.caja1 = salUno
-	get_tree().get_nodes_in_group("elemento")[pos].valPretendido.caja2 = salDos
-	get_tree().get_nodes_in_group("elemento")[pos].valPretendido.caja3 = salTres
-	#get_tree().get_nodes_in_group("elemento")[pos].adVelocity(incremento)
-	
-	get_tree().get_nodes_in_group("resBuscado")[pos].valBuscado.caja1 = salUno
-	get_tree().get_nodes_in_group("resBuscado")[pos].valBuscado.caja2 = salDos
-	get_tree().get_nodes_in_group("resBuscado")[pos].valBuscado.caja3 = salTres
-	#get_tree().get_nodes_in_group("resBuscado")[pos].adVelocity(incremento)
-	#$HBoxContainer/Label2.text=str(get_tree().get_nodes_in_group("elemento")[con].valPretendido.caja1)
-	
-
-
-func _on_elementTimer_timeout():
-	get_node("Path2D/PathFollow2D").set_offset(randi())#toma posicion en un pto aleatorio
-	var elem = elemento.instance()#guardamos la referencia a nuestra escena enem6
-	add_child(elem)#instanciamos la escena
-	elem.position = get_node("Path2D/PathFollow2D").position
-	#var myGroup = get_tree().get_nodes_in_group("elemento")
-	#print(myGroup.size())
-	
-	var resBus = sprResultado.instance()#guardamos la referencia a nuestra escena enem6
-	add_child(resBus)#instanciamos la escena
-	var posComie = Vector2(-160,0)
-	resBus.position=posComie
-	
-	salida_buscada(inicio)
-	inicio = inicio+1
-	$elementTimer.wait_time = 20#10+random(1,15)
-	$elementTimer.start()
-	
-
-
-
-
-##con esas modificaciones deberia poder ver la forma de tener varios elementos
-func _on_Area2D1_area_entered(area):
-	if area.is_in_group("elemento"):
-			#var myGroup = get_tree().get_nodes_in_group("elemento")[].get_index()
-			#print("****")
-			#print(myGroup)
-			#	for i in range(miChild.size()):
-			#	var child = miChild[i]
-			#	var position = myGroup.get_child_index(child)
-			#	print("El elemento en la posición", position, "es", child)
-			
-			#print(" pos area 1 ",posArea1)
-			var posAmorfo = get_tree().get_nodes_in_group("elemento").size()
-			print(posAmorfo," positioin ")
-			get_tree().get_nodes_in_group("elemento")[posArea1].valAdquirido.caja1 = valorCaja.caja1
-			get_tree().get_nodes_in_group("elemento")[posArea1].areaActual= 1
-			#print(" *area 1* ",get_tree().get_nodes_in_group("elemento")[posArea1].valAdquirido.caja1)
-			#print(get_tree().get_nodes_in_group("elemento")[con].valCaja.caja1)
-			valorCaja.caja1=0
-			posArea1+=1
-			$Button1.visible = false
-			$Button2.visible = false
-			$Button3.visible = false
-		#print(get_tree().get_nodes_in_group("elemento")[con])
-		#get_tree().get_nodes_in_group("elemento")[con].valCaja.caja1 = 1
-		#print(get_tree().get_nodes_in_group("elemento")[con].valCaja.caja1)
-
-
-func _on_Area2D2_area_entered(area):
-	if area.is_in_group("elemento"):
-		
-			get_tree().get_nodes_in_group("elemento")[posArea2].valAdquirido.caja2 = valorCaja.caja2
-			get_tree().get_nodes_in_group("elemento")[posArea2].areaActual= 2
-			
-			valorCaja.caja2=0
-			posArea2+=1
-			#print(get_tree().get_nodes_in_group("elemento")[con].valCaja.caja1)
-			$Button4.visible = false
-			$Button5.visible = false
-			$Button6.visible = false
-
-
-func _on_Area2D3_area_entered(area):
-	if area.is_in_group("elemento"):
-			get_tree().get_nodes_in_group("elemento")[posArea3].valAdquirido.caja3 = valorCaja.caja3
-			get_tree().get_nodes_in_group("elemento")[posArea3].areaActual= 3
-			valorCaja.caja3=0
-			posArea3+=1
-			#print(get_tree().get_nodes_in_group("elemento")[con].valCaja.caja1)
-			$Button7.visible = false
-			$Button8.visible = false
-			$Button9.visible = false
-
-
-func _on_InicioC1_area_entered(area):
-	if area.is_in_group("elemento"):
-		
-		print("area 1",area.get_index())
-		$Button1.visible = true
-		$Button2.visible = true
-		$Button3.visible = true
-
-
-func _on_InicioC2_area_entered(area):
-	if area.is_in_group("elemento"):
-		print("area 2",area.get_index())
-		$Button4.visible = true
-		$Button5.visible = true
-		$Button6.visible = true
-
-
-func _on_InicioC3_area_entered(area):
-	if area.is_in_group("elemento"):
-		print("area 3",area.get_index())
-		$Button7.visible = true
-		$Button8.visible = true
-		$Button9.visible = true
-
-
-
-func _on_Button1_pressed():
-	valorCaja.caja1 = 1
-
-
-func _on_Button2_pressed():
-	valorCaja.caja1 = 2
-
-
-func _on_Button3_pressed():
-	valorCaja.caja1 = 3
-
-
-func _on_Button4_pressed():
-	valorCaja.caja2 = 1
-
-
-func _on_Button5_pressed():
-	valorCaja.caja2 = 2
-
-
-func _on_Button6_pressed():
-	valorCaja.caja2 = 3
-
-
-func _on_Button7_pressed():
-	valorCaja.caja3 = 1
-
-
-func _on_Button8_pressed():
-	valorCaja.caja3 = 2
-
-
-func _on_Button9_pressed():
-	valorCaja.caja3 = 3
-
-
-
-
-func _on_Area2D_area_entered(area):
-	print(" *pretendido* ",get_tree().get_nodes_in_group("elemento")[validacion].valPretendido)
-	
-	print(" *adquiridoo* ",get_tree().get_nodes_in_group("elemento")[validacion].valAdquirido)
-	validacion+=1
-	if (get_tree().get_nodes_in_group("elemento")[validacion].valPretendido.caja1 == get_tree().get_nodes_in_group("elemento")[validacion].valAdquirido.caja1
-	and get_tree().get_nodes_in_group("elemento")[validacion].valPretendido.caja2 == get_tree().get_nodes_in_group("elemento")[validacion].valAdquirido.caja2
-	and get_tree().get_nodes_in_group("elemento")[validacion].valPretendido.caja3 == get_tree().get_nodes_in_group("elemento")[validacion].valAdquirido.caja3):
-		score += 10
-		objectiveCleared+=1
-		print("coincide")
-		#objectiveCleared+=1
-	else:
-		score -= 10
-		print("fallo")
-	
-
-
-
-func SetDifficulty():#ver que el tiempo sea suficiente 
+func SetDifficulty():
 	if(difficulty ==1):
-		objectiveCount = 1
+		numberElements = 1
 		time = 20
-		incremento = 0
+		speed = 50
 
 	elif(difficulty == 2):
-		objectiveCount = 2
+		numberElements = 2
 		time = 20
-		incremento = 10
+		speed = 70
 
 	elif(difficulty == 3):
-		objectiveCount= 3
+		numberElements= 3
 		time = 25
-		incremento = 20
+		speed = 80
 
 	elif(difficulty == 4):
-		objectiveCount = 4
+		numberElements = 4
 		time = 25
-		incremento = 30
+		speed = 80
 
 	elif(difficulty == 5):
-		objectiveCount = 5
+		numberElements = 5
 		time = 30
-		incremento = 40
+		speed = 80
+	objectiveCount = numberElements*3
+	pass
 
+func ChangeColor_body_entered(body):
+	changeColorElements.append(body)
+	pass # Replace with function body.
+
+
+func ChangeColorArea_body_exited(body):
+	changeColorElements.erase(body)
+	pass # Replace with function body.
+
+
+func ChangeShapeArea_body_entered(body):
+	changeShapeElements.append(body)
+	pass # Replace with function body.
+
+
+func ChangeShapeArea_body_exited(body):
+	changeShapeElements.erase(body)
+	pass # Replace with function body.
+
+
+func _ChangeBkgArea_body_entered(body):
+	changeBkgElements.append(body)
 	pass
 
 
+func _ChangeBkgArea_body_exited(body):
+	changeBkgElements.erase(body)
+	pass 
+
+func _on_ChangeBlueButton_pressed():
+	for element in changeColorElements:
+		element.ChangeColor(GetColor(Colors.blue))
+		element.color = Colors.blue
+	pass
+
+func _on_ChangeGreenButton_pressed():
+	for element in changeColorElements:
+		element.ChangeColor(GetColor(Colors.green))
+		element.color = Colors.green
+	pass
+
+func _on_ChangeYellowButton_pressed():
+	for element in changeColorElements:
+		element.ChangeColor(GetColor(Colors.yellow))
+		element.color = Colors.yellow
+	pass
+
+func _on_ChangeShape1Button_pressed():
+	for element in changeShapeElements:
+		element.ChangeShape(GetShapeTexture(Shapes.circle))
+		element.shape = Shapes.circle
+	pass
+
+func _on_ChangeShape2Button_pressed():
+	for element in changeShapeElements:
+		element.ChangeShape(GetShapeTexture(Shapes.helmet))
+		element.shape = Shapes.helmet
+	pass
+
+func _on_ChangeShape3Button_pressed():
+	for element in changeShapeElements:
+		element.ChangeShape(GetShapeTexture(Shapes.manned))
+		element.shape = Shapes.manned
+	pass
+
+func _on_ChangeBkg1Button_pressed():
+	for element in changeBkgElements:
+		element.ChangeBackground(GetBackgroundTexture(Background.desert))
+		element.background = Background.desert
+	pass
+
+func _on_ChangeBkg2Button_pressed():
+	for element in changeBkgElements:
+		element.ChangeBackground(GetBackgroundTexture(Background.jungle))
+		element.background = Background.jungle
+	pass
+
+func _on_ChangeBkg3Button_pressed():
+	for element in changeBkgElements:
+		element.ChangeBackground(GetBackgroundTexture(Background.factory))
+		element.background = Background.factory
+	pass
+
+
+func Validation_Area_body_entered(body):
+	if(body.expectedColor == body.color):
+		objectiveCleared+=1
+	if(body.expectedShape == body.shape):
+		objectiveCleared+=1
+	if(body.expectedBackground == body.background):
+		objectiveCleared+=1
+	elementsValidated+=1
+	if(elementsValidated == numberElements):
+		timerElements.set_wait_time(2)
+		timerElements.start()
+		yield(timerElements,"timeout")
+		emit_signal("minigame_ended")
+	pass
+
+func GetColor(color):
+	if(color == Colors.blue):
+		return "blue"
+	elif(color == Colors.green):
+		return "green"
+	if(color == Colors.yellow):
+		return "yellow"
+
+func GetShapeTexture(shape):
+	if(shape == Shapes.circle):
+		return circleGray
+	elif(shape == Shapes.manned):
+		return mannedGray
+	elif(shape == Shapes.helmet):
+		return helmetGray
+
+func GetBackgroundTexture(background):
+	if(background == Background.desert):
+		return background1
+	elif(background == Background.jungle):
+		return background2
+	elif(background == Background.factory):
+		return background3
