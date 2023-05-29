@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Minigames/MVC/MVC.gd" type="Script" id=1]
+[ext_resource path="res://Minigames/MVC/Sprites/375370-best-math-wallpaper-1920x1200-ipad.jpg" type="Texture" id=2]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="375370-best-math-wallpaper-1920X1200-ipad" type="Sprite" parent="."]
+position = Vector2( 640, 376 )
+scale = Vector2( 0.666667, 0.666667 )
+texture = ExtResource( 2 )
