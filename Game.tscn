@@ -41,11 +41,35 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 540, 360 ), Vector2( 540, 360 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Node2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Node2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.365, 0 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "startClass"
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Camera2D:position")
+tracks/0/path = NodePath("Node2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -54,10 +78,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 540, 360 ), Vector2( 233, 305 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( -77, -308 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../Camera2D:zoom")
+tracks/1/path = NodePath("Node2D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -66,7 +90,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 0.461, 0.451 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 2.155, 2.17 ) ]
 }
 
 [node name="Game" type="Node2D"]
@@ -80,6 +104,7 @@ margin_bottom = 40.0
 mouse_filter = 2
 
 [node name="Node2D" type="Node2D" parent="GameManager/UI"]
+position = Vector2( 0.365, 0 )
 
 [node name="Sprite" type="TextureRect" parent="GameManager/UI/Node2D"]
 margin_right = 1282.0
@@ -107,27 +132,27 @@ position = Vector2( 640, 502 )
 scale = Vector2( 1.25882, 0.89375 )
 texture = ExtResource( 6 )
 
-[node name="Comenzar" type="Button" parent="GameManager/UI"]
-margin_left = 87.0
+[node name="Comenzar" type="Button" parent="GameManager/UI/Node2D"]
+margin_left = 86.635
 margin_top = 249.0
-margin_right = 581.0
+margin_right = 580.635
 margin_bottom = 305.0
 theme = ExtResource( 5 )
 text = "Comenzar Clase"
 
-[node name="Tienda" type="Button" parent="GameManager/UI"]
-margin_left = 553.0
+[node name="Tienda" type="Button" parent="GameManager/UI/Node2D"]
+margin_left = 552.635
 margin_top = 305.0
-margin_right = 1047.0
+margin_right = 1046.64
 margin_bottom = 382.0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 1 )
 text = "TIENDA"
 
-[node name="Salir" type="Button" parent="GameManager/UI"]
-margin_left = 871.0
+[node name="Salir" type="Button" parent="GameManager/UI/Node2D"]
+margin_left = 870.635
 margin_top = 305.0
-margin_right = 1365.0
+margin_right = 1364.64
 margin_bottom = 382.0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 1 )
@@ -145,4 +170,4 @@ limit_top = 0
 limit_right = 3000
 limit_bottom = 1000
 
-[connection signal="pressed" from="GameManager/UI/Comenzar" to="GameManager" method="_on_Button_pressed"]
+[connection signal="pressed" from="GameManager/UI/Node2D/Comenzar" to="GameManager" method="_on_Button_pressed"]
