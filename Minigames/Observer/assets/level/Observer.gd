@@ -3,10 +3,15 @@ extends Minigame
 export (PackedScene) var Enemy
 export (PackedScene) var EnemyOBS
 var t
+var rng
 
+var possibleColors = [Color8(255,0,0),Color8(0,255,0),Color8(0,0,255),Color8(255,255,255)]
+var observableColor
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	t = Timer.new()
+	rng = RandomNumberGenerator.new()
+	rng.randomize()
 	self.add_child(t)
 	$BgMusic.play()  #accedo a la musica
 	$EnemyTimer.start()
@@ -23,8 +28,11 @@ func StartMinigame():
 	print("Starting minigame")
 	t.set_wait_time(time)
 	t.start()
+	observableColor = possibleColors[rng.randi_range(0,possibleColors.size()-1)]
+	possibleColors.erase(observableColor)
+	$EnemyObservable.modulate = observableColor
+	$Player.connect("deathPlayer",self,"DeathPlayer")
 	SetDifficulty()
-	
 	yield(t, "timeout")
 	emit_signal("minigame_ended")
 	pass
@@ -46,10 +54,13 @@ func _on_HUD_game_over():
 
 func _on_EnemyTimer_timeout():
 	get_node("MarginContainer/EnemyPath2D/EnemySpawnPathFollow2D").set_offset(randi())#toma posicion en un pto aleatorio
-	var enemy = Enemy.instance()#guardamos la referencia a nuestra escena enem6
-	add_child(enemy)#instanciamos la escena
+	var enemy = EnemyOBS.instance()#guardamos la referencia a nuestra escena enem6
 	enemy.position = get_node("MarginContainer/EnemyPath2D/EnemySpawnPathFollow2D").position
 	enemy.connect("deathPlayer",self,"DeathPlayer")
+	enemy.currentColor = possibleColors[rng.randi_range(0,possibleColors.size()-1)]
+	enemy.isObservable = false
+	enemy.difficulty = difficulty
+	add_child(enemy)#instanciamos la escena
 	$EnemyTimer.wait_time = GLOBAL.random(1,4)
 	$EnemyTimer.start()
 	
@@ -57,9 +68,11 @@ func _on_EnemyTimer_timeout():
 func _on_TimerOBS_timeout():
 	get_node("MarginContainer/EnemyPath2D/EnemySpawnPathFollow2D").set_offset(randi())#toma posicion en un pto aleatorio
 	var enemyOBS = EnemyOBS.instance()#guardamos la referencia a nuestra escena enem6
-	add_child(enemyOBS)#instanciamos la escena
 	enemyOBS.position = get_node("MarginContainer/EnemyPath2D/EnemySpawnPathFollow2D").position
 	enemyOBS.connect("touchObserver",self,"TouchObserver")
+	enemyOBS.currentColor = observableColor
+	enemyOBS.isObservable = true
+	add_child(enemyOBS)#instanciamos la escena
 	#$TimerOBS.wait_time = GLOBAL.random(5,8)
 	$TimerOBS.start()
 	

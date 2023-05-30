@@ -58,3 +58,9 @@ func death_enemy():
 
 
 
+
+
+func _on_Area2D_area_entered(area):
+	if(area.get_groups().has("laser")):
+		emit_signal("deathPlayer")
+	pass # Replace with function body.

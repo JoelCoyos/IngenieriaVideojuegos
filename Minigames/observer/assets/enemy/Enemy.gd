@@ -7,9 +7,12 @@ var speed
 
 signal deathPlayer
 
+var currentColor = Color8(255,255,255)
+
 func _ready():
 	$AnimatedSprite.play()
 	speed = GLOBAL.random(150,300)
+	$AnimatedSprite.modulate = currentColor
 
 func  _physics_process(delta):
 	position.y += speed*delta#se mueve en linea recta

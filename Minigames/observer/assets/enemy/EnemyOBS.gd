@@ -1,12 +1,20 @@
 extends Area2D
 
 export (PackedScene) var Explosion# var expllosion del tipo packedScene
+
 #la ponemos mediante un export para ponerle luego la referencia a nuestra escena explosicon que aun no existe
 var speed
 var minVel = 150
 var maxVel = 200
 
+var currentColor = Color8(255,255,255)
+var isObservable
+
 signal touchObserver
+signal deathPlayer
+var difficulty
+
+var moving
 
 func _ready():
 	$AnimatedSprite.play()
@@ -15,6 +23,10 @@ func _ready():
 		GLOBAL.maxVel+=100
 		GLOBAL.controlPtos += 30
 	speed = GLOBAL.random(minVel,maxVel)
+	$AnimatedSprite.modulate = currentColor
+	if(!isObservable):
+		$Shoot.difficulty = difficulty
+		$Shoot.ShootRoutine()
 
 
 func  _physics_process(delta):
@@ -34,9 +46,14 @@ func explosion_ctrl():
 
 func _on_Enemy_body_entered(body):# detecta si el enemigo entro en contacto con el player//el player es un cuerpo fisico
 	if body.is_in_group("player"):
-		emit_signal("touchObserver")
-		death_enemy()
-		queue_free()
+		if (isObservable):
+			emit_signal("touchObserver")
+			death_enemy()
+			queue_free()
+		else:
+			emit_signal("deathPlayer")
+			death_enemy()
+			body.queue_free()
 #obs
 
 func _on_VisibilityNotifier2D_screen_exited():#envia senial cuando el enemigo no esta en pantalla
