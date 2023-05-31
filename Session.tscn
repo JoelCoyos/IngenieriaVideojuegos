@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://SessionUIManager.gd" type="Script" id=1]
 [ext_resource path="res://SessionManager.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://LevelSelection.gd" type="Script" id=5]
 [ext_resource path="res://Sprites/Free-Chalkboard-Backgrounds.jpg" type="Texture" id=6]
 [ext_resource path="res://Shaders/fillTimer.tres" type="Shader" id=7]
+[ext_resource path="res://Minigames/multipleChooise/mc.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -22,6 +23,7 @@ shader_param/which_side = -1.0
 [node name="Session" type="Node2D"]
 script = ExtResource( 2 )
 difficulty = 1
+mcScene = ExtResource( 8 )
 
 [node name="SessionUI" type="Node2D" parent="."]
 script = ExtResource( 1 )
@@ -92,4 +94,4 @@ __meta__ = {
 [node name="LevelSelection" type="Node2D" parent="."]
 script = ExtResource( 5 )
 testing = true
-levelToTest = "Singleton"
+levelToTest = "Iterator"
