@@ -1,35 +1,27 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Minigames/Singleton/KinematicBody2D.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Minigames/Singleton/PNG/light.png" type="Texture" id=3]
 [ext_resource path="res://Minigames/Singleton/LightContoler.gd" type="Script" id=4]
-
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 28, 27.5 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" groups=["player"]]
 position = Vector2( 3, 5 )
+scale = Vector2( 0.6, 0.6 )
 input_pickable = true
 script = ExtResource( 1 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -3, -5 )
-frames = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -3, -5 )
 shape = SubResource( 2 )
 
 [node name="Light2D" type="Light2D" parent="."]
+visible = false
 position = Vector2( -13, 2 )
 scale = Vector2( 0.763672, 0.666595 )
 texture = ExtResource( 3 )

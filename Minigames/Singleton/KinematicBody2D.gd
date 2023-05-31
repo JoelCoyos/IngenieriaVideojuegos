@@ -11,7 +11,12 @@ func mover_player():
 	self.global_position = get_global_mouse_position()
 	pass
 
-
+func SetTexture(texture):
+	$Sprite.texture = texture
+	
+func SetColor(color):
+	$Sprite.modulate = color
+	
 
 func _on_KinematicBody2D_input_event(viewport, event, shape_idx):
 	#if event is InputEventScreenTouch:

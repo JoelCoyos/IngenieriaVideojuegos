@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export (PackedScene) var Explosion
 
-const SPEED = 300
+const SPEED = 400
 onready var motion =Vector2.ZERO # /onready declara un valor inmediatamente, sin tener que hacerlo en _ready
 onready var screensize = get_viewport_rect().size#tamanio de la ventana
 
@@ -24,7 +24,6 @@ func get_axis() -> Vector2:#devuelve un vector2
 	# si derecha 1 - 0 = 1////si no pulsamos nada 0 - 0 = 0//// si izq 0 - 1 = -1
 	axis.y = int(Input.is_action_pressed("ui_down")) - int (Input.is_action_pressed("ui_up"))
 	return axis
-
 
 func motion_ctrl(): #controla el movimiento
 	if get_axis() == Vector2.ZERO:# no pulsamos ninguna tecla

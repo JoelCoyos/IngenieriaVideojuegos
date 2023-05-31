@@ -1,15 +1,26 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Minigames/Singleton/objetivo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Minigames/Singleton/personaje.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Minigames/Singleton/Shapes/tileGrey_07.png" type="Texture" id=3]
 [ext_resource path="res://Minigames/Singleton/Singleton.gd" type="Script" id=4]
+[ext_resource path="res://Minigames/Singleton/Shapes/tileGrey_04.png" type="Texture" id=5]
 [ext_resource path="res://Minigames/Singleton/PNG/Backgrounds/blue_desert.png" type="Texture" id=6]
 [ext_resource path="res://Minigames/Singleton/PNG/Backgrounds/blue_land.png" type="Texture" id=7]
 [ext_resource path="res://Minigames/Singleton/PNG/backgrounSingl.png" type="Texture" id=8]
+[ext_resource path="res://Minigames/Singleton/Shapes/tileGrey_05.png" type="Texture" id=9]
+[ext_resource path="res://Minigames/Singleton/Shapes/tileGrey_10.png" type="Texture" id=10]
+[ext_resource path="res://Minigames/Singleton/Shapes/tileGrey_08.png" type="Texture" id=11]
+[ext_resource path="res://Minigames/Singleton/Shapes/tileGrey_09.png" type="Texture" id=12]
+[ext_resource path="res://Minigames/Singleton/Shapes/tileGrey_12.png" type="Texture" id=13]
+[ext_resource path="res://Minigames/Singleton/Shapes/tileGrey_06.png" type="Texture" id=14]
+[ext_resource path="res://Minigames/Singleton/Shapes/tileGrey_03.png" type="Texture" id=15]
+[ext_resource path="res://Minigames/Singleton/Shapes/tileGrey_11.png" type="Texture" id=16]
 
 [node name="mundo" type="Node2D"]
 script = ExtResource( 4 )
 Objetivo = ExtResource( 1 )
+Shapes = [ ExtResource( 15 ), ExtResource( 5 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 16 ), ExtResource( 13 ) ]
 
 [node name="BlueLand" type="Sprite" parent="."]
 position = Vector2( 2163, 459 )
@@ -24,6 +35,7 @@ z_index = -1
 texture = ExtResource( 6 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0, 0, 0, 1 )
 
 [node name="Character" parent="." instance=ExtResource( 2 )]
