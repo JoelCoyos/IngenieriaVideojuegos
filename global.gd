@@ -1,19 +1,17 @@
 extends Node
 #UNICA ESCENA ,SINGLETORN
 
-onready var score : int
-onready var controlPtos : int
-onready var minVel : int
-onready var maxVel : int
+onready var coins : int
+onready var maxScore : int
+onready var seenIntro : bool
 onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var camara
 
 
 var datosPartida = {
-	score = 0,
-	controlPos = 0,
-	pos_x = 0.0,
-	pos_y=0.0
+	coins = 0,
+	maxScore = 0,
+	seenIntro = false
 }
 
 
@@ -34,11 +32,9 @@ func guardar_partida(var nro):#para tener varios arcjivos
 	save.open("res://assets/menu/savArch/"+String(nro)+".sav", File.WRITE)
 	
 	var datos_guardar = datosPartida
-	datos_guardar.score = score
-	datos_guardar.controlPos = controlPtos
-	datos_guardar.pos_x = get_tree().get_nodes_in_group("player")[0].global_position.x#no puede con vector 2
-	datos_guardar.pos_y = get_tree().get_nodes_in_group("player")[0].global_position.y
-	
+	datos_guardar.coins = coins
+	datos_guardar.maxScore = maxScore
+	datos_guardar.seenIntro = seenIntro
 	save.store_line(to_json(datos_guardar))
 	save.close()
 	
@@ -56,11 +52,9 @@ func cargar_partida(var nro):
 			datos_cargar=datoProvisorio
 	cargar.close()
 	
-	score = datos_cargar.score
-	controlPtos = datos_cargar.controlPos
-	get_tree().get_nodes_in_group("player")[0].global_position.x = datos_cargar.pos_x
-	get_tree().get_nodes_in_group("player")[0].global_position.y = datos_cargar.pos_y
-	
+	coins = datos_cargar.coins
+	maxScore = datos_cargar.maxScore
+	seenIntro = datos_cargar.seenIntro
 	
 func SuperAlgoritmoJoel(var position,var totalCant,distance):
 	var aux

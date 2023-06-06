@@ -10,6 +10,7 @@ var currentScore=0
 var cantidadAplazos=0
 var maxAplazos
 export (int) var difficulty
+export (PackedScene) var mcScene
 var gameManager
 
 var currentRound = 1
@@ -43,7 +44,12 @@ func SessionRoutine():
 	countInRound+=1
 	if(countInRound == 1):
 		roundMinigames = LevelSelection.SelectRoundMinigames()
-	if(countInRound == 5):
+	if(countInRound == 2):
+		var mc = mcScene.instance()
+		add_child(mc)
+		mc.cargar_pregunta("Iterator")
+		yield(mc,"answer")
+		mc.queue_free()
 		roundMinigames = LevelSelection.SelectRoundMinigames()
 		countInRound = 0
 		currentRound+=1
@@ -54,7 +60,8 @@ func SessionRoutine():
 		next = LevelSelection.levelToTest
 	else: next = roundMinigames[countInRound]
 	SessionUI.LeaveGame(next)
-	#yield(SpawnRoulette(), "completed") #Horrible
+	if(rng.randi_range(0,10)==1):
+		yield(SpawnRoulette(), "completed") #Horrible
 	t.set_wait_time(3)
 	t.start()
 	yield(t, "timeout")

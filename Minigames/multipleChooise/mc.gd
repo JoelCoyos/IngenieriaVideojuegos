@@ -9,6 +9,9 @@ const pos3Inf = 500
 const pos4Sup = 550
 const pos4Inf = 600
 
+signal answer
+var correctAnswer = false
+
 var score = 10
 var posiciones={
 
@@ -177,21 +180,25 @@ func changePositio(bott,pos):
 				$Button4.margin_bottom = pos4Inf
 
 
-func _on_Button1_pressed(datos):
-	if datos.pos_rta_correc == 1:
-		score += 10
+func _on_Button1_pressed():
+	if datosArch.pos_rta_correc == 1:
+		correctAnswer = true
+	emit_signal("answer")
 
 
-func _on_Button2_pressed(datos):
-	if datos.pos_rta_correc == 2:
-		score += 10
+func _on_Button2_pressed():
+	if datosArch.pos_rta_correc == 2:
+		correctAnswer = true
+	emit_signal("answer")
 
 
-func _on_Button3_pressed(datos):
-	if datos.pos_rta_correc == 3:
-		score += 10
+func _on_Button3_pressed():
+	if datosArch.pos_rta_correc == 3:
+		correctAnswer = true
+	emit_signal("answer")
 
 
-func _on_Button4_pressed(datos):
-	if datos.pos_rta_correc == 4:
-		score += 10
+func _on_Button4_pressed():
+	if datosArch.pos_rta_correc == 4:
+		correctAnswer = true
+	emit_signal("answer")
