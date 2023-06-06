@@ -98,4 +98,5 @@ __meta__ = {
 
 [node name="LevelSelection" type="Node2D" parent="."]
 script = ExtResource( 5 )
-levelToTest = "Observer"
+testing = true
+levelToTest = "Templete"

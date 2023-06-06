@@ -2,7 +2,7 @@ extends "res://Minigames/Templete/script/daniable.gd"
 
 var ptj = 100
 
-export (int, 100 ,500) var vel_transferencia = 300
+export (int, 100 ,500) var vel_transferencia = 500
 enum {
 	ESTADO_QUIETO,
 	ESTADO_TRANSFERIR,
@@ -13,7 +13,7 @@ enum {
 }
 
 
-
+signal getEnemy
 # para el efecto que pase por detras de la gomera -> dividirla en 2 una parte queda atras el personaje por delante
 #la segunda parte de la gomera por delante del personaje con el inspector->node2d->z index = 2 (parte delantera gomera)
 
@@ -86,7 +86,8 @@ func agregar_a (gomera):#al mover el pj a la gomera
 	
 	
 func _input(event):
-	if event.is_action_pressed("mover_personaje"):# && estado ==ESTADO_TOMADO :
+	print()
+	if event.is_action_pressed("mover_personaje") and get_global_mouse_position().y > 500:# && estado ==ESTADO_TOMADO :
 		estado = ESTADO_ARRASTRADO
 		
 
@@ -95,14 +96,13 @@ func actPj():	#ver si se puede usar el de daniable
 		$camPJ.play("uno")
 	elif codActual ==1:
 		$camPJ.play("dos")
-	else:
+	elif codActual == 2:
 		$camPJ.play("tres")
 
 
-
-func _on_Area2D_area_entered(area):
-	if area.is_in_group("cambio"):
-		codActual = area.get_index()
-		
-		print(codActual)
-		
+func _on_personaje_body_entered(body):
+	if(body!=null and body.is_in_group("daniable")):
+		if(body.codActual == codActual):
+			body.queue_free()
+			emit_signal("getEnemy")
+	pass # Replace with function body.

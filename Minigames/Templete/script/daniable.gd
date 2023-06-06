@@ -25,7 +25,6 @@ func _integrate_forces(state):#lee y modifica el estado de simulacion del opvjet
 		var massa = self.mass
 		var massa_cuerpo = contacto.mass if contacto is RigidBody2D else 1000000000#guardo la masa del cuerpo si el contacto que nos choco es un rigid body
 		var P = V.dot(state.get_contact_local_normal(i)) * (massa_cuerpo / (massa + massa_cuerpo))  / cantidad_contactos[contacto.get_instance_id()] # devuelve el punto en que choco en un vector2
-		recibir_danio(P*0.06)
 
 
 
@@ -43,10 +42,6 @@ func act():
 	else:
 		$AnimatedSprite.play("tres")
 		
-#func _on_daniable_body_entered(body):
-#	recibir_danio(velocidad_danio.length())
-
-
 func recibir_danio(canti : float):
 	canti = round(canti)
 	if canti > 0 :
@@ -57,6 +52,7 @@ func recibir_danio(canti : float):
 
 func _on_Area2D_area_entered(area):
 		if area.is_in_group("player"):
+			print("ASDDSADASD")
 			if codActual == get_tree().get_nodes_in_group("player")[0].codActual :
 				print("iguales")
 			else:

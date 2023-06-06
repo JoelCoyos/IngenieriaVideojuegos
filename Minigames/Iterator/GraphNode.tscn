@@ -52,7 +52,7 @@ shape = SubResource( 1 )
 
 [node name="ArrowHead" type="Sprite" parent="."]
 modulate = Color( 0.211765, 0.576471, 1, 1 )
-position = Vector2( 0, -105.539 )
+position = Vector2( 4.76837e-07, -102 )
 rotation = 3.14159
 scale = Vector2( 0.8, 1 )
 texture = ExtResource( 3 )

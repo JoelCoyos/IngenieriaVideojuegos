@@ -1,20 +1,33 @@
 extends Area2D
-var estadoActual
+export (int) var estadoActual
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var tween
 
+signal change_state(state)
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	asignarVal(estadoActual)
+	StartTween()
+	pass
 
 func asignarVal(valor):
 	estadoActual = valor
-	if valor == 1 :
+	if valor == 0 :
 		$AnimatedSprite.play("animatUNO")
+	elif valor == 1:
+		$AnimatedSprite.play("animtaDOS")
 	elif valor == 2:
-		$AnimatedSprite.play("animatDOS")
-	else:
-		$AnimatedSprite.play("default")
+		$AnimatedSprite.play("animtaTRES")
+
+func _input_event(viewport, event, shape_idx):
+	if(Input.is_action_just_pressed("game_select")):
+		emit_signal("change_state",estadoActual)
+	pass
+	
+func StartTween():
+	if(tween!=null):
+		tween.stop()
+	tween = create_tween().set_loops()
+	tween.tween_property($AnimatedSprite,"scale",Vector2.ONE*0.6,0.5).set_trans(Tween.TRANS_SINE)
+	tween.tween_property($AnimatedSprite,"scale",Vector2.ONE*1.2,0.5).set_trans(Tween.TRANS_SINE)
+	pass

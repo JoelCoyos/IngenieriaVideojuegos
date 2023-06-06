@@ -54,8 +54,10 @@ func soltar_personaje ():
 	Personaje = null
 
 func obtener_impulso ():
-	if Personaje == null : return
-	return ($pos_salida.global_position - Personaje.global_position)* impulso
+	if Personaje == null :
+		return
+	else:
+		return ($pos_salida.global_position - Personaje.global_position)* impulso
 
 func act ():
 	var pos = Personaje.get_node("pos").get_global_position() if Personaje else $pos_salida.get_global_position()

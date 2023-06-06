@@ -7,11 +7,10 @@ var cantiEnemigos = 5
 
 func _ready():
 	$personaje.agregar_a($gomera)
-	for i in range(cantiEnemigos):
-		createEnemy()
-	$Area2D.asignarVal(1)
-	$Area2D2.asignarVal(2)
-	$Area2D3.asignarVal(3)
+	$personaje.connect("getEnemy",self,"GetEnemy")
+	$Area2D.connect("change_state",self,"ChangeState")
+	$Area2D2.connect("change_state",self,"ChangeState")
+	$Area2D3.connect("change_state",self,"ChangeState")
 	t = Timer.new()
 	self.add_child(t)
 
@@ -25,7 +24,7 @@ func random(min_number, max_number ):
 
 func createEnemy():
 	var obs = Objetivo.instance()
-	var pos=Vector2(random(10,2000),random(800,900))# si cordena y la pongo por debajo del suelo del tile se caen os objetis
+	var pos=Vector2(random(400,1500),random(600,700))# si cordena y la pongo por debajo del suelo del tile se caen os objetis
 	add_child(obs)
 	obs.position = pos
 	obs.codActual=rng.randi()%3
@@ -37,12 +36,22 @@ func StartMinigame():
 	rng.randomize()
 	objectiveCleared=0
 	SetDifficulty()
+	for i in range(objectiveCount):
+		createEnemy()
 	t.set_wait_time(time)
 	t.start()
 	yield(t, "timeout")
 	emit_signal("minigame_ended")
 	pass
 	
+func ChangeState(state):
+	$personaje.codActual = state
+	pass
+
+func GetEnemy():
+	objectiveCleared+=1
+	if(objectiveCleared == objectiveCount):
+		emit_signal("minigame_ended")
 
 func SetDifficulty():#el objetivos logrados incrementa si coincide la bala con el objeto
 	if(difficulty ==1):
@@ -69,5 +78,4 @@ func SetDifficulty():#el objetivos logrados incrementa si coincide la bala con e
 		objectiveCount = 15
 		time = 30
 		cantiEnemigos = objectiveCount +2
-
 	pass
