@@ -10,6 +10,7 @@ var street = []
 var car
 var carPath
 var carSpeed
+var carStarted =false
 
 var lastCarPosition
 var carPosition
@@ -19,12 +20,14 @@ var crossScene
 var canCross
 var forcedContinue
 
-var distanceCross = 200
-var xStartingStreet = 100
-var yStartingStreet = 100
+var distanceCross = 240
+var xStartingStreet = 125
+var yStartingStreet = 50
 
 var objetiveScene
 var coneScene
+
+var coneCount
 
 
 func _init():
@@ -66,7 +69,7 @@ func StartMinigame():
 	t.set_wait_time(time)
 	t.start()
 	objectiveCleared=0
-	#car.carSpeed = carSpeed
+	car.speed = carSpeed
 	SetStreet()
 	AddObjetives()
 	yield(t, "timeout")
@@ -75,14 +78,14 @@ func StartMinigame():
 	pass
 
 func SetStreet():
-	street_width=4
+	street_width=6
 	street_height=4
-	for y in street_width:
+	for x in street_width:
 		street.append([])
-		for x in street_height:
-			street[y].append(null)
-	for y in street_width:
-		for x in street_height:
+		for y in street_height:
+			street[x].append(null)
+	for y in street_height:
+		for x in street_width:
 			var cross =  crossScene.instance()
 			cross.position = Vector2(xStartingStreet + x*distanceCross,yStartingStreet+ y*distanceCross)
 			add_child(cross)
@@ -97,29 +100,51 @@ func SetStreet():
 func CarInput():
 	var hasInput
 	var turn=true
-	if(Input.is_action_just_pressed("ui_up")):
-		hasInput=true
-		turn = false
-	elif(Input.is_action_just_pressed("ui_left") and canCross):
-		hasInput=true
-		if(carDirection == Vector2(0,-1)): #Up
-			carDirection = Vector2(-1,0)
-		elif(carDirection == Vector2(0,1)): #Down
-			carDirection = Vector2(1,0)
-		elif(carDirection == Vector2(1,0)): #Right
+	if(carStarted == false):
+		if(Input.is_action_just_pressed("ui_up")):
+			hasInput=true
+			carStarted = true
+			turn = false
 			carDirection = Vector2(0,-1)
-		elif(carDirection == Vector2(-1,0)): #Left
+		if(Input.is_action_just_pressed("ui_down")):
+			hasInput=true
+			carStarted = true
+			turn = false
 			carDirection = Vector2(0,1)
-	elif(Input.is_action_just_pressed("ui_right") and canCross):
-		hasInput=true
-		if(carDirection == Vector2(0,-1)): #Up
-			carDirection = Vector2(1,0)
-		elif(carDirection == Vector2(0,1)): #Down
+		if(Input.is_action_just_pressed("ui_left")):
+			hasInput=true
+			carStarted = true
+			turn = false
 			carDirection = Vector2(-1,0)
-		elif(carDirection == Vector2(1,0)): #Right
-			carDirection = Vector2(0,1)
-		elif(carDirection == Vector2(-1,0)): #Left
-			carDirection = Vector2(0,-1)
+		if(Input.is_action_just_pressed("ui_right")):
+			hasInput=true
+			carStarted = true
+			turn = false
+			carDirection = Vector2(1,0)
+	else:
+		if(Input.is_action_just_pressed("ui_up")):
+			hasInput=true
+			turn = false
+		elif(Input.is_action_just_pressed("ui_left") and canCross):
+			hasInput=true
+			if(carDirection == Vector2(0,-1)): #Up
+				carDirection = Vector2(-1,0)
+			elif(carDirection == Vector2(0,1)): #Down
+				carDirection = Vector2(1,0)
+			elif(carDirection == Vector2(1,0)): #Right
+				carDirection = Vector2(0,-1)
+			elif(carDirection == Vector2(-1,0)): #Left
+				carDirection = Vector2(0,1)
+		elif(Input.is_action_just_pressed("ui_right") and canCross):
+			hasInput=true
+			if(carDirection == Vector2(0,-1)): #Up
+				carDirection = Vector2(1,0)
+			elif(carDirection == Vector2(0,1)): #Down
+				carDirection = Vector2(-1,0)
+			elif(carDirection == Vector2(1,0)): #Right
+				carDirection = Vector2(0,1)
+			elif(carDirection == Vector2(-1,0)): #Left
+				carDirection = Vector2(0,-1)
 	if(hasInput):
 		AddCarDirection(carDirection,turn)
 		hasInput=false
@@ -144,17 +169,20 @@ func AddCarDirection(direction,turn):
 		#carPath.clear_points()
 		car.on = true
 		lastCarPosition = carPosition
-		carPosition+= carDirection
-		print(lastCarPosition)
-		print(carPosition)
+		var pos = carPosition+carDirection
+		if(pos.x >= 0 and pos.y >= 0 and pos.x < street_width and pos.y < street_height):
+			carPosition+= carDirection
+		else:
+			carPosition-= carDirection
+			carDirection = -carDirection
 		carPath.add_point(GetStreetPosition(carPosition))
 	pass
 
 func AddObjetives():
 	for i in range(0,objectiveCount):
 		rng.randomize()
-		var xPosition = (rng.randi_range(0,street_width-2))*distanceCross + xStartingStreet
-		var yPosition = rng.randi_range(0,street_height-2)*distanceCross + yStartingStreet
+		var xPosition = (rng.randi_range(0,street_width-3))*distanceCross + xStartingStreet
+		var yPosition = rng.randi_range(0,street_height-3)*distanceCross + yStartingStreet
 		if(rng.randi_range(0,1)==0):
 			xPosition+= distanceCross/2
 		else:
@@ -162,7 +190,7 @@ func AddObjetives():
 		var objetive = objetiveScene.instance()
 		objetive.position = Vector2(xPosition,yPosition)
 		add_child(objetive)
-	for i in range(0,3):
+	for i in range(0,coneCount):
 		rng.randomize()
 		var xPosition = (rng.randi_range(0,street_width-2))*distanceCross + xStartingStreet
 		var yPosition = rng.randi_range(0,street_height-2)*distanceCross + yStartingStreet
@@ -193,22 +221,27 @@ func CarCrash():
 func SetDifficulty():
 	if(difficulty ==1):
 		objectiveCount = 2
+		coneCount = 1
 		time = 20
 		carSpeed = 200
 	elif(difficulty == 2):
 		objectiveCount = 3
+		coneCount = 2
 		time = 15
 		carSpeed = 250
 	elif(difficulty == 3):
 		objectiveCount= 4
+		coneCount = 3
 		time = 20
 		carSpeed = 300
 	elif(difficulty == 4):
 		objectiveCount = 4
+		coneCount = 4
 		time = 15
-		carSpeed = 350
+		carSpeed = 400
 	elif(difficulty == 5):
 		objectiveCount = 5
-		time = 20
-		carSpeed = 400
+		coneCount = 5
+		time = 10
+		carSpeed = 500
 	pass

@@ -33,7 +33,7 @@ script = ExtResource( 2 )
 curve = SubResource( 1 )
 
 [node name="Car" type="PathFollow2D" parent="CarPath"]
-rotation = 1.5708
+rotation = -1.5708
 loop = false
 script = ExtResource( 4 )
 

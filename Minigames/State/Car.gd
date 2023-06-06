@@ -2,7 +2,7 @@ extends PathFollow2D
 
 var t = 0
 var on
-var speed = 200
+var speed
 
 signal getObjetive
 signal crash
