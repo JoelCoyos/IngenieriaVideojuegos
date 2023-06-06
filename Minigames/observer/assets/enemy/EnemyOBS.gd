@@ -18,10 +18,6 @@ var moving
 
 func _ready():
 	$AnimatedSprite.play()
-	if GLOBAL.score == GLOBAL.controlPtos :
-		GLOBAL.minVel+=100
-		GLOBAL.maxVel+=100
-		GLOBAL.controlPtos += 30
 	speed = GLOBAL.random(minVel,maxVel)
 	$AnimatedSprite.modulate = currentColor
 	if(!isObservable):

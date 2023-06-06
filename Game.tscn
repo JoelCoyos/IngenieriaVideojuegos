@@ -96,7 +96,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="DynamicFont" id=4]
-size = 63
+size = 44
 outline_size = 9
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 9 )
@@ -111,7 +111,6 @@ font_data = ExtResource( 7 )
 script = ExtResource( 1 )
 
 [node name="UIClass" type="Control" parent="GameManager"]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
@@ -176,6 +175,7 @@ anims/RESET = SubResource( 3 )
 anims/startClass = SubResource( 2 )
 
 [node name="UIMenu" type="Control" parent="GameManager"]
+visible = false
 margin_right = 1282.0
 margin_bottom = 717.0
 
@@ -185,10 +185,10 @@ scale = Vector2( 0.21158, 0.21158 )
 texture = ExtResource( 10 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameManager/UIMenu"]
-margin_left = 196.0
-margin_top = 68.0
-margin_right = 1087.0
-margin_bottom = 214.0
+margin_left = 280.0
+margin_top = 58.0
+margin_right = 1311.0
+margin_bottom = 227.0
 custom_colors/default_color = Color( 0.25098, 0.305882, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.580392, 0.12549, 0.12549, 1 )
 custom_fonts/normal_font = SubResource( 4 )

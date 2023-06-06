@@ -23,4 +23,4 @@ func SelectRoundMinigames():
 		var aux = levels[auxint]
 		levels[auxint] = levels[i]
 		levels[i] = aux
-	return levels.slice(0,4)
+	return levels.slice(0,5)

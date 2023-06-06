@@ -17,11 +17,11 @@ func _ready():
 
 
 func _process(delta):
-	if(Input.is_action_just_pressed("game_select") and actualScene < 3):
-		print("asdf")
-		actualScene+=1
-		escenas[actualScene-1].visible = false
-		escenas[actualScene].visible = true
-	else:
-		emit_signal("story_over")
+	if(Input.is_action_just_pressed("game_select")):
+		if(actualScene < 3):
+			actualScene+=1
+			escenas[actualScene-1].visible = false
+			escenas[actualScene].visible = true
+		else:
+			emit_signal("story_over")
 	pass

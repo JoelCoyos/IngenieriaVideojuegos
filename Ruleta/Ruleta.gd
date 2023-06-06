@@ -27,7 +27,7 @@ var distance
  
 export(RotationDirections) var rotation_direction = RotationDirections.CLOCKWISE
 export(int) var revolutions = 10
-export(float) var spin_time = 5
+export(float) var spin_time = 3
 export(float) var target_rotation = 15
 
 func _ready():
@@ -64,9 +64,8 @@ func spinRoulette(target_rotation):
 		Tween.EASE_OUT
 	)
 	tween.start()
-	#yield(tween,"finished")
 	var timer = $Timer
-	timer.set_wait_time(spin_time +2)
+	timer.set_wait_time(spin_time +1)
 	timer.start()
 	yield(timer,"timeout")
 	emit_signal("endRoulette")
@@ -74,9 +73,9 @@ func spinRoulette(target_rotation):
 
 
 func _on_Button_pressed():
-	var number = rng.randi_range(0,12)
+	var number = rng.randi_range(0,12-1)
 	beneficio = Beneficios[number]
-	print(number+1)
+	$Button.visible = false
 	spinRoulette(-15-30*number)
 	pass # Replace with function body.
 

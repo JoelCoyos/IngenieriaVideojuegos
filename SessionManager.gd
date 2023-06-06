@@ -11,6 +11,8 @@ var cantidadAplazos=0
 var maxAplazos
 export (int) var difficulty
 export (PackedScene) var mcScene
+export (PackedScene) var storyScene
+export (PackedScene) var endScene
 var gameManager
 
 var currentRound = 1
@@ -26,6 +28,8 @@ var rouletteScene
 
 enum TiposBeneficios {MONEDAS,NOTA,APLAZO} #eh, funciona
 
+signal end_session
+
 func _ready():
 	LevelSelection = $LevelSelection
 	SessionUI = $SessionUI
@@ -37,14 +41,21 @@ func _ready():
 	maxAplazos=5
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
+	if(GLOBAL.seenIntro == false):
+		var story
+		story = storyScene.instance()
+		add_child(story)
+		yield(story,"story_over")
+		story.queue_free()
 	SessionRoutine()
 	pass
 
 func SessionRoutine():
+	$SessionUI/OnMinigame.visible = false #hack feo
 	countInRound+=1
 	if(countInRound == 1):
 		roundMinigames = LevelSelection.SelectRoundMinigames()
-	if(countInRound == 2):
+	if(countInRound == 6):
 		var mc = mcScene.instance()
 		add_child(mc)
 		mc.cargar_pregunta("Iterator")
@@ -60,7 +71,7 @@ func SessionRoutine():
 		next = LevelSelection.levelToTest
 	else: next = roundMinigames[countInRound]
 	SessionUI.LeaveGame(next)
-	if(rng.randi_range(0,10)==1):
+	if(rng.randi_range(0,10)==1 and countInRound>1):
 		yield(SpawnRoulette(), "completed") #Horrible
 	t.set_wait_time(3)
 	t.start()
@@ -101,7 +112,22 @@ func NextMinigame():
 	minigame.queue_free()
 	SessionUI.ChangeScore(currentScore)
 	beneficio = null
+	if(cantidadAplazos == 5 or currentScore >= 100):
+		yield(EndGameRoutine(), "completed") #Horrible, otra vez
 	SessionRoutine()
+	pass
+
+func EndGameRoutine():
+	$SessionUI.visible = false
+	$SessionUI/OnMinigame.visible = false
+	var end = endScene.instance()
+	add_child(end)
+	if(currentScore >= 7):
+		end.PlayGoodScene()
+	else:
+		end.PlayBadScene()
+	yield(end,"end_over")
+	emit_signal("end_session")
 	pass
 
 func SpawnRoulette():
