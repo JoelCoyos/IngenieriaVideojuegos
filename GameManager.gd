@@ -11,6 +11,7 @@ func _ready():
 	GLOBAL.cargar_partida(0)
 	GLOBAL.camara = $Camera2D
 	$Camera2D.current = true
+	$UIClass/Node2D/MaxScoreText.text = str("MAXIMA PUNTUACION: ", GLOBAL.maxScore)
 	pass
 
 func _process(delta):
@@ -26,6 +27,16 @@ func _on_Button_pressed():
 	$UIClass.visible=false
 	add_child(session)
 	yield(session,"end_session")
+	if(GLOBAL.maxScore < session.currentScore):
+		GLOBAL.maxScore = session.currentScore
+	GLOBAL.seenIntro = true
+	GLOBAL.guardar_partida(0)
 	session.queue_free()
 	$UIClass.visible= true
+	pass # Replace with function body.
+
+func _on_IniciarJuegoButton_pressed():
+	$UIMenu.visible = false
+	$UIClass.visible = true
+	GLOBAL.cargar_partida(0)
 	pass # Replace with function body.
