@@ -4,7 +4,6 @@ export (PackedScene) var Enemy
 export (PackedScene) var EnemyOBS
 var t
 var rng
-
 var possibleColors = [Color8(255,0,0),Color8(0,255,0),Color8(0,0,255),Color8(255,255,255)]
 var observableColor
 # Called when the node enters the scene tree for the first time.

@@ -31,11 +31,6 @@ var datPregunta={
 	 rta4="rta4"}
 
 
-
-func _ready():
-	cargar_pregunta("SINGLETON")
-
-
 func cargar_pregunta(var patron):
 	#var random = RandomNumberGenerator.new()
 	var totP = 0 
@@ -45,7 +40,6 @@ func cargar_pregunta(var patron):
 	cargar.open("res://Minigames/multipleChooise/preguntas/"+patron+".sav", File.READ)
 	datosArch=parse_json(cargar.get_line())
 	
-	print(datosArch)
 	var value = datosArch.get("cantPreguntas")#de dictionary a integer
 	if value != null:
 		  totP = int(value)
@@ -60,9 +54,8 @@ func cargar_pregunta(var patron):
 	if (datoProvisorio != null):
 		datPregunta=datoProvisorio
 	
-	
-	print(datPregunta)
 	habButton(int(datoProvisorio.get("cantRTA")))
+	$RichTextLabel.text = str("PATRON: ",patron)
 	cargaSCR(datPregunta)
 	cargar.close()
 

@@ -7,6 +7,7 @@ var time
 var difficulty
 var objectiveCount
 var objectiveCleared=0
+var controls
 
 func _ready():
 	pass

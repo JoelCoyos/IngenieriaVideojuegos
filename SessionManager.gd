@@ -52,6 +52,7 @@ func _ready():
 
 func SessionRoutine():
 	$SessionUI/OnMinigame.visible = false #hack feo
+	$SessionUI/BetweenMinigames/Controls.visible = false
 	countInRound+=1
 	if(countInRound == 1):
 		roundMinigames = LevelSelection.SelectRoundMinigames()
@@ -75,6 +76,8 @@ func SessionRoutine():
 		yield(SpawnRoulette(), "completed") #Horrible
 	t.set_wait_time(3)
 	t.start()
+	$SessionUI/BetweenMinigames/Controls.visible = true
+	$SessionUI/BetweenMinigames/Controls/TextureRect/AnimationPlayer.play(LevelSelection.gameControls[next])
 	yield(t, "timeout")
 	var minigameScene = load("res://Minigames//"+next+"//"+next+".tscn")
 	minigame = minigameScene.instance()

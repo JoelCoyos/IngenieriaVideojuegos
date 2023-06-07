@@ -17,6 +17,7 @@ var aliados = 6
 #los limites de la camara no me deja crearlos/modificarlos luego de instanciar
 	
 func _ready():
+	controls = "Mouse"
 	t = Timer.new()
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
@@ -55,7 +56,6 @@ func StartMinigame():
 	yield(t, "timeout")
 	emit_signal("minigame_ended")
 	pass
-	
 
 func createElement(est):
 	var obs = Objetivo.instance()

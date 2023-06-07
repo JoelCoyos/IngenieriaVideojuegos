@@ -13,9 +13,9 @@ texture = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 173.0
-margin_top = 64.0
+margin_top = 71.0
 margin_right = 1319.0
-margin_bottom = 129.0
+margin_bottom = 136.0
 text = "pregunta"
 
 [node name="Button1" type="Button" parent="."]
@@ -43,6 +43,13 @@ margin_left = 200.0
 margin_top = 550.0
 margin_right = 650.0
 margin_bottom = 600.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 172.0
+margin_top = 47.0
+margin_right = 527.0
+margin_bottom = 87.0
+text = "PATRON: "
 
 [connection signal="pressed" from="Button1" to="." method="_on_Button1_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]

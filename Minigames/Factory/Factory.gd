@@ -28,6 +28,7 @@ enum Shapes {circle,helmet,manned}
 enum Background {desert,jungle,factory}
 
 func _ready():
+	controls = "Mouse"
 	randomize()
 	t = Timer.new()
 	timerElements = Timer.new()

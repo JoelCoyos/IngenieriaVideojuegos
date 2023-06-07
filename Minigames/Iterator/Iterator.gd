@@ -21,6 +21,7 @@ func _init():
 	pass
 
 func _ready():
+	controls = "Mouse"
 	t = Timer.new()
 	self.add_child(t)
 	rng = RandomNumberGenerator.new()

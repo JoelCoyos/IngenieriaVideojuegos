@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://SessionUIManager.gd" type="Script" id=1]
 [ext_resource path="res://SessionManager.gd" type="Script" id=2]
@@ -10,11 +10,100 @@
 [ext_resource path="res://Minigames/multipleChooise/mc.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scene/Historia.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scene/End.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Sprites/Keys/key_blank.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Keys/mouse_blank.png" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
 outline_color = Color( 0.14902, 0.14902, 0.14902, 1 )
 font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 26
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Key"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 11 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.27451, 0.521569, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Mouse"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 12 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.27451, 0.521569, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 11 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 7 )
@@ -24,7 +113,7 @@ shader_param/which_side = -1.0
 
 [node name="Session" type="Node2D"]
 script = ExtResource( 2 )
-difficulty = 1
+difficulty = 2
 mcScene = ExtResource( 8 )
 storyScene = ExtResource( 9 )
 endScene = ExtResource( 10 )
@@ -69,6 +158,34 @@ text = "APLAZOS
 __meta__ = {
 "_edit_use_anchors_": true
 }
+
+[node name="Controls" type="Node2D" parent="SessionUI/BetweenMinigames"]
+
+[node name="Free-Chalkboard-Backgrounds" type="Sprite" parent="SessionUI/BetweenMinigames/Controls"]
+position = Vector2( 1105, 608.75 )
+scale = Vector2( 0.0823204, 0.0803867 )
+texture = ExtResource( 6 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SessionUI/BetweenMinigames/Controls"]
+margin_left = 1024.0
+margin_top = 556.0
+margin_right = 1305.0
+margin_bottom = 643.0
+custom_fonts/normal_font = SubResource( 3 )
+text = "CONTROLES"
+
+[node name="TextureRect" type="TextureRect" parent="SessionUI/BetweenMinigames/Controls"]
+margin_left = 1065.0
+margin_top = 597.0
+margin_right = 1157.0
+margin_bottom = 659.0
+texture = ExtResource( 11 )
+stretch_mode = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SessionUI/BetweenMinigames/Controls/TextureRect"]
+anims/Key = SubResource( 4 )
+anims/Mouse = SubResource( 5 )
+anims/RESET = SubResource( 6 )
 
 [node name="OnMinigame" type="CanvasLayer" parent="SessionUI"]
 visible = false

@@ -2,6 +2,7 @@ extends Node2D
 
 var rng
 var levels = ["Decorator","Factory","Iterator","MVC","Observer","Singleton","State","Templete"]
+var gameControls = {"Decorator":"Mouse","Factory":"Mouse","Iterator":"Mouse","MVC":"Mouse","Observer":"Key","Singleton":"Mouse","State":"Key","Templete":"Mouse"}
 export(bool) var testing = false
 export(String) var levelToTest
 

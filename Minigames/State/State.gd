@@ -34,6 +34,7 @@ func _init():
 	pass
 
 func _ready():
+	controls = "Key"
 	t = Timer.new()
 	self.add_child(t)
 	car = $CarPath/Car

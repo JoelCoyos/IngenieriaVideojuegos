@@ -6,6 +6,7 @@ var t
 var cantiEnemigos = 5
 
 func _ready():
+	controls = "Mouse"
 	$personaje.agregar_a($gomera)
 	$personaje.connect("getEnemy",self,"GetEnemy")
 	$Area2D.connect("change_state",self,"ChangeState")
