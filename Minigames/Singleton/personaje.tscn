@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Minigames/Singleton/KinematicBody2D.gd" type="Script" id=1]
+[ext_resource path="res://Minigames/Iterator/arrow_head.png" type="Texture" id=2]
 [ext_resource path="res://Minigames/Singleton/PNG/light.png" type="Texture" id=3]
 [ext_resource path="res://Minigames/Singleton/LightContoler.gd" type="Script" id=4]
 
@@ -25,5 +26,12 @@ position = Vector2( -13, 2 )
 scale = Vector2( 0.763672, 0.666595 )
 texture = ExtResource( 3 )
 script = ExtResource( 4 )
+
+[node name="ArrowHead" type="Sprite" parent="."]
+modulate = Color( 0.0392157, 0.415686, 1, 1 )
+position = Vector2( -3.33333, -95 )
+rotation = -3.14159
+scale = Vector2( 0.455889, 0.455889 )
+texture = ExtResource( 2 )
 
 [connection signal="input_event" from="." to="." method="_on_KinematicBody2D_input_event"]

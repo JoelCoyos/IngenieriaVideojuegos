@@ -1,8 +1,5 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
-
 var LevelSelection
 var minigame
 var SessionUI
@@ -20,7 +17,6 @@ var countInRound = 0 #cantidad de minijuegos que se dieron en esta ronda
 var roundMinigames
 
 var beneficio
-
 var rng
 var t
 

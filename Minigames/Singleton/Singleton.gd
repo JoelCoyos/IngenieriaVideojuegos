@@ -28,7 +28,7 @@ func _ready():
 
 	
 func _process(delta):
-	if(camara.position.distance_to($Character.position) > 150 ):
+	if(camara.position.distance_to($Character.position) > 10 ):
 		camara.position = lerp(camara.position,$Character.position,1*delta)
 	pass
 
