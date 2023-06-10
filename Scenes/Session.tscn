@@ -1,17 +1,18 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://SessionUIManager.gd" type="Script" id=1]
-[ext_resource path="res://SessionManager.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/SessionUIManager.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/SessionManager.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/—Pngtree—education blackboard green culture_3881393.png" type="Texture" id=3]
-[ext_resource path="res://EraserRegular.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://LevelSelection.gd" type="Script" id=5]
+[ext_resource path="res://Fonts/EraserRegular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Scripts/LevelSelection.gd" type="Script" id=5]
 [ext_resource path="res://Sprites/Free-Chalkboard-Backgrounds.jpg" type="Texture" id=6]
 [ext_resource path="res://Shaders/fillTimer.tres" type="Shader" id=7]
 [ext_resource path="res://Minigames/multipleChooise/mc.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scene/Historia.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scene/End.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Historia.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/End.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Sprites/Keys/key_blank.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/Keys/mouse_blank.png" type="Texture" id=12]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 48

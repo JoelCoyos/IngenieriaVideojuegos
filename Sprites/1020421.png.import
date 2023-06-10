@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/door-clipart-school-4.png-34c8553d74a8b4d99c2d2aa9a0b7fd96.stex"
+path="res://.import/1020421.png-7d0a1bbc93031028a36ad98e898dac51.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://door-clipart-school-4.png"
-dest_files=[ "res://.import/door-clipart-school-4.png-34c8553d74a8b4d99c2d2aa9a0b7fd96.stex" ]
+source_file="res://Sprites/1020421.png"
+dest_files=[ "res://.import/1020421.png-7d0a1bbc93031028a36ad98e898dac51.stex" ]
 
 [params]
 

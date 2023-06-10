@@ -3,11 +3,10 @@ extends Node2D
 var coins
 var notaPromedio
 
-var sessionScene
+export(PackedScene) var sessionScene
 
 func _ready():
 	coins = 0 
-	sessionScene = load("res://Session.tscn")
 	GLOBAL.cargar_partida(0)
 	GLOBAL.camara = $Camera2D
 	$Camera2D.current = true

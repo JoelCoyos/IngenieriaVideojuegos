@@ -1,7 +1,8 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Transition.gd" type="Script" id=1]
-[ext_resource path="res://TransitionBlur.gdshader" type="Shader" id=2]
+[ext_resource path="res://Scripts/Transition.gd" type="Script" id=1]
+[ext_resource path="res://Shaders/TransitionBlur.gdshader" type="Shader" id=2]
+
 
 [sub_resource type="OpenSimplexNoise" id=8]
 

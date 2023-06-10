@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wall.jpg-8ed0d7df155526a983718de180132827.stex"
+path="res://.import/curtain.png-a7014460b135d6beaeb7e92fc53ee3e8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://wall.jpg"
-dest_files=[ "res://.import/wall.jpg-8ed0d7df155526a983718de180132827.stex" ]
+source_file="res://Sprites/curtain.png"
+dest_files=[ "res://.import/curtain.png-a7014460b135d6beaeb7e92fc53ee3e8.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

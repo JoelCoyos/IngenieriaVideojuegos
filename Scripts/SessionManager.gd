@@ -80,7 +80,7 @@ func SessionRoutine():
 	add_child(minigame)
 	minigame.difficulty = difficulty
 	minigame.StartMinigame()
-	var transitionScene = load("res://TransitionBlur.tscn")
+	var transitionScene = load("res://Scenes//TransitionBlur.tscn")
 	var transition = transitionScene.instance()
 	add_child(transition)
 	transition.MinigameTransition()
